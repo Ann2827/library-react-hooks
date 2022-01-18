@@ -1,0 +1,10 @@
+# configs
+*.config.js
+webpack.*.js
+
+# build
+build/
+public/
+
+# react-app
+src/react-app-env.d.ts
