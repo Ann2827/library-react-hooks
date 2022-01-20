@@ -1,10 +1,10 @@
-import React from 'react';
+import React from 'react'
 
-import { ExampleComponent } from 'test_lib';
-import 'test_lib/dist/index.css';
+import { ExampleComponent } from 'library-react-hooks'
+import 'library-react-hooks/dist/index.css'
 
-const App: React.FC = () => {
+const App = () => {
   return <ExampleComponent text="Create React Library Example 😄" />
-};
+}
 
-export default App;
+export default App

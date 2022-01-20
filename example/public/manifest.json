@@ -1,6 +1,6 @@
 {
-  "short_name": "test_lib",
-  "name": "test_lib",
+  "short_name": "library-react-hooks",
+  "name": "library-react-hooks",
   "icons": [
     {
       "src": "favicon.ico",
