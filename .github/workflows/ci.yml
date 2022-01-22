@@ -63,8 +63,7 @@ jobs:
 #          echo "PATCH=$(echo $npm_package_version | awk -F'.' '{print $1"."$2"."$3}')" >> $GITHUB_ENV
 #
       - name: View
-        run: |
-          echo $VERSION
+        run: echo "$VERSION"
 
 #      - name: Prepare Version Tags
 #        run: |
