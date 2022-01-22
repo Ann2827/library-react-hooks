@@ -95,8 +95,8 @@ jobs:
         env:
           VER: $VERSION
         with:
-          tag_name: $VER
-          release_name: $VER
+          tag_name: 0.0.18
+          release_name: 0.0.18
 #          draft: true
           body: ${{steps.github_release.outputs.changelog}}
 #          prerelease: ${{ contains(github.ref, '-rc') || contains(github.ref, '-b') || contains(github.ref, '-a') }}
