@@ -53,8 +53,8 @@ jobs:
           patch-wording: 'patch++'
           target-branch: 'main'
 
-#      - name: Prepare Version
-#        run: echo "VERSION=$(echo $npm_package_version)" >> $GITHUB_ENV
+      - name: Prepare Version
+        run: echo "VERSION=$(npx -c 'node -p "process.env.npm_package_version"')" >> $GITHUB_ENV
 
 #      - name: Prepare Version Tags
 #        run: |
@@ -63,7 +63,7 @@ jobs:
 #          echo "PATCH=$(echo $npm_package_version | awk -F'.' '{print $1"."$2"."$3}')" >> $GITHUB_ENV
 #
       - name: View
-        run: npx -c 'node -p "process.env.npm_package_version"'
+        run: echo $VERSION
 
 #      - name: Prepare Version Tags
 #        run: |
