@@ -50,6 +50,7 @@ jobs:
           minor-wording: 'minor++'
           patch-wording: 'patch++'
           target-branch: 'main'
+          tag-prefix:  ''
 
 #      - name: Prepare Version Tags
 #        run: |
