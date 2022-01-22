@@ -54,12 +54,6 @@ jobs:
       - name: Prepare Version
         run: echo "VERSION=$(npx -c 'node -p "process.env.npm_package_version"')" >> $GITHUB_ENV
 
-#      - name: Prepare Version Tags
-#        run: |
-#          echo "MAJOR=$(echo $npm_package_version | awk -F'.' '{print $1}')" >> $GITHUB_ENV
-#          echo "MINOR=$(echo $npm_package_version | awk -F'.' '{print $1"."$2}')" >> $GITHUB_ENV
-#          echo "PATCH=$(echo $npm_package_version | awk -F'.' '{print $1"."$2"."$3}')" >> $GITHUB_ENV
-#
       - name: View
         id: version_id
         run: echo $VERSION
