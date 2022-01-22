@@ -24,6 +24,9 @@ jobs:
     needs: [install]
     steps:
       - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '16'
       - run: npm run build
 
   test:
@@ -31,6 +34,9 @@ jobs:
     needs: [install]
     steps:
       - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '16'
       - run: npm run test
 
   deploy:
@@ -38,6 +44,9 @@ jobs:
     needs: [test]
     steps:
       - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '16'
       - run: |
           npm run predeploy
           npm run deploy
