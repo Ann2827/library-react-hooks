@@ -43,16 +43,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Get Version
-        run: |
-          npm run version
-          echo "VERSION=${npm run version}" >> $GITHUB_ENV
-
       - name: Prepare Version Tags
         run: |
-          echo "MAJOR=$(echo ${VERSION} | awk -F'.' '{print $1}')" >> $GITHUB_ENV
-          echo "MINOR=$(echo ${VERSION} | awk -F'.' '{print $1"."$2}')" >> $GITHUB_ENV
-          echo "PATCH=$(echo ${VERSION} | awk -F'.' '{print $1"."$2"."$3}')" >> $GITHUB_ENV
+          echo "MAJOR=$(echo ${npm run version} | awk -F'.' '{print $1}')" >> $GITHUB_ENV
+          echo "MINOR=$(echo ${npm run version} | awk -F'.' '{print $1"."$2}')" >> $GITHUB_ENV
+          echo "PATCH=$(echo ${npm run version} | awk -F'.' '{print $1"."$2"."$3}')" >> $GITHUB_ENV
 
 #      - name: Prepare Version Tags
 #        run: |
