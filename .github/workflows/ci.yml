@@ -45,9 +45,9 @@ jobs:
 
       - name: Prepare Version Tags
         run: |
-          echo "MAJOR=$(echo ${npm run version} | awk -F'.' '{print $1}')" >> $GITHUB_ENV
-          echo "MINOR=$(echo ${npm run version} | awk -F'.' '{print $1"."$2}')" >> $GITHUB_ENV
-          echo "PATCH=$(echo ${npm run version} | awk -F'.' '{print $1"."$2"."$3}')" >> $GITHUB_ENV
+          echo "MAJOR=$(echo $npm_package_version | awk -F'.' '{print $1}')" >> $GITHUB_ENV
+          echo "MINOR=$(echo $npm_package_version | awk -F'.' '{print $1"."$2}')" >> $GITHUB_ENV
+          echo "PATCH=$(echo $npm_package_version | awk -F'.' '{print $1"."$2"."$3}')" >> $GITHUB_ENV
 
 #      - name: Prepare Version Tags
 #        run: |
