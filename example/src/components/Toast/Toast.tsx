@@ -27,7 +27,6 @@ const Toast = () => {
   const [messages, setMessages] = useState<NotificationI[]>([]);
   useEffect(() => {
     on((data: ToastDataObject[]) => {
-      console.log('data', data);
       setMessages(
         data.map((item) => ({
           title: item.title || '',
