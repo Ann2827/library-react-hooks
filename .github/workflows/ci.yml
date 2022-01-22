@@ -89,18 +89,17 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          configuration: "../../configs/configuration.json"
+          configuration: "configuration.json"
 
       - name: Create Release
-        uses: actions/create-release@v1
-#        uses: ncipollo/release-action@v1
+#        uses: actions/create-release@v1
+        uses: ncipollo/release-action@v1
         env:
-#          VER: $VERSION
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           tag_name: ${{ steps.bump.outputs.newTag }}
           release_name: ${{ steps.bump.outputs.newTag }}
-#          draft: true
+          draft: true
           body: ${{steps.github_release.outputs.changelog}}
 #          prerelease: ${{ contains(github.ref, '-rc') || contains(github.ref, '-b') || contains(github.ref, '-a') }}
 #        env:
