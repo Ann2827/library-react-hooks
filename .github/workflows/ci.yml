@@ -65,7 +65,7 @@ jobs:
       - name: View
         env:
           PACKAGE_VERSION: $(cat package.json | grep version | head -1 | awk -F= "{ print $2 }" | sed 's/[version:,\",]//g' | tr -d '[[:space:]]')
-        run: echo "VER -- $(echo $npm_package_version)"
+        run: npm run $(echo $npm_package_version)
 
 #      - name: Prepare Version Tags
 #        run: |
