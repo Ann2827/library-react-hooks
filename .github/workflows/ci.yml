@@ -52,12 +52,6 @@ jobs:
           target-branch: 'main'
           tag-prefix:  ''
 
-#      - name: Prepare Version Tags
-#        run: |
-#          echo "MAJOR=$(echo ${GITHUB_REF/refs\/tags\//} | awk -F'.' '{print $1}')" >> $GITHUB_ENV
-#          echo "MINOR=$(echo ${GITHUB_REF/refs\/tags\//} | awk -F'.' '{print $1"."$2}')" >> $GITHUB_ENV
-#          echo "PATCH=$(echo ${GITHUB_REF/refs\/tags\//} | awk -F'.' '{print $1"."$2"."$3}')" >> $GITHUB_ENV
-#
 #      - name: Release
 #        uses: anton-yurchenko/git-release@v4.1.2
 #        env:
