@@ -53,8 +53,8 @@ jobs:
           patch-wording: 'patch++'
           target-branch: 'main'
 
-      - name: Prepare Version
-        run: echo "VERSION=$(echo $npm_package_version)" >> $GITHUB_ENV
+#      - name: Prepare Version
+#        run: echo "VERSION=$(echo $npm_package_version)" >> $GITHUB_ENV
 
 #      - name: Prepare Version Tags
 #        run: |
@@ -62,10 +62,10 @@ jobs:
 #          echo "MINOR=$(echo $npm_package_version | awk -F'.' '{print $1"."$2}')" >> $GITHUB_ENV
 #          echo "PATCH=$(echo $npm_package_version | awk -F'.' '{print $1"."$2"."$3}')" >> $GITHUB_ENV
 #
-      - name: View
-        env:
-          TEST: ${{ echo $npm_package_version }}
-        run: echo $TEST
+#      - name: View
+#        env:
+#          TEST: ${{ echo $npm_package_version }}
+#        run: echo $TEST
 
 #      - name: Prepare Version Tags
 #        run: |
@@ -83,13 +83,13 @@ jobs:
 #      - name: Update Tags
 #        uses: vweevers/additional-tags-action@v1
 
-#      - name: Build release changelog
-#        id: github_release
-#        uses: mikepenz/release-changelog-builder-action@main
-#        env:
-#          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-#        with:
-#          configuration: "configs/configuration.json"
+      - name: Build release changelog
+        id: github_release
+        uses: mikepenz/release-changelog-builder-action@main
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          configuration: "configs/configuration.json"
 #
 #      - name: Create Release
 ##        uses: actions/create-release@v1
