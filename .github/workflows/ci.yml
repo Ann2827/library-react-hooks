@@ -90,8 +90,8 @@ jobs:
           configuration: "configs/configuration.json"
 
       - name: Create Release
-#        uses: actions/create-release@v1
-        uses: ncipollo/release-action@v1
+        uses: actions/create-release@v1
+#        uses: ncipollo/release-action@v1
         env:
           VER: $VERSION
         with:
