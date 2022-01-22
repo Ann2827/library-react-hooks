@@ -81,6 +81,7 @@ jobs:
 
   generate_changelog:
     runs-on: ubuntu-latest
+    needs: [release]
     name: Generate changelog for master branch
     steps:
       - uses: actions/checkout@v1
