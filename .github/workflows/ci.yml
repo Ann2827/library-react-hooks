@@ -63,7 +63,9 @@ jobs:
 #          echo "PATCH=$(echo $npm_package_version | awk -F'.' '{print $1"."$2"."$3}')" >> $GITHUB_ENV
 #
       - name: View
-        run: echo "new tag $NEW_TAG"
+        env:
+          PACKAGE_VERSION: $(cat package.json | grep version | head -1 | awk -F= "{ print $2 }" | sed 's/[version:,\",]//g' | tr -d '[[:space:]]')
+        run: echo "PACKAGE_VERSION -- $PACKAGE_VERSION"
 
 #      - name: Prepare Version Tags
 #        run: |
