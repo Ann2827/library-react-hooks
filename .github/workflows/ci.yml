@@ -45,7 +45,6 @@ jobs:
 
       - name: Get Version
         run: |
-          echo "package.json version ${npm run version}"
           echo "VERSION=${npm run version}"
 
       - name: Prepare Version Tags
