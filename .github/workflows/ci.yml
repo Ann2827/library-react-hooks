@@ -54,7 +54,7 @@ jobs:
           target-branch: 'main'
 
       - name: Prepare Version
-        run: echo "VERSION=$(echo $npm_package_version | awk -F)" >> $GITHUB_ENV
+        run: echo "VERSION=$(echo $npm_package_version)" >> $GITHUB_ENV
 
 #      - name: Prepare Version Tags
 #        run: |
