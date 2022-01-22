@@ -1,10 +1,14 @@
-import React from 'react'
-
-import { ExampleComponent } from 'library-react-hooks'
-import 'library-react-hooks/dist/index.css'
+import React from 'react';
+import Toast from './components/Toast';
+import Main from './pages/Main';
 
 const App = () => {
-  return <ExampleComponent text="Create React Library Example 😄" />
-}
+  return (
+    <div>
+      <Main />
+      <Toast />
+    </div>
+  );
+};
 
-export default App
+export default App;
