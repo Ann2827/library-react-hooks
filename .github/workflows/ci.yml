@@ -51,13 +51,6 @@ jobs:
           patch-wording: 'patch++'
           target-branch: 'main'
 
-      - name: Prepare Version
-        run: echo "VERSION=$(npx -c 'node -p "process.env.npm_package_version"')" >> $GITHUB_ENV
-
-      - name: View
-        id: version_id
-        run: echo $VERSION
-
 #      - name: Prepare Version Tags
 #        run: |
 #          echo "MAJOR=$(echo ${GITHUB_REF/refs\/tags\//} | awk -F'.' '{print $1}')" >> $GITHUB_ENV
