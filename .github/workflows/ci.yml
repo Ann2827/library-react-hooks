@@ -93,7 +93,8 @@ jobs:
         uses: actions/create-release@v1
 #        uses: ncipollo/release-action@v1
         env:
-          VER: $VERSION
+#          VER: $VERSION
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           tag_name: 0.0.18
           release_name: 0.0.18
