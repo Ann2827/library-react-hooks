@@ -64,7 +64,7 @@ jobs:
 #
       - name: View
         env:
-          TEST: ${{ npm_package_version }}
+          TEST: $npm_package_version
         run: echo $TEST
 
 #      - name: Prepare Version Tags
