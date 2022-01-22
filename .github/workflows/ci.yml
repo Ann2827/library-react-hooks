@@ -44,6 +44,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: 'Automated Version Bump'
+        id: bump
         uses: 'phips28/gh-action-bump-version@master'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -97,8 +98,8 @@ jobs:
 #          VER: $VERSION
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: ${{ env.package_version }}
-          release_name: ${{ env.package_version }}
+          tag_name: ${{ steps.bump.outputs.newTag }}
+          release_name: ${{ steps.bump.outputs.newTag }}
 #          draft: true
           body: ${{steps.github_release.outputs.changelog}}
 #          prerelease: ${{ contains(github.ref, '-rc') || contains(github.ref, '-b') || contains(github.ref, '-a') }}
