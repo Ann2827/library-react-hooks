@@ -23,6 +23,11 @@ jobs:
         run: npm run build
       - name: Test
         run: npm run test
+      - name: Author
+        run: |
+          - cd ./example
+          - git config --global user.email "ann.bystrova96@mail.ru"
+          - git config --global user.name "Ann Bystrova"
       - name: Deploy
         run: |
           npm run predeploy
