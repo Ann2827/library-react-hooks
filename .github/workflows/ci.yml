@@ -50,7 +50,7 @@ jobs:
           minor-wording: 'minor++'
           patch-wording: 'patch++'
           target-branch: 'main'
-          tag-prefix:  ''
+          tag-prefix: false
 
 #      - name: Release
 #        uses: anton-yurchenko/git-release@v4.1.2
