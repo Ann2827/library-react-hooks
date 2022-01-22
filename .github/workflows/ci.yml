@@ -46,8 +46,6 @@ jobs:
       - name: Get Version
         run: |
           npm run version
-          npm run version >> $GITHUB_ENV_V
-          echo $GITHUB_ENV
           echo "VERSION=${npm run version}"
 
       - name: Prepare Version Tags
