@@ -49,6 +49,12 @@ jobs:
           echo "MINOR=$(echo $npm_package_version | awk -F'.' '{print $1"."$2}')" >> $GITHUB_ENV
           echo "PATCH=$(echo $npm_package_version | awk -F'.' '{print $1"."$2"."$3}')" >> $GITHUB_ENV
 
+      - name: View
+        run: |
+          echo $MAJOR
+          echo $MINOR
+          echo $PATCH
+
 #      - name: Prepare Version Tags
 #        run: |
 #          echo "MAJOR=$(echo ${GITHUB_REF/refs\/tags\//} | awk -F'.' '{print $1}')" >> $GITHUB_ENV
