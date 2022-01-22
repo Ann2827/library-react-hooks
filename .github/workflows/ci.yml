@@ -92,14 +92,16 @@ jobs:
       - name: Create Release
 #        uses: actions/create-release@v1
         uses: ncipollo/release-action@v1
+        env:
+          VER: $VERSION
         with:
-          tag_name: ${{ VERSION }}
-          release_name: ${{ VERSION }}
+          tag_name: $VER
+          release_name: $VER
 #          draft: true
           body: ${{steps.github_release.outputs.changelog}}
 #          prerelease: ${{ contains(github.ref, '-rc') || contains(github.ref, '-b') || contains(github.ref, '-a') }}
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#        env:
+#          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 #  generate_changelog:
 #    runs-on: ubuntu-latest
