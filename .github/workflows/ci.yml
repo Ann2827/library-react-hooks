@@ -51,19 +51,6 @@ jobs:
           patch-wording: 'patch++'
           target-branch: 'main'
 
-      - name: Prepare Version
-        run: echo "VERSION=$(npx -c 'node -p "process.env.npm_package_version"')" >> $GITHUB_ENV
-
-#      - name: Prepare Version Tags
-#        run: |
-#          echo "MAJOR=$(echo $npm_package_version | awk -F'.' '{print $1}')" >> $GITHUB_ENV
-#          echo "MINOR=$(echo $npm_package_version | awk -F'.' '{print $1"."$2}')" >> $GITHUB_ENV
-#          echo "PATCH=$(echo $npm_package_version | awk -F'.' '{print $1"."$2"."$3}')" >> $GITHUB_ENV
-#
-      - name: View
-        id: version_id
-        run: echo $VERSION
-
 #      - name: Prepare Version Tags
 #        run: |
 #          echo "MAJOR=$(echo ${GITHUB_REF/refs\/tags\//} | awk -F'.' '{print $1}')" >> $GITHUB_ENV
@@ -89,20 +76,15 @@ jobs:
           configuration: "configs/configuration.json"
 
       - name: Create Release
-#        uses: actions/create-release@v1
         uses: ncipollo/release-action@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-#          tag_name: ${{ steps.bump.outputs.newTag }}
           tag: ${{ steps.bump.outputs.newTag }}
           name: ${{ steps.bump.outputs.newTag }}
-#          release_name: ${{ steps.bump.outputs.newTag }}
 #          draft: true
           body: ${{steps.github_release.outputs.changelog}}
 #          prerelease: ${{ contains(github.ref, '-rc') || contains(github.ref, '-b') || contains(github.ref, '-a') }}
-#        env:
-#          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 #  generate_changelog:
 #    runs-on: ubuntu-latest
