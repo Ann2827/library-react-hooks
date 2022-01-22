@@ -89,7 +89,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          configuration: "configuration.json"
+          configuration: "../../configs/configuration.json"
 
       - name: Create Release
         uses: actions/create-release@v1
