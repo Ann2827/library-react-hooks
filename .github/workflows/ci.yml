@@ -96,8 +96,8 @@ jobs:
 #          VER: $VERSION
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: "${VERSION}"
-          release_name: "${VERSION}"
+          tag_name: "$VERSION"
+          release_name: "$VERSION"
 #          draft: true
           body: ${{steps.github_release.outputs.changelog}}
 #          prerelease: ${{ contains(github.ref, '-rc') || contains(github.ref, '-b') || contains(github.ref, '-a') }}
