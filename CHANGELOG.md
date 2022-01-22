@@ -7,6 +7,7 @@
 **Closed issues:**
 
 - Auto releases yml [\#4](https://github.com/Ann2827/library-react-hooks/issues/4)
+- Добавить версионирование [\#3](https://github.com/Ann2827/library-react-hooks/issues/3)
 
 ## [v0.0.2](https://github.com/Ann2827/library-react-hooks/tree/v0.0.2) (2022-01-22)
 
