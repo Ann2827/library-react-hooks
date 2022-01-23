@@ -27,12 +27,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-
-      - name: Test
-        env:
-          EVENT_CONTEXT: ${{ toJSON(github.event) }}
-        run: |
-          echo $EVENT_CONTEXT
+        with:
+          ref: github.ref_name
 
       - name: Automated Version Bump
         id: bump
