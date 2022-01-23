@@ -39,3 +39,4 @@ MIT © [Ann Bystrova &lt;ann.bystrova96@mail.ru&gt;](https://github.com/Ann Byst
 удалить тэг git push --delete origin '${VERSION}'
 
 some changes
+some changes
