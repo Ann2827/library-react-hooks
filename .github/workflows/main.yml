@@ -37,10 +37,17 @@ jobs:
           git config --global user.email "ann.bystrova96@mail.ru"
           git config --global user.name "Ann Bystrova"
 
-      - name: Deploy
-        run: |
-          npm run predeploy
-          npm run deploy
+      - name: Predeploy
+        continue-on-error: false
+        run: npm run predeploy
+
+      - name: Deploy to GitHub Pages
+        uses: Cecilapp/GitHub-Pages-deploy@v3
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          email: ann.bystrova96@mail.ru
+#          build_dir: _site
 
   release:
     if: (github.event_name == 'pull_request' && github.event.action == 'closed')
