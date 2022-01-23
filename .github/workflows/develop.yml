@@ -15,7 +15,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Send greeting
-        run: echo "Hello!! ${process.env.INPUT_DEFAULT}"
+        run: echo "Hello!! ${{process.env.INPUT_DEFAULT}}"
 
   version:
     if: github.event_name == 'push' && (
