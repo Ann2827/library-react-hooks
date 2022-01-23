@@ -57,7 +57,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          configuration: "configs/configuration.json"
+          configuration: "configs/configuration_changelog.json"
 
       - name: Write changelog
         uses: stefanzweifel/changelog-updater-action@v1
