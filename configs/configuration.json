@@ -6,11 +6,11 @@
     },
     {
       "title": "## 🎉 New Features",
-      "labels": ["feature"]
+      "labels": ["feature", "feat"]
     },
     {
       "title": "## 📌 Bug Fixes",
-      "labels": ["fix"]
+      "labels": ["fix", "bug"]
     }
   ],
   "sort": "ASC",

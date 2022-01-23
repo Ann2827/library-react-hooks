@@ -35,3 +35,6 @@ MIT © [Ann Bystrova &lt;ann.bystrova96@mail.ru&gt;](https://github.com/Ann Byst
 - <https://habr.com/ru/post/461439/>
 - <https://github.com/transitive-bullshit/create-react-library>
 - <https://cli.github.com>
+
+удалить тэг git push --delete origin '${VERSION}'
+
