@@ -1,9 +1,11 @@
 name: 'Develop'
 on:
   push:
-    branches: [feature]
+    branches:
+      - develop
   pull_request:
-    branches: [develop]
+    branches:
+      - develop
     types: [closed]
 
 jobs:
