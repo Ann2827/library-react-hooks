@@ -1,14 +1,16 @@
 name: 'Develop'
 on:
   push:
-    branches: [feature]
+    branches:
+      - 'feature/**'
   pull_request:
-    branches: [develop]
+    branches:
+      - develop
     types: [closed]
 
 jobs:
   build:
-    if: github.event_name == 'push' &&  github.ref_name == 'develop'
+    if: github.event_name == 'push'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -16,7 +18,7 @@ jobs:
         run: echo "Hello!!"
 
   version:
-    if: github.event_name == 'push' && github.ref_name == 'develop' && (
+    if: github.event_name == 'push' && (
       startsWith(github.event.head_commit.message, 'feat:') ||
       startsWith(github.event.head_commit.message, 'fix:') ||
       startsWith(github.event.head_commit.message, 'major:'))
@@ -35,7 +37,8 @@ jobs:
           major-wording: 'major:'
           minor-wording: 'feat:'
           patch-wording: 'fix:'
-          target-branch: 'develop'
+          target-branch: 'main'
+          PACKAGEJSON_DIR: 'tree/develop'
           tag-prefix: 'v'
 
   changelog:
