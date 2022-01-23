@@ -50,7 +50,7 @@ jobs:
           minor-wording: 'minor++'
           patch-wording: 'patch++'
           target-branch: 'main'
-          tag-prefix: 'k'
+          tag-prefix: 'false'
 #          skip-push:  'true'
 #          skip-commit: 'true'
 #          skip-tag: 'true'
