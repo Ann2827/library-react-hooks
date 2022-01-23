@@ -1,0 +1,63 @@
+name: Release
+
+# Controls when the action will run. Workflow runs when manually triggered using the UI
+# or API.
+on:
+  workflow_dispatch:
+    # Inputs the workflow accepts.
+    inputs:
+      name:
+        # Friendly description to be shown in the UI instead of 'name'
+        description: 'Person to greet'
+        # Default value if no value is explicitly provided
+        default: 'World'
+        # Input has to be provided for the workflow to run
+        required: true
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "greet"
+  release:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Automated Version Bump
+      id: bump
+      uses: 'phips28/gh-action-bump-version@master'
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        major-wording: 'major++'
+        minor-wording: 'minor++'
+        patch-wording: 'patch++'
+        target-branch: 'main'
+        tag-prefix: 'v'
+      #          skip-push:  'true'
+      #          skip-commit: 'true'
+      #          skip-tag: 'true'
+
+    - name: Build release changelog
+      id: github_release
+      uses: mikepenz/release-changelog-builder-action@main
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        configuration: "configs/configuration.json"
+
+    - name: Create Release
+      uses: ncipollo/release-action@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag: ${{ steps.bump.outputs.newTag }}
+        name: ${{ steps.bump.outputs.newTag }}
+        body: ${{steps.github_release.outputs.changelog}}
+        owner: Ann2827
+        repo: library-react-hooks
+        token: ${{ secrets.GITHUB_TOKEN }}
+        bodyFile: "build/*.zip"
