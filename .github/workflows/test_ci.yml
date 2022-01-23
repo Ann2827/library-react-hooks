@@ -19,8 +19,7 @@ jobs:
     if: github.event_name == 'pull_request' &&  github.ref_name == 'develop' && (
       startsWith(github.event.head_commit.message, 'feat:') ||
       startsWith(github.event.head_commit.message, 'fix:') ||
-      startsWith(github.event.head_commit.message, 'major:')
-    )
+      startsWith(github.event.head_commit.message, 'major:'))
     runs-on: ubuntu-latest
     needs: [build]
     steps:
