@@ -15,7 +15,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Send greeting
-        run: echo "Hello!! ${{process.env.INPUT_DEFAULT}}"
+        run: echo "Hello!!"
 
   version:
     if: github.event_name == 'push' && (
@@ -47,11 +47,23 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
+      - name: Get version
+        id: package_version
+        uses: martinbeentjes/npm-get-version-action@master
+
       - name: Generate changelog
+        id: github_changelog
+        uses: mikepenz/release-changelog-builder-action@main
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          configuration: "configs/configuration.json"
+
+      - name: Write changelog
         uses: stefanzweifel/changelog-updater-action@v1
         with:
-          latest-version: ${{ github.event.release.tag_name }}
-          release-notes: ${{ github.event.release.body }}
+          latest-version: ${{ steps.package_version.outputs.current-version }}
+          release-notes: ${{ steps.github_changelog.outputs.changelog }}
 #        uses: charmixer/auto-changelog-action@v1
 #        with:
 #          token: ${{ secrets.GITHUB_TOKEN }}
