@@ -6,16 +6,17 @@
     },
     {
       "title": "## 🎉 New Features",
-      "labels": ["feature", "feat"]
+      "labels": ["feature"]
     },
     {
       "title": "## 📌 Bug Fixes",
-      "labels": ["fix", "bug"]
+      "labels": ["bug"]
     }
   ],
+  "ignore_labels": ["docs", "research"],
   "sort": "ASC",
   "template": "${{CHANGELOG}}",
-  "pr_template": "- ${{TITLE}}\n   - PR: #${{NUMBER}}",
+  "pr_template": "- ${{TITLE}} (#${{NUMBER}})",
   "empty_template": "- no changes",
   "max_pull_requests": 1000,
   "max_back_track_time_days": 1000
