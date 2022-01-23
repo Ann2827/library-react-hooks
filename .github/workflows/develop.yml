@@ -47,21 +47,32 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Generate changelog
-        uses: charmixer/auto-changelog-action@v1
+        uses: stefanzweifel/changelog-updater-action@v1
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          latest-version: ${{ github.event.release.tag_name }}
+          release-notes: ${{ github.event.release.body }}
+#        uses: charmixer/auto-changelog-action@v1
+#        with:
+#          token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Commit changelog
-        run: |
-          git config --local user.email "ann.bystrova96@mail.ru"
-          git config --local user.name "Ann Bystrova"
-          git add CHANGELOG.md && git commit -m 'Updated CHANGELOG.md' && echo "push=true" >> $GITHUB_ENV || echo "No changes to CHANGELOG.md"
+      - name: Commit updated CHANGELOG
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          branch: develop
+          commit_message: Update CHANGELOG
+          file_pattern: CHANGELOG.md
 
-      - name: Push changes
-        env:
-          CI_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          git push "https://Ann2827:$CI_TOKEN@github.com/$GITHUB_REPOSITORY.git" HEAD:develop
+#      - name: Commit changelog
+#        run: |
+#          git config --local user.email "ann.bystrova96@mail.ru"
+#          git config --local user.name "Ann Bystrova"
+#          git add CHANGELOG.md && git commit -m 'Updated CHANGELOG.md' && echo "push=true" >> $GITHUB_ENV || echo "No changes to CHANGELOG.md"
+#
+#      - name: Push changes
+#        env:
+#          CI_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#        run: |
+#          git push "https://Ann2827:$CI_TOKEN@github.com/$GITHUB_REPOSITORY.git" HEAD:develop
 
 #  build:
 #    #    if: github.event_name  == 'pull_request'
