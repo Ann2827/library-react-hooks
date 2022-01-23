@@ -26,7 +26,7 @@ jobs:
     needs: [build]
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v1
 
       - name: Automated Version Bump
         id: bump
@@ -37,8 +37,8 @@ jobs:
           major-wording: 'major:'
           minor-wording: 'feat:'
           patch-wording: 'fix:'
-          target-branch: 'main'
-          PACKAGEJSON_DIR: 'tree/develop'
+#          target-branch: 'develop'
+#          PACKAGEJSON_DIR: 'tree/develop'
           tag-prefix: 'v'
 
   changelog:
