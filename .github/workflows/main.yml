@@ -2,7 +2,7 @@ name: 'Main'
 on:
   push:
     branches:
-      - '*'
+      - main
   pull_request:
     branches:
       - main
@@ -79,4 +79,4 @@ jobs:
           owner: Ann2827
           repo: library-react-hooks
           token: ${{ secrets.GITHUB_TOKEN }}
-          bodyFile: "build/*.zip"
+#          bodyFile: "build/*.zip"
