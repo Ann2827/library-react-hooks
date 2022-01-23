@@ -37,8 +37,6 @@ jobs:
           major-wording: 'major:'
           minor-wording: 'feat:'
           patch-wording: 'fix:'
-#          target-branch: 'develop'
-#          PACKAGEJSON_DIR: 'tree/develop'
           tag-prefix: 'v'
 
   changelog:
