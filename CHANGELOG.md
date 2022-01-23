@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.4.1 - 2022-01-23
+
+## 🎉 New Features
+
+- fix: test (#34)
+
 ## 0.4.0 - 2022-01-23
 
 - no changes
