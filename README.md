@@ -37,4 +37,3 @@ MIT © [Ann Bystrova &lt;ann.bystrova96@mail.ru&gt;](https://github.com/Ann Byst
 - <https://cli.github.com>
 
 удалить тэг git push --delete origin '${VERSION}'
-
