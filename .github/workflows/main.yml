@@ -2,15 +2,15 @@ name: 'Main'
 on:
   push:
     branches:
-      - main
+      - '*'
   pull_request:
     branches:
       - main
-    types: [closed]
+    types: [closed, opened]
 
 jobs:
   build:
-    if: github.event_name == 'push'
+    if: github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.action == 'opened')
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -37,13 +37,20 @@ jobs:
           git config --global user.email "ann.bystrova96@mail.ru"
           git config --global user.name "Ann Bystrova"
 
-      - name: Deploy
-        run: |
-          npm run predeploy
-          npm run deploy
+      - name: Predeploy
+        continue-on-error: false
+        run: npm run predeploy
+
+      - name: Deploy to GitHub Pages
+        uses: Cecilapp/GitHub-Pages-deploy@v3
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          email: ann.bystrova96@mail.ru
+          build_dir: example/build
 
   release:
-    if: github.event_name == 'pull_request'
+    if: (github.event_name == 'pull_request' && github.event.action == 'closed')
     runs-on: ubuntu-latest
     steps:
       - name: Checkout

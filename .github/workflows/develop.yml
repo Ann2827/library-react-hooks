@@ -48,10 +48,12 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Get version
+        continue-on-error: false
         id: package_version
         uses: martinbeentjes/npm-get-version-action@master
 
       - name: Generate changelog
+        continue-on-error: false
         id: github_changelog
         uses: mikepenz/release-changelog-builder-action@main
         env:
@@ -60,6 +62,7 @@ jobs:
           configuration: "configs/configuration_changelog.json"
 
       - name: Write changelog
+        continue-on-error: false
         uses: stefanzweifel/changelog-updater-action@v1
         with:
           latest-version: ${{ steps.package_version.outputs.current-version }}
