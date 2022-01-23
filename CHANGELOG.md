@@ -1,12 +1,20 @@
 # Changelog
 
-## [Unreleased](https://github.com/Ann2827/library-react-hooks/tree/HEAD)
+## [v0.0.15](https://github.com/Ann2827/library-react-hooks/tree/v0.0.15) (2022-01-23)
 
-[Full Changelog](https://github.com/Ann2827/library-react-hooks/compare/v0.0.11...HEAD)
+[Full Changelog](https://github.com/Ann2827/library-react-hooks/compare/v0.0.14...v0.0.15)
 
-**Closed issues:**
+## [v0.0.14](https://github.com/Ann2827/library-react-hooks/tree/v0.0.14) (2022-01-23)
 
-- Тестирование версий [\#19](https://github.com/Ann2827/library-react-hooks/issues/19)
+[Full Changelog](https://github.com/Ann2827/library-react-hooks/compare/v0.0.13...v0.0.14)
+
+## [v0.0.13](https://github.com/Ann2827/library-react-hooks/tree/v0.0.13) (2022-01-23)
+
+[Full Changelog](https://github.com/Ann2827/library-react-hooks/compare/v0.0.12...v0.0.13)
+
+## [v0.0.12](https://github.com/Ann2827/library-react-hooks/tree/v0.0.12) (2022-01-23)
+
+[Full Changelog](https://github.com/Ann2827/library-react-hooks/compare/v0.0.11...v0.0.12)
 
 ## [v0.0.11](https://github.com/Ann2827/library-react-hooks/tree/v0.0.11) (2022-01-23)
 
