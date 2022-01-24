@@ -53,9 +53,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Get version
-        id: package_version
-        uses: martinbeentjes/npm-get-version-action@master
+#      - name: Get version
+#        id: package_version
+#        uses: martinbeentjes/npm-get-version-action@master
 
       - name: Generate changelog
         id: github_changelog
@@ -70,8 +70,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag: ${{ steps.package_version.outputs.current-version }}
-          name: ${{ steps.package_version.outputs.current-version }}
+          tag: ${{ steps.github_changelog.outputs.toTag }}
+          name: ${{ steps.github_changelog.outputs.toTag }}
           body: ${{steps.github_release.outputs.changelog}}
           owner: Ann2827
           repo: library-react-hooks

@@ -13,10 +13,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Get version
-        continue-on-error: false
-        id: package_version
-        uses: martinbeentjes/npm-get-version-action@master
+#      - name: Get version
+#        continue-on-error: false
+#        id: package_version
+#        uses: martinbeentjes/npm-get-version-action@master
 
       - name: Generate changelog
         continue-on-error: false
@@ -31,7 +31,7 @@ jobs:
         continue-on-error: false
         uses: stefanzweifel/changelog-updater-action@v1
         with:
-          latest-version: ${{ steps.package_version.outputs.current-version }}
+          latest-version: ${{ steps.github_changelog.outputs.toTag }}
           release-notes: ${{ steps.github_changelog.outputs.changelog }}
 
       - name: Commit updated CHANGELOG
