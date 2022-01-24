@@ -10,7 +10,7 @@ on:
 
 jobs:
   push:
-    if (github.event_name == 'push')
+    if: (github.event_name == 'push')
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -18,7 +18,7 @@ jobs:
         run: echo "Pull Push"
 
   pull:
-    if (github.event_name == 'pull_request')
+    if: (github.event_name == 'pull_request')
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
