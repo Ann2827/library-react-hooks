@@ -1,11 +1,18 @@
 {
   "name": "library-react-hooks",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "React hooks library",
   "author": "Ann Bystrova <ann.bystrova96@mail.ru>",
   "license": "MIT",
   "repository": "https://github.com/Ann2827/library-react-hooks",
-  "keywords": ["react", "hooks", "library", "admin", "toast", "message"],
+  "keywords": [
+    "react",
+    "hooks",
+    "library",
+    "admin",
+    "toast",
+    "message"
+  ],
   "main": "dist/index.js",
   "module": "dist/index.modern.js",
   "source": "src/index.tsx",
