@@ -8,3 +8,4 @@
 удалить тэг git push --delete origin '${VERSION}'
 
 some changes
+some changes

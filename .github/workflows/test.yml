@@ -1,0 +1,50 @@
+name: 'Test'
+on:
+  push:
+    branches:
+      - 'pull'
+  pull_request:
+    branches:
+      - 'pull'
+    types: [closed, opened, edited]
+
+jobs:
+  push:
+    if (github.event_name == 'push')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        name: Push
+        run: echo "Pull Push"
+
+  pull:
+    if (github.event_name == 'pull_request')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        name: Pull
+        run: echo "Pull Push"
+
+  opened:
+    if: (github.event_name == 'pull_request' && github.event.action == 'opened')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        name: Pull
+        run: echo "Pull Push"
+
+  edited:
+    if: (github.event_name == 'pull_request' && github.event.action == 'edited')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        name: Pull
+        run: echo "Pull Push"
+
+  closed:
+    if: (github.event_name == 'pull_request' && github.event.action == 'closed')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        name: Pull
+        run: echo "Pull Push"
