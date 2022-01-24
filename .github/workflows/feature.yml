@@ -57,3 +57,4 @@ jobs:
           minor-wording: 'feat:'
           patch-wording: 'fix:'
           tag-prefix: 'v'
+          skip-tag: 'true'
