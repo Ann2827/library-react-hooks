@@ -5,7 +5,7 @@ on:
       - 'test'
   pull_request:
     branches:
-      - 'pull'
+      - 'test'
     types: [ closed, opened, edited ]
 
 jobs:
