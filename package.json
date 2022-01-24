@@ -5,11 +5,13 @@
   "author": "Ann Bystrova <ann.bystrova96@mail.ru>",
   "license": "MIT",
   "repository": "https://github.com/Ann2827/library-react-hooks",
+  "keywords": ["react", "hooks", "library", "admin", "toast", "message"],
   "main": "dist/index.js",
   "module": "dist/index.modern.js",
   "source": "src/index.tsx",
   "engines": {
-    "node": ">=10"
+    "node": "^14.18.0",
+    "npm": "^8.3.1"
   },
   "scripts": {
     "build": "microbundle-crl --no-compress --format modern,cjs",
