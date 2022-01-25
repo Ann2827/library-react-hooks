@@ -52,6 +52,7 @@ const data: DataI = {
       actions,
       tag,
       icon: this.settings.types[type].icon,
+      color: this.settings.types[type].color,
     });
 
     const time = this.settings.duration || duration;

@@ -27,6 +27,7 @@ describe('toast.hook function:', () => {
         text: 'Text',
         title: 'Test',
         type: 'error',
+        color: '',
       },
     ]);
   });
