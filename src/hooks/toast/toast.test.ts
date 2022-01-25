@@ -1,5 +1,5 @@
-import { toastSettings, useToast } from './toast.hook';
-import { RecursivePartial, ToastSettingsI } from './toast.types';
+import { toastSettings, useToast, RecursivePartial, ToastSettingsI } from '.';
+import { renderHook } from '@testing-library/react-hooks';
 
 const settings: RecursivePartial<ToastSettingsI> = {
   sticky: false,
@@ -13,12 +13,18 @@ const settings: RecursivePartial<ToastSettingsI> = {
   },
 };
 
+// https://www.albertgao.xyz/2019/11/05/how-to-test-react-redux-hooks-via-jest/
 describe('toast.hook function:', () => {
+  beforeEach(() => {
+    const { result } = renderHook(() => useToast());
+    result.current._reset();
+  });
+
   test('toastSettings: should settings set', () => {
     toastSettings({ ...settings });
-    const { alert, data } = useToast();
-    alert({ text: 'Text', type: 'error' });
-    expect(data).toEqual([
+    const { result } = renderHook(() => useToast());
+    result.current.alert({ text: 'Text', type: 'error' });
+    expect(result.current.data).toEqual([
       {
         actions: undefined,
         icon: '',
