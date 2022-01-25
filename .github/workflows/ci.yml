@@ -40,8 +40,8 @@ jobs:
         run: npm run predeploy
 
   deploy:
-    if: ((github.event_name == 'pull_request' && github.event.action == 'closed') ||
-      (github.event_name == 'push' && contains(github.ref, '/main'))
+    if: ((github.event_name == 'push' && contains(github.ref, '/main')) ||
+      (github.event_name == 'pull_request' && github.event.action == 'closed'))
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
