@@ -124,6 +124,7 @@ export interface DataI {
   on(fn: (data: ToastDataObject[]) => void): void;
   event(data: ToastDataObject[]): void;
   console(type: ToastTypes): boolean;
+  _reset(): void;
 }
 
 export interface ToastI {
@@ -147,4 +148,9 @@ export interface ToastI {
    * Функция диспатчит новое сообщение.
    */
   alert({ text, type, duration }: ToastPropsT): void;
+
+  /**
+   * Сбрасывает состояние
+   */
+  _reset(): void;
 }
