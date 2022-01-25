@@ -13,6 +13,7 @@ export type ToastDataObject = {
   id: number;
   icon: string | ReactNode;
   text: string;
+  color: string;
 
   /**
    * default = error
@@ -99,9 +100,15 @@ export interface ToastSettingsI {
  * Параметры для создания сообщения:
  * - text - текст сообщения
  * - type - error, warning, info, success (default = error)
- * - duration - длительность показа сообщения в ms (default = 3000)
+ * - duration? - длительность показа сообщения в ms (default = 3000)
+ * - sticky? - оставлять сообщение висеть (default = false)
+ * - title? - переопределить заголовок, заданный при init
+ * - actions? - кнопки для этого сообщения
  */
-export type ToastPropsT = Omit<Omit<ToastDataObject, 'id'>, 'icon'> & { duration?: number; sticky?: boolean };
+export type ToastPropsT = Omit<Omit<Omit<ToastDataObject, 'id'>, 'icon'>, 'color'> & {
+  duration?: number;
+  sticky?: boolean;
+};
 
 export interface DataI {
   lastID: number;
