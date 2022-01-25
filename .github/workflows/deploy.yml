@@ -1,11 +1,9 @@
-name: 'Feature'
-on:
-  push:
-    branches:
-      - 'feature/**'
+name: Deploy
+
+on: [workflow_dispatch]
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -36,25 +34,10 @@ jobs:
         continue-on-error: false
         run: npm run predeploy
 
-  version:
-    if: github.event_name == 'push' && (
-      startsWith(github.event.head_commit.message, 'feat:') ||
-      startsWith(github.event.head_commit.message, 'fix:') ||
-      startsWith(github.event.head_commit.message, 'major:'))
-    runs-on: ubuntu-latest
-    needs: [build]
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v1
-
-      - name: Automated Version Bump
-        id: bump
-        uses: 'phips28/gh-action-bump-version@master'
+      - name: Deploy to GitHub Pages
+        uses: Cecilapp/GitHub-Pages-deploy@v3
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          major-wording: 'major:'
-          minor-wording: 'feat:'
-          patch-wording: 'fix:'
-          tag-prefix: 'v'
-          skip-tag: 'true'
+          email: ann.bystrova96@mail.ru
+          build_dir: example/build
