@@ -8,7 +8,7 @@ on:
 
 jobs:
   build:
-    if: ((github.event_name == 'push' && !contains(github.ref, '/main'))
+    if: (github.event_name == 'push' && !contains(github.ref, '/main')
 #      (github.event_name == 'pull_request' && github.event.action == 'opened'))
     runs-on: ubuntu-latest
     steps:
