@@ -5,7 +5,7 @@ export type RecursivePartial<T> = {
 };
 
 /**
- * Возможные типы сообщений
+ * Possible message types
  */
 export type ToastTypes = 'error' | 'warning' | 'info' | 'success';
 
@@ -21,72 +21,71 @@ export type ToastDataObject = {
   type: ToastTypes;
 
   /**
-   * Если задан постоянный заголовок для типа в settings, то он будет
-   * перезаписан текущим для данного сообщения
+   * If a permanent header is set in settings, it will be overwritten with
+   * the current one for this message.
    */
   title?: string;
 
   /**
-   * Можно использовать например для кнопок
+   * Buttons
    */
   actions?: {
     text: string;
-    action(...props: any): void;
+    action(...args: any): void;
   }[];
 
   /**
-   * Используется для duplicate = false. Так же можно использовать для
-   * дополнительных пометок
+   * Used for duplicate = false. It can also be used for additional notes
    */
   tag?: string;
 };
 
 type SettingsData = {
   /**
-   * Постоянный заголовок для данного типа
+   * Title for this type
    */
   title: string;
 
   /**
-   * Постоянная иконка для данного типа
+   * Permanent icon for this type
    */
   icon: string | ReactNode;
 
   /**
-   * Следует ли дополнительно выводить сообщение в консоль для этого типа
+   * Allows you to additionally output a message to the console.
    * default: error = true, warning = true
    */
   console: boolean;
 
   /**
-   * Цвет темы, класс..
+   * Theme color or class
    */
   color: string;
 };
 
 /**
- * Постоянные настройки для всех сообщений
+ * Permanent settings for all messages
  */
 export interface ToastSettingsI {
   /**
-   * Не скрывать сообщение автоматически при sticky=true (default = false)
+   * Do not hide the message automatically when sticky=true (default = false)
    */
   sticky: boolean;
 
   /**
-   * Длительность показа сообщения
+   * Duration of the message display (default = 3000)
    */
   duration: number;
 
   /**
-   * Появилось сообщение, но такое уже висит. Если следует показать оба, то
-   * true, если дублировать не следует, то false и сообщения должны иметь tag
+   * Allows you to duplicate a message while the same is already hanging.
+   * When is false, you need to set tag for alert. If the tag is not specified, the message will be duplicated.
    * (default = true)
    */
   duplicate: boolean;
 
   /**
-   * Настройки по типам
+   * Settings by types
    */
   types: {
     error: SettingsData;
@@ -97,13 +96,13 @@ export interface ToastSettingsI {
 }
 
 /**
- * Параметры для создания сообщения:
- * - text - текст сообщения
+ * Parameters for message creating:
+ * - text - message text
  * - type - error, warning, info, success (default = error)
- * - duration? - длительность показа сообщения в ms (default = 3000)
- * - sticky? - оставлять сообщение висеть (default = false)
- * - title? - переопределить заголовок, заданный при init
- * - actions? - кнопки для этого сообщения
+ * - duration? - the duration of the message display in ms (default = 3000)
+ * - sticky? - leave a message hanging (default = false)
+ * - title? - redefine the header
+ * - actions? - buttons for this message
  */
 export type ToastPropsT = Omit<Omit<Omit<ToastDataObject, 'id'>, 'icon'>, 'color'> & {
   duration?: number;
@@ -129,28 +128,28 @@ export interface DataI {
 
 export interface ToastI {
   /**
-   * Возвращает массив активных сообщений.
+   * Returns an array of active messages.
    */
   data: DataI['data'];
 
   /**
-   * Слушает все события добавления/удаления.
+   * Listens for all add/remove events.
    */
   on: DataI['on'];
 
   /**
-   * Функция очистки всех висящих сообщений (при отсутствии параметра id)
-   * или удаления одного сообщения (при наличии id).
+   * The function clears all hanging messages (if id undefined)
+   * or delete one message (if id is defined).
    */
   clear: DataI['determinate'];
 
   /**
-   * Функция диспатчит новое сообщение.
+   * The function dispatches a new message.
    */
   alert({ text, type, duration }: ToastPropsT): void;
 
   /**
-   * Сбрасывает состояние
+   * Resets the state
    */
-  _reset(): void;
+  _reset: DataI['_reset'];
 }

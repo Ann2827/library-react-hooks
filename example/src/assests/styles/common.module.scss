@@ -1,0 +1,84 @@
+@import './constants';
+
+.buttonPrimary {
+  padding: 8px 16px;
+  border-radius: $borderRadius_m;
+  background-color: $color_primary;
+  color: $color_textPrimaryContrast;
+  cursor: pointer;
+  border: 0;
+  width: fit-content;
+
+  &:hover {
+    background-color: $color_primaryHover;
+  }
+
+  &.outlined {
+    background-color: inherit;
+    border: 1px solid $color_primary;
+    color: $color_textPrimary;
+
+    &:hover {
+      border: 1px solid $color_primaryHover;
+      color: $color_textSecondary;
+    }
+  }
+}
+
+.buttonSecondary {
+  padding: 8px 16px;
+  border-radius: $borderRadius_m;
+  background-color: $color_secondary;
+  color: $color_textSecondaryContrast;
+  cursor: pointer;
+  border: 0;
+  width: fit-content;
+
+  &:hover {
+    background-color: $color_secondaryHover;
+  }
+
+  &.outlined {
+    background-color: inherit;
+    border: 1px solid $color_secondary;
+    color: $color_textPrimary;
+
+    &:hover {
+      border: 1px solid $color_secondaryHover;
+      color: $color_textSecondary;
+    }
+  }
+}
+
+.secondaryText {
+  color: $color_textSecondary;
+  font-size: 14px;
+}
+
+.divider {
+  margin: 0;
+  border-width: 0;
+  border-style: solid;
+  border-bottom-width: thin;
+  border-color: $color_textSecondary;
+  width: 50%;
+  opacity: 0.4;
+  border-radius: $borderRadius_s;
+  background-color: $color_textSecondary;
+}
+
+.list {
+  font-size: 14px;
+  color: $color_textSecondary;
+  margin-left: $spacing_xxl;
+  margin-top: $spacing_s;
+
+  ul {
+    margin-top: $spacing_s;
+    margin-left: $spacing_l;
+  }
+
+  > li:nth-child(n+2) {
+    margin-top: $spacing_s;
+  }
+}
