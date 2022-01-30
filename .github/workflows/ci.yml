@@ -19,15 +19,18 @@ jobs:
 
       - name: Install
         continue-on-error: false
-        run: npm ci
-
-      - name: Build
-        continue-on-error: false
-        run: npm run build
+        run: |
+          npm ci
+          cd example
+          npm ci
 
       - name: Test
         continue-on-error: false
         run: npm run test
+
+      - name: Build
+        continue-on-error: false
+        run: npm run build
 
       - name: Author
         continue-on-error: false
@@ -50,15 +53,18 @@ jobs:
 
       - name: Install
         continue-on-error: false
-        run: npm ci
-
-      - name: Build
-        continue-on-error: false
-        run: npm run build
+        run: |
+          npm ci
+          cd example
+          npm ci
 
       - name: Test
         continue-on-error: false
         run: npm run test
+
+      - name: Build
+        continue-on-error: false
+        run: npm run build
 
       - name: Author
         continue-on-error: false

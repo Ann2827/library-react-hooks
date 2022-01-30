@@ -15,13 +15,13 @@ jobs:
         continue-on-error: false
         run: npm ci
 
-      - name: Build
-        continue-on-error: false
-        run: npm run build
-
       - name: Test
         continue-on-error: false
         run: npm run test
+
+      - name: Build
+        continue-on-error: false
+        run: npm run build
 
       - name: Author
         continue-on-error: false
