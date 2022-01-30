@@ -15,6 +15,7 @@
 - [Getting Started](#getting_started)
 - [Usage](#usage)
   - [Toast hook](#toast_hook)
+  - [Loader hook](#loader_hook)
 - [Roadmap](#roadmap)
 - [Contributing](#contributing)
 - [License](#license)
@@ -37,21 +38,27 @@ npm install --save library-react-hooks
 
 ### Toast hook <a name = "toast_hook"></a>
 
-> Хук хранит, принимает и диспатчит сообщения.
+> This hook stores, received and dispatches messages.
 
 [How to use](https://github.com/Ann2827/library-react-hooks/blob/main/src/hooks/toast/README.md)
+
+### Loader hook <a name = "loader_hook"></a>
+
+> This hook stores loading state.
+
+[How to use](https://github.com/Ann2827/library-react-hooks/blob/main/src/hooks/loader/README.md)
 
 ## Roadmap <a name = "roadmap"></a>
 
 - [ ] Hooks
   - [x] Toast
-  - [ ] Loader
+  - [x] Loader
   - [ ] Http
   - [ ] Helper hooks
 - [ ] Examples
   - [x] Toast
   - [ ] Toast with MUI
-  - [ ] Pages
+  - [x] Pages
 
 ## 🤝 Contributing <a name = "contributing"></a>
 
