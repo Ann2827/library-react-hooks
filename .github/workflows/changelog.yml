@@ -1,0 +1,45 @@
+name: Changelog
+
+on: [workflow_dispatch]
+
+jobs:
+  changelog:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+      
+    - name: Generate full changelog
+      id: generate-full-changelog
+      uses: heinrichreimer/github-changelog-generator-action@v2.3
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        headerLabel: "# 📑 Changelog"
+        breakingLabel: '### 💥 Breaking'
+        enhancementLabel: '### 🚀 Enhancements'
+        bugsLabel: '### 🐛 Bug fixes'
+        deprecatedLabel: '### ⚠️ Deprecations'
+        removedLabel: '### 🔥 Removals'
+        securityLabel: '### 🛡️ Security'
+        issuesLabel: '### 📁 Other issues'
+        prLabel: '### 📁 Other pull requests'
+        addSections: '{"documentation":{"prefix":"### 📖 Documentation","labels":["docs"]},"tests":{"prefix":"### ✅ Testing","labels":["tests"]}}'
+        issues: true
+        issuesWoLabels: true
+        pullRequests: true
+        prWoLabels: true
+        author: true
+        unreleased: true
+        compareLink: true
+        stripGeneratorNotice: true
+        verbose: true
+
+    - name: Print changelog to console
+      run: cat CHANGELOG.md
+
+    - name: Upload changelog
+      uses: actions/upload-artifact@v1.0.0
+      with:
+        name: "Changelog"
+        path: CHANGELOG.md
+        
