@@ -4,7 +4,8 @@ import styles from '../../assests/styles/pages.module.scss';
 import classNames from 'classnames';
 import { ReactComponent as ArrowRightIcon } from '../../assests/icons/arrowRight.svg';
 import { useNavigate } from 'react-router-dom';
-import { ROUTE_LOADER, ROUTE_TOAST } from '../../constants/routes';
+import { ROUTE_FULL_LOADER, ROUTE_FULL_TOAST } from '../../constants/routes';
+import { openLink } from "../../utils/url";
 
 const ToastDemo: React.FC = () => {
   const { alert } = useToast();
@@ -20,7 +21,7 @@ const ToastDemo: React.FC = () => {
         >
           Show
         </button>
-        <button className={styles.buttonPrimary} onClick={() => navigate(ROUTE_TOAST)}>
+        <button className={styles.buttonPrimary} onClick={() => navigate(ROUTE_FULL_TOAST)}>
           <ArrowRightIcon />
         </button>
       </div>
@@ -44,7 +45,7 @@ const LoaderDemo: React.FC = () => {
         <button className={classNames(styles.buttonPrimary, { [styles.outlined]: true })} onClick={clickHandle}>
           Show
         </button>
-        <button className={styles.buttonPrimary} onClick={() => navigate(ROUTE_LOADER)}>
+        <button className={styles.buttonPrimary} onClick={() => navigate(ROUTE_FULL_LOADER)}>
           <ArrowRightIcon />
         </button>
       </div>
@@ -59,6 +60,12 @@ const Main: React.FC = () => {
         <h2>Hooks Demo</h2>
       </div>
       <div className={styles.pageContent}>
+        <button
+          className={classNames(styles.buttonSecondary, { [styles.outlined]: true })}
+          onClick={() => openLink(`https://github.com/Ann2827/library-react-hooks/blob/main/README.md`)}
+        >
+          Docs
+        </button>
         <ToastDemo />
         <LoaderDemo />
       </div>

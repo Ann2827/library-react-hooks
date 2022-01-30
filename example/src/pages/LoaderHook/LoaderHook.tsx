@@ -2,7 +2,7 @@ import React from 'react';
 import styles from '../../assests/styles/pages.module.scss';
 import { useLoader } from 'library-react-hooks';
 import classNames from 'classnames';
-import { ROUTE_LOADER, ROUTE_MAIN } from '../../constants/routes';
+import { ROUTE_MAIN } from '../../constants/routes';
 import { useNavigate } from 'react-router-dom';
 import { openLink } from '../../utils/url';
 
@@ -25,7 +25,7 @@ const LoaderHook: React.FC = () => {
           </button>
           <button
             className={classNames(styles.buttonSecondary, { [styles.outlined]: true })}
-            onClick={() => openLink(`https://ann2827.github.io/library-react-hooks/${ROUTE_LOADER}`)}
+            onClick={() => openLink(`https://github.com/Ann2827/library-react-hooks/blob/main/src/hooks/toast/README.md`)}
           >
             Docs
           </button>

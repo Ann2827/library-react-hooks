@@ -8,12 +8,11 @@ prop transfers or provider wrapping.
 
 [Back](https://github.com/Ann2827/library-react-hooks/blob/main/README.md)
 
-[Demo Toast](https://ann2827.github.io/library-react-hooks/toast)
-
 ## Table of Contents
 
 - [Usage](#usage)
 - [Properties](#properties)
+- [Demo](https://ann2827.github.io/library-react-hooks/toast)
 
 ## Usage <a name = "usage"></a>
 

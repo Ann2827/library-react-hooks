@@ -4,10 +4,13 @@ This hook stores loading state. It is written according to the Singleton pattern
 Therefore, access to a single instance of the stored state is carried out without
 prop transfers or provider wrapping.
 
+[Back](https://github.com/Ann2827/library-react-hooks/blob/main/README.md)
+
 ## Table of Contents
 
 - [Usage](#usage)
 - [Properties](#properties)
+- [Demo](https://ann2827.github.io/library-react-hooks/loader)
 
 ## Usage <a name = "usage"></a>
 

@@ -3,7 +3,7 @@ import styles from '../../assests/styles/pages.module.scss';
 import { useToast } from 'library-react-hooks';
 import classNames from 'classnames';
 import { useNavigate } from 'react-router-dom';
-import { ROUTE_MAIN, ROUTE_TOAST } from '../../constants/routes';
+import { ROUTE_MAIN } from '../../constants/routes';
 import { openLink } from '../../utils/url';
 
 const ToastHook: React.FC = () => {
@@ -25,7 +25,7 @@ const ToastHook: React.FC = () => {
           </button>
           <button
             className={classNames(styles.buttonSecondary, { [styles.outlined]: true })}
-            onClick={() => openLink(`https://ann2827.github.io/library-react-hooks/${ROUTE_TOAST}`)}
+            onClick={() => openLink(`https://github.com/Ann2827/library-react-hooks/blob/main/src/hooks/loader/README.md`)}
           >
             Docs
           </button>
