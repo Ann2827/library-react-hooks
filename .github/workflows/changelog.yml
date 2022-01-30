@@ -9,7 +9,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: "✏️ Generate full changelog"
+      - name: Generate full changelog
         id: generate-full-changelog
         uses: heinrichreimer/github-changelog-generator-action@v2.3
         with:
@@ -34,10 +34,10 @@ jobs:
           stripGeneratorNotice: true
           verbose: true
 
-      - name: "🖨️ Print changelog to console"
+      - name: Print changelog to console
         run: cat CHANGELOG.md
 
-      - name: "📤 Upload changelog"
+      - name: Upload changelog
         uses: actions/upload-artifact@v1.0.0
         with:
           name: "Changelog"
