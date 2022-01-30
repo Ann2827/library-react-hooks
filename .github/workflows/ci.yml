@@ -3,8 +3,8 @@ on:
   push:
 #    branches-ignore:
 #      - 'main'
-  pull_request:
-    types: [opened, closed]
+#  pull_request:
+#    types: [opened, closed]
 
 jobs:
   build:
