@@ -34,7 +34,7 @@
     "test:lint": "eslint -c .eslintrc --ext .ts,.tsx . --fix",
     "test:unit": "cross-env CI=1 react-scripts test --env=jsdom",
     "test:watch": "react-scripts test --env=jsdom",
-    "predeploy": "cd example && npm install && npm run build",
+    "predeploy": "cd example && npm run build",
     "cache": "rm -rf node_modules/gh-pages/.cache",
     "deploy": "gh-pages -d example/build"
   },
