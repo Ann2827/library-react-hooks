@@ -23,7 +23,7 @@
   "source": "src/index.tsx",
   "engines": {
     "node": "^14.18.0",
-    "npm": "^8.3.1"
+    "npm": "^8.4.0"
   },
   "scripts": {
     "build": "microbundle-crl --no-compress --format modern,cjs",
