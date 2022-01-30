@@ -1,0 +1,18 @@
+@use '../../assests/styles/constants' as *;
+
+.loader {
+  background-repeat: no-repeat;
+  width: 100px;
+  height: 100px;
+  position: fixed;
+  //background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 44 44' stroke='%2361e9dc'%3e%3cg fill='none' fill-rule='evenodd' stroke-width='1.5'%3e%3ccircle cx='22' cy='22' r='19.5042'%3e%3canimate attributeName='r' begin='0s' dur='1.8s' values='1; 20' calcMode='spline' keyTimes='0; 1' keySplines='0.165, 0.84, 0.44, 1' repeatCount='indefinite'/%3e%3canimate attributeName='stroke-opacity' begin='0s' dur='1.8s' values='1; 0' calcMode='spline' keyTimes='0; 1' keySplines='0.3, 0.61, 0.355, 1' repeatCount='indefinite'/%3e%3c/circle%3e%3ccircle cx='22' cy='22' r='12.1354'%3e%3canimate attributeName='r' begin='-0.9s' dur='1.8s' values='1; 20' calcMode='spline' keyTimes='0; 1' keySplines='0.165, 0.84, 0.44, 1' repeatCount='indefinite'/%3e%3canimate attributeName='stroke-opacity' begin='-0.9s' dur='1.8s' values='1; 0' calcMode='spline' keyTimes='0; 1' keySplines='0.3, 0.61, 0.355, 1' repeatCount='indefinite'/%3e%3c/circle%3e%3c/g%3e%3c/svg%3e");
+  left: calc(50% - 80px);
+  top: calc(50vh - 80px);
+  z-index: 10;
+
+  > svg {
+    color: $color_primary;
+    width: 100px;
+    height: 100px;
+  }
+}

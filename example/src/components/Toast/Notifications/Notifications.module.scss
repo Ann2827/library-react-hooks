@@ -1,30 +1,39 @@
+@use '../../../assests/styles/constants' as *;
+@use '../../../assests/styles/common.module';
+
 .wrapper {
-  position: absolute;
-  bottom: 20px;
-  right: 20px;
+  position: fixed;
+  bottom: $spacing_xl;
+  right: $spacing_xl;
   width: calc(100vw - 40px);
   max-width: 327px;
 
   > :nth-child(n+2) {
-    margin-top: 20px;
+    margin-top: $spacing_xl;
   }
 }
 
 .notification {
   box-sizing: border-box;
   width: 100%;
-  border-radius: 10px;
-  background-color: #F5F5F5;
+  border-radius: $borderRadius_m;
+  background-color: $color_backgroundSecondary;
   position: relative;
-  padding: 15px 24px 14px;
-  box-shadow: 0px 3px 12px #E0E0E0;
+  padding: $spacing_m $spacing_xl;
+  box-shadow: $shadow_variant-1;
 }
 
 .close {
   position: absolute;
-  right: 5px;
-  top: 5px;
+  right: $spacing_xs;
+  top: $spacing_xs;
   cursor: pointer;
+
+  > svg {
+    color: $color_textSecondary;
+    width: $spacing_l;
+    height: $spacing_l;
+  }
 }
 
 .content {
@@ -32,6 +41,31 @@
   flex-direction: column;
 
   > :nth-child(n+2) {
-    margin-top: 10px;
+    margin-top: $spacing_m;
   }
+}
+
+.title {
+  &_correct {
+    color: $color_correct;
+  }
+
+  &_incorrect {
+    color: $color_incorrect;
+  }
+
+  &_info {
+    color: $color_info;
+  }
+
+  &_warning {
+    color: $color_warning;
+  }
+}
+
+.actions {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
 }

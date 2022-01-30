@@ -8,15 +8,19 @@ toastSettings({
   types: {
     error: {
       title: 'Error',
+      color: 'incorrect',
     },
     warning: {
       title: 'Warning',
+      color: 'warning',
     },
     info: {
       title: 'Info',
+      color: 'info',
     },
     success: {
       title: 'Success',
+      color: 'correct',
     },
   },
 });
@@ -32,6 +36,8 @@ const Toast = () => {
           title: item.title || '',
           text: item.text,
           onClose: () => clear(item.id),
+          color: item.color,
+          actions: item.actions,
         })),
       );
     });

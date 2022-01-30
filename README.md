@@ -25,7 +25,7 @@
 
 [Demo](https://ann2827.github.io/library-react-hooks/)
 
-<img width="360" alt="toast" src="https://user-images.githubusercontent.com/32645809/150703071-70e25985-ee9b-47ac-99ef-c9a8362c79fa.png">
+<img width="349" alt="toast" src="https://user-images.githubusercontent.com/32645809/151684893-775dd2a3-6e22-4244-8f5e-4236b0f39900.png">
 
 ## Getting Started <a name = "getting_started"></a>
 
