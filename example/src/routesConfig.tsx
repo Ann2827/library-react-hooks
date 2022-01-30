@@ -10,15 +10,20 @@ import { ROUTE_MAIN, ROUTE_LOADER, ROUTE_TOAST } from './constants/routes';
 const routesConfig: RouteObject[] = [
   {
     path: ROUTE_MAIN,
-    element: <Main />,
-  },
-  {
-    path: ROUTE_TOAST,
-    element: <ToastHook />,
-  },
-  {
-    path: ROUTE_LOADER,
-    element: <LoaderHook />,
+    children: [
+      {
+        index: true,
+        element: <Main />,
+      },
+      {
+        path: ROUTE_TOAST,
+        element: <ToastHook />,
+      },
+      {
+        path: ROUTE_LOADER,
+        element: <LoaderHook />,
+      },
+    ],
   },
   {
     path: '*',
