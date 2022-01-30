@@ -2,9 +2,9 @@ import React from 'react';
 import styles from '../../assests/styles/pages.module.scss';
 import { useLoader } from 'library-react-hooks';
 import classNames from 'classnames';
-import { ROUTE_LOADER, ROUTE_MAIN } from "../../constants/routes";
+import { ROUTE_LOADER, ROUTE_MAIN } from '../../constants/routes';
 import { useNavigate } from 'react-router-dom';
-import { openLink } from "../../utils/url";
+import { openLink } from '../../utils/url';
 
 const LoaderHook: React.FC = () => {
   const navigate = useNavigate();
@@ -33,10 +33,7 @@ const LoaderHook: React.FC = () => {
         <div className={styles.pageBlock}>
           <h5>loaderOn</h5>
           <p className={styles.secondaryText}>Loader start. Incremented (+1). You can click twice or more</p>
-          <button
-            className={classNames(styles.buttonPrimary, { [styles.outlined]: true })}
-            onClick={() => loaderOn()}
-          >
+          <button className={classNames(styles.buttonPrimary, { [styles.outlined]: true })} onClick={() => loaderOn()}>
             Action
           </button>
         </div>

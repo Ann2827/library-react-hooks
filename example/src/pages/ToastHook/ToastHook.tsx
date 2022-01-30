@@ -3,8 +3,8 @@ import styles from '../../assests/styles/pages.module.scss';
 import { useToast } from 'library-react-hooks';
 import classNames from 'classnames';
 import { useNavigate } from 'react-router-dom';
-import { ROUTE_MAIN, ROUTE_TOAST } from "../../constants/routes";
-import { openLink } from "../../utils/url";
+import { ROUTE_MAIN, ROUTE_TOAST } from '../../constants/routes';
+import { openLink } from '../../utils/url';
 
 const ToastHook: React.FC = () => {
   const navigate = useNavigate();
@@ -117,7 +117,9 @@ const ToastHook: React.FC = () => {
           </div>
           <button
             className={classNames(styles.buttonPrimary, { [styles.outlined]: true })}
-            onClick={() => alert({ text: 'Some info message.', type: 'info', actions: [{ text: 'I agree', action: () => {} }] })}
+            onClick={() =>
+              alert({ text: 'Some info message.', type: 'info', actions: [{ text: 'I agree', action: () => {} }] })
+            }
           >
             Demo
           </button>

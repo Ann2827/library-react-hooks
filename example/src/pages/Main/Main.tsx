@@ -1,10 +1,10 @@
-import React, { useCallback } from "react";
+import React, { useCallback } from 'react';
 import { useToast, useLoader } from 'library-react-hooks';
 import styles from '../../assests/styles/pages.module.scss';
 import classNames from 'classnames';
 import { ReactComponent as ArrowRightIcon } from '../../assests/icons/arrowRight.svg';
-import { useNavigate } from "react-router-dom";
-import { ROUTE_LOADER, ROUTE_TOAST } from "../../constants/routes";
+import { useNavigate } from 'react-router-dom';
+import { ROUTE_LOADER, ROUTE_TOAST } from '../../constants/routes';
 
 const ToastDemo: React.FC = () => {
   const { alert } = useToast();
@@ -35,16 +35,13 @@ const LoaderDemo: React.FC = () => {
   const clickHandle = useCallback(() => {
     loaderOn();
     setTimeout(() => loaderStop(), 3000);
-  }, []);
+  }, [loaderOn, loaderStop]);
 
   return (
     <div className={styles.pageBlock}>
       <h5>Loader Hook</h5>
       <div className={styles.buttons}>
-        <button
-          className={classNames(styles.buttonPrimary, { [styles.outlined]: true })}
-          onClick={clickHandle}
-        >
+        <button className={classNames(styles.buttonPrimary, { [styles.outlined]: true })} onClick={clickHandle}>
           Show
         </button>
         <button className={styles.buttonPrimary} onClick={() => navigate(ROUTE_LOADER)}>

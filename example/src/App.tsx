@@ -1,9 +1,9 @@
 import React from 'react';
-import { BrowserRouter, useRoutes } from "react-router-dom";
+import { BrowserRouter, useRoutes } from 'react-router-dom';
 import Toast from './components/Toast';
 import Loader from './components/Loader';
 import routesConfig from './routesConfig';
-import { RouteObject } from "react-router";
+import { RouteObject } from 'react-router';
 
 type RoutesProps = {
   routes: RouteObject[];

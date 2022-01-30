@@ -50,7 +50,13 @@ const data: DataI = {
       type,
       id,
       title: title ?? this.settings.types[type].title,
-      actions: actions?.map((item) => ({ text: item.text, action: () => { item.action(); this.determinate(id); } })),
+      actions: actions?.map((item) => ({
+        text: item.text,
+        action: () => {
+          item.action();
+          this.determinate(id);
+        },
+      })),
       tag,
       icon: this.settings.types[type].icon,
       color: this.settings.types[type].color,
@@ -117,8 +123,8 @@ export const toastSettings = (props: RecursivePartial<ToastSettingsI>): void => 
   };
 };
 
-//TODO: add onClose
-//TODO: add onError for sentry
+// TODO: add onClose
+// TODO: add onError for sentry
 
 export const useToast = (): ToastI =>
   useMemo(
@@ -140,5 +146,5 @@ export const useToast = (): ToastI =>
       },
       _reset: () => data._reset(),
     }),
-    [data],
+    [],
   );

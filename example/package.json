@@ -1,8 +1,8 @@
 {
   "name": "library-react-hooks-example",
   "homepage": ".",
-  "version": "0.0.1",
-  "private": true,
+  "version": "0.1.0",
+  "private": false,
   "author": "Ann Bystrova <ann.bystrova96@mail.ru>",
   "scripts": {
     "start": "react-scripts start",

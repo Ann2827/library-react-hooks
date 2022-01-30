@@ -35,7 +35,7 @@ const data: DataI = {
     this.active = false;
     this.queue = 0;
     this.event(false);
-  }
+  },
 };
 
 const useLoader = (): LoaderI => {
