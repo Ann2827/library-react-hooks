@@ -13,7 +13,10 @@ jobs:
 
       - name: Install
         continue-on-error: false
-        run: npm ci
+        run: |
+          npm ci
+          cd example
+          npm ci
 
       - name: Test
         continue-on-error: false
