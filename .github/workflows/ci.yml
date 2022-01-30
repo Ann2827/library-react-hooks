@@ -114,28 +114,33 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Generate changelog
-        continue-on-error: false
-        id: github_changelog
-        uses: mikepenz/release-changelog-builder-action@main
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          configuration: "configs/configuration_changelog.json"
+#      - name: Generate changelog
+#        continue-on-error: false
+#        id: github_changelog
+#        uses: mikepenz/release-changelog-builder-action@main
+#        env:
+#          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#        with:
+#          configuration: "configs/configuration_changelog.json"
+#
+#      - name: Write changelog
+#        continue-on-error: false
+#        uses: stefanzweifel/changelog-updater-action@v1
+#        with:
+#          latest-version: ${{ steps.github_changelog.outputs.toTag }}
+#          release-notes: ${{ steps.github_changelog.outputs.changelog }}
+#
+#      - name: Commit updated CHANGELOG
+#        uses: stefanzweifel/git-auto-commit-action@v4
+#        with:
+#          branch: develop
+#          commit_message: Update CHANGELOG
+#          file_pattern: CHANGELOG.md
 
-      - name: Write changelog
-        continue-on-error: false
-        uses: stefanzweifel/changelog-updater-action@v1
+      - name: Run Changelog CI
+        uses: saadmk11/changelog-ci@v1.0.0
         with:
-          latest-version: ${{ steps.github_changelog.outputs.toTag }}
-          release-notes: ${{ steps.github_changelog.outputs.changelog }}
-
-      - name: Commit updated CHANGELOG
-        uses: stefanzweifel/git-auto-commit-action@v4
-        with:
-          branch: develop
-          commit_message: Update CHANGELOG
-          file_pattern: CHANGELOG.md
+          github_token: ${{ secrets.GITHUB_TOKEN }}
 
 #  release:
 #    runs-on: ubuntu-latest
