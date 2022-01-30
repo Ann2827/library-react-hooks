@@ -35,12 +35,12 @@ jobs:
           stripGeneratorNotice: true
           verbose: true
 
-        - name: "🖨️ Print changelog to console"
-          run: cat CHANGELOG.md
+      - name: "🖨️ Print changelog to console"
+        run: cat CHANGELOG.md
 
-        - name: "📤 Upload changelog"
-          uses: actions/upload-artifact@v1.0.0
-          with:
-            name: "Changelog"
-            path: CHANGELOG.md
+      - name: "📤 Upload changelog"
+        uses: actions/upload-artifact@v1.0.0
+        with:
+          name: "Changelog"
+          path: CHANGELOG.md
 
