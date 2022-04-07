@@ -67,7 +67,7 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: githubPages
-          path: example/build
+          path: /example/build
 
       - name: Deploy to GitHub Pages
         uses: Cecilapp/GitHub-Pages-deploy@v3
@@ -75,13 +75,13 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           email: ann.bystrova96@mail.ru
-          build_dir: example/build
+          build_dir: /example/build
 
       - name: Download Artifacts for Library
         uses: actions/download-artifact@v3
         with:
           name: library
-          path: dist
+          path: /dist
 
       - name: Release
         continue-on-error: false
