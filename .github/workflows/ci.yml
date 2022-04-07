@@ -46,13 +46,13 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: 'githubPages'
-          path: ./example/build
+          path: ${{ github.workspace }}/example/build
 
       - name: Upload Artifacts for Library
         uses: actions/upload-artifact@v3
         with:
           name: 'library'
-          path: ./dist
+          path: ${{ github.workspace }}/dist
 
   deploy:
     if: github.event_name == 'push' && contains(github.ref, '/main')
