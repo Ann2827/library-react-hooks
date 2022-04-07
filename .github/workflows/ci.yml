@@ -46,13 +46,13 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: 'githubPages'
-          path: example/build/*
+          path: ./example/build
 
       - name: Upload Artifacts for Library
         uses: actions/upload-artifact@v3
         with:
           name: 'library'
-          path: dist/*
+          path: ./dist
 
   deploy:
     if: github.event_name == 'push' && contains(github.ref, '/main')
@@ -67,7 +67,7 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: 'githubPages'
-          path: /example/build
+          path: ./example/build
 
       - name: Deploy to GitHub Pages
         uses: Cecilapp/GitHub-Pages-deploy@v3
@@ -81,7 +81,7 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: 'library'
-          path: /dist
+          path: ./dist
 
       - name: Release
         continue-on-error: false
