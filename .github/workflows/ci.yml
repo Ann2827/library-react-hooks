@@ -45,13 +45,13 @@ jobs:
       - name: Upload Artifacts for GitHub Pages
         uses: actions/upload-artifact@v3
         with:
-          name: githubPages
+          name: 'githubPages'
           path: example/build/*
 
       - name: Upload Artifacts for Library
         uses: actions/upload-artifact@v3
         with:
-          name: library
+          name: 'library'
           path: dist/*
 
   deploy:
@@ -66,7 +66,7 @@ jobs:
       - name: Download Artifacts for GitHub Pages
         uses: actions/download-artifact@v3
         with:
-          name: githubPages
+          name: 'githubPages'
           path: /example/build
 
       - name: Deploy to GitHub Pages
@@ -80,7 +80,7 @@ jobs:
       - name: Download Artifacts for Library
         uses: actions/download-artifact@v3
         with:
-          name: library
+          name: 'library'
           path: /dist
 
       - name: Release
