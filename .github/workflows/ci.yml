@@ -16,6 +16,11 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: '16'
+          
+      - name: Cache Node Modules
+        uses: actions/cache@v3.0.1
+        with:
+          path: ./node_module
 
       - name: Install
         continue-on-error: false
@@ -47,12 +52,14 @@ jobs:
         with:
           name: githubPages
           path: ./example/build
+          retention-days: 1
 
       - name: Upload Artifacts for Library
         uses: actions/upload-artifact@v3
         with:
           name: library
           path: ./dist
+          retention-days: 1
 
   deploy:
     needs: build
@@ -83,6 +90,10 @@ jobs:
         with:
           name: library
           path: ./dist
+          
+      - name: Install semantic-release
+        continue-on-error: false
+        run: npm install semantic-release
 
       - name: Release
         continue-on-error: false
