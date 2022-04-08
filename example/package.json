@@ -33,6 +33,7 @@
     "@types/prop-types": "file:../node_modules/@types/prop-types",
     "@types/react": "file:../node_modules/@types/react",
     "@types/react-dom": "file:../node_modules/@types/react-dom",
+    "@types/scheduler": "file:../node_modules/@types/scheduler",
     "typescript-plugin-css-modules": "^3.4.0"
   },
   "eslintConfig": {
