@@ -4,6 +4,10 @@
   "version": "0.1.0",
   "private": false,
   "author": "Ann Bystrova <ann.bystrova96@mail.ru>",
+  "engines": {
+    "node": "^14.18.0",
+    "npm": "^8.4.0"
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
