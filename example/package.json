@@ -30,6 +30,7 @@
     "@babel/plugin-syntax-object-rest-spread": "^7.8.3",
     "@types/jest": "file:../node_modules/@types/jest",
     "@types/node": "file:../node_modules/@types/node",
+    "@types/prop-types": "file:../node_modules/@types/prop-types",
     "@types/react": "file:../node_modules/@types/react",
     "@types/react-dom": "file:../node_modules/@types/react-dom",
     "typescript-plugin-css-modules": "^3.4.0"
