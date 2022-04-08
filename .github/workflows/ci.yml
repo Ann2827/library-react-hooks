@@ -76,7 +76,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           email: ann.bystrova96@mail.ru
-          build_dir: /example/build
+          build_dir: example/build
 
       - name: Download Artifacts for Library
         uses: actions/download-artifact@v3
