@@ -37,7 +37,7 @@
     "predeploy": "cd example && npm run build",
     "cache": "rm -rf node_modules/gh-pages/.cache",
     "deploy": "gh-pages -d example/build",
-    "semantic-release": "semantic-release"
+    "release": "semantic-release"
   },
   "peerDependencies": {
     "react": "^17.0.0"

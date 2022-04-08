@@ -16,7 +16,7 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: '16'
-          
+
       - name: Cache Node Modules
         uses: actions/cache@v3.0.1
         with:
@@ -91,7 +91,7 @@ jobs:
         with:
           name: library
           path: ./dist
-          
+
       - name: Install semantic-release
         continue-on-error: false
         run: npm install semantic-release
@@ -99,8 +99,9 @@ jobs:
       - name: Release
         continue-on-error: false
         env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: npm run semantic-release
+        run: npm run release
 
 #  deploy2:
 #    if: github.event_name == 'push' && contains(github.ref, '/main')
