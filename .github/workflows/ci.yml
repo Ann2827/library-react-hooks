@@ -43,7 +43,7 @@ jobs:
         continue-on-error: false
         run: |
           cd example
-          npm ci
+          npm install
 
       - name: Test
         continue-on-error: false
