@@ -34,6 +34,7 @@
     "@types/react": "file:../node_modules/@types/react",
     "@types/react-dom": "file:../node_modules/@types/react-dom",
     "@types/scheduler": "^0.16.2",
+    "css.escape": "^1.5.1",
     "csstype": "^3.0.11",
     "typescript-plugin-css-modules": "^3.4.0"
   },
