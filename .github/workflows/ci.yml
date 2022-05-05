@@ -47,7 +47,7 @@ jobs:
 
       - name: Test
         continue-on-error: false
-        run: yarn test
+        run: yarn run test
 
       - name: Build Library
         continue-on-error: false
