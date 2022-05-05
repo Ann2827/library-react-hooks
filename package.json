@@ -29,7 +29,7 @@
   "scripts": {
     "build": "microbundle-crl --no-compress --format modern,cjs",
     "start": "microbundle-crl watch --no-compress --format modern,cjs",
-    "test": "yarn test:unit && yarn test:lint",
+    "test": "yarn run test:unit && yarn run test:lint",
     "test:lint": "eslint -c .eslintrc --ext .ts,.tsx . --fix",
     "test:unit": "cross-env CI=1 react-scripts test --env=jsdom",
     "test:watch": "react-scripts test --env=jsdom",
