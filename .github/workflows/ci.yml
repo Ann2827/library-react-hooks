@@ -28,7 +28,7 @@ jobs:
       - name: Install
         if: steps.cache.outputs.cache-hit != 'true'
         continue-on-error: false
-        run: npm ci
+        run: yarn install --immutable --immutable-cache --check-cache
 
       - name: Cache Node Modules
         continue-on-error: false
@@ -43,15 +43,15 @@ jobs:
         continue-on-error: false
         run: |
           cd example
-          npm ci
+          yarn install --immutable --immutable-cache --check-cache
 
       - name: Test
         continue-on-error: false
-        run: npm run test
+        run: yarn test
 
       - name: Build Library
         continue-on-error: false
-        run: npm run build
+        run: yarn build
 
       - name: Author
         continue-on-error: false
@@ -62,7 +62,7 @@ jobs:
 
       - name: Build Example
         continue-on-error: false
-        run: npm run predeploy
+        run: yarn predeploy
 
       - name: Upload Artifacts for GitHub Pages
         continue-on-error: false
@@ -112,15 +112,15 @@ jobs:
           name: library
           path: ./dist
 
-      - name: Install semantic-release
-        continue-on-error: false
-        run: npm ci
+#      - name: Install semantic-release
+#        continue-on-error: false
+#        run: npm ci
 
       - name: Release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: npm run release
+        run: npm_config_yes=true npx semantic-release
 
 #  deploy2:
 #    if: github.event_name == 'push' && contains(github.ref, '/main')
