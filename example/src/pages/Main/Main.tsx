@@ -5,7 +5,7 @@ import classNames from 'classnames';
 import { ReactComponent as ArrowRightIcon } from '../../assests/icons/arrowRight.svg';
 import { useNavigate } from 'react-router-dom';
 import { ROUTE_FULL_LOADER, ROUTE_FULL_TOAST } from '../../constants/routes';
-import { openLink } from "../../utils/url";
+import { openLink } from '../../utils/url';
 
 const ToastDemo: React.FC = () => {
   const { alert } = useToast();

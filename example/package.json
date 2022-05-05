@@ -4,6 +4,10 @@
   "version": "0.1.0",
   "private": false,
   "author": "Ann Bystrova <ann.bystrova96@mail.ru>",
+  "engines": {
+    "node": "^14.18.0",
+    "npm": "^8.4.0"
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
@@ -11,23 +15,24 @@
     "eject": "react-scripts eject"
   },
   "dependencies": {
-    "@testing-library/jest-dom": "file:../node_modules/@testing-library/jest-dom",
-    "@testing-library/react": "file:../node_modules/@testing-library/react",
-    "@testing-library/user-event": "file:../node_modules/@testing-library/user-event",
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^12.1.2",
+    "@testing-library/user-event": "^7.2.1",
     "classnames": "^2.3.1",
-    "library-react-hooks": "file:..",
-    "react": "file:../node_modules/react",
-    "react-dom": "file:../node_modules/react-dom",
+    "library-react-hooks": "link:..",
+    "react": "link:../node_modules/react",
+    "react-dom": "link:../node_modules/react-dom",
     "react-router-dom": "^6.2.1",
     "react-scripts": "^5.0.0",
     "typescript": "^4.1.2"
   },
   "devDependencies": {
     "@babel/plugin-syntax-object-rest-spread": "^7.8.3",
-    "@types/jest": "file:../node_modules/@types/jest",
-    "@types/node": "file:../node_modules/@types/node",
-    "@types/react": "file:../node_modules/@types/react",
-    "@types/react-dom": "file:../node_modules/@types/react-dom",
+    "@types/jest": "^25.1.4",
+    "@types/node": "^12.12.38",
+    "@types/prop-types": "^15.7.5",
+    "@types/react": "^16.9.27",
+    "@types/react-dom": "^16.9.7",
     "typescript-plugin-css-modules": "^3.4.0"
   },
   "eslintConfig": {

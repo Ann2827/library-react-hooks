@@ -25,7 +25,9 @@ const LoaderHook: React.FC = () => {
           </button>
           <button
             className={classNames(styles.buttonSecondary, { [styles.outlined]: true })}
-            onClick={() => openLink(`https://github.com/Ann2827/library-react-hooks/blob/main/src/hooks/toast/README.md`)}
+            onClick={() =>
+              openLink(`https://github.com/Ann2827/library-react-hooks/blob/main/src/hooks/toast/README.md`)
+            }
           >
             Docs
           </button>

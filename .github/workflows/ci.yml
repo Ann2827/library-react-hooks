@@ -15,28 +15,43 @@ jobs:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
         with:
-          node-version: '16'
+          node-version: '14'
 
       - name: Cache Node Modules
+        continue-on-error: false
+        id: cache
         uses: actions/cache@v3.0.1
         with:
           path: ./node_module
           key: nodeModules
 
       - name: Install
+        if: steps.cache.outputs.cache-hit != 'true'
+        continue-on-error: false
+        run: yarn install --immutable --immutable-cache --check-cache
+
+      - name: Cache Node Modules
+        continue-on-error: false
+        id: exampleCache
+        uses: actions/cache@v3.0.1
+        with:
+          path: ./example/node_module
+          key: exampleNodeModules
+
+      - name: Install Example
+        if: steps.exampleCache.outputs.cache-hit != 'true'
         continue-on-error: false
         run: |
-          npm ci
           cd example
-          npm ci
+          yarn install --immutable --immutable-cache --check-cache
 
       - name: Test
         continue-on-error: false
-        run: npm run test
+        run: yarn test
 
       - name: Build Library
         continue-on-error: false
-        run: npm run build
+        run: yarn build
 
       - name: Author
         continue-on-error: false
@@ -46,9 +61,11 @@ jobs:
           git config --local user.name "Ann Bystrova"
 
       - name: Build Example
-        run: npm run predeploy
+        continue-on-error: false
+        run: yarn predeploy
 
       - name: Upload Artifacts for GitHub Pages
+        continue-on-error: false
         uses: actions/upload-artifact@v3
         with:
           name: githubPages
@@ -70,15 +87,17 @@ jobs:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
         with:
-          node-version: '16'
+          node-version: '14'
 
       - name: Download Artifacts for GitHub Pages
+        continue-on-error: false
         uses: actions/download-artifact@v3
         with:
           name: githubPages
           path: ./example/build
 
       - name: Deploy to GitHub Pages
+        continue-on-error: false
         uses: Cecilapp/GitHub-Pages-deploy@v3
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -87,21 +106,21 @@ jobs:
           build_dir: example/build
 
       - name: Download Artifacts for Library
+        continue-on-error: false
         uses: actions/download-artifact@v3
         with:
           name: library
           path: ./dist
 
-      - name: Install semantic-release
-        continue-on-error: false
-        run: npm install semantic-release
+#      - name: Install semantic-release
+#        continue-on-error: false
+#        run: npm ci
 
       - name: Release
-        continue-on-error: false
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: npm run release
+        run: npm_config_yes=true npx semantic-release
 
 #  deploy2:
 #    if: github.event_name == 'push' && contains(github.ref, '/main')
