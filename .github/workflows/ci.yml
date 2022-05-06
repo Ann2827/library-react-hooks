@@ -26,7 +26,7 @@ jobs:
           key: nodeModules
 
       - name: Install
-        if: steps.cache.outputs.cache-hit != 'true'
+#        if: steps.cache.outputs.cache-hit != 'true'
         continue-on-error: false
         run: yarn install
 #        run: yarn install --immutable --immutable-cache --check-cache
@@ -40,7 +40,7 @@ jobs:
           key: exampleNodeModules
 
       - name: Install Example
-        if: steps.exampleCache.outputs.cache-hit != 'true'
+#        if: steps.exampleCache.outputs.cache-hit != 'true'
         continue-on-error: false
         run: |
           cd example
