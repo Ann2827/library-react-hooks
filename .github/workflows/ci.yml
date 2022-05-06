@@ -28,7 +28,8 @@ jobs:
       - name: Install
         if: steps.cache.outputs.cache-hit != 'true'
         continue-on-error: false
-        run: yarn install --immutable --immutable-cache --check-cache
+        run: yarn install
+#        run: yarn install --immutable --immutable-cache --check-cache
 
       - name: Cache Node Modules
         continue-on-error: false
@@ -43,11 +44,12 @@ jobs:
         continue-on-error: false
         run: |
           cd example
-          yarn install --immutable --immutable-cache --check-cache
+          yarn install
+#          yarn install --immutable --immutable-cache --check-cache
 
       - name: Test
         continue-on-error: false
-        run: yarn run test
+        run: yarn test
 
       - name: Build Library
         continue-on-error: false
