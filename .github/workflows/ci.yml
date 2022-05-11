@@ -17,29 +17,29 @@ jobs:
         with:
           node-version: '14'
 
-      - name: Cache Node Modules
-        continue-on-error: false
-        id: cache
-        uses: actions/cache@v3.0.1
-        with:
-          path: ./node_module
-          key: ${{ runner.os }}-nodeModules
+#      - name: Cache Node Modules
+#        continue-on-error: false
+#        id: cache
+#        uses: actions/cache@v3.0.1
+#        with:
+#          path: ./node_module
+#          key: ${{ runner.os }}-nodeModules
 
       - name: Install
-        if: steps.cache.outputs.cache-hit != 'true'
+#        if: steps.cache.outputs.cache-hit != 'true'
         continue-on-error: false
         run: yarn install --immutable --immutable-cache --check-cache
 
-      - name: Cache Node Modules
-        continue-on-error: false
-        id: exampleCache
-        uses: actions/cache@v3.0.1
-        with:
-          path: ./example/node_module
-          key: ${{ runner.os }}-exampleNodeModules
+#      - name: Cache Node Modules
+#        continue-on-error: false
+#        id: exampleCache
+#        uses: actions/cache@v3.0.1
+#        with:
+#          path: ./example/node_module
+#          key: ${{ runner.os }}-exampleNodeModules
 
       - name: Install Example
-        if: steps.exampleCache.outputs.cache-hit != 'true'
+#        if: steps.exampleCache.outputs.cache-hit != 'true'
         continue-on-error: false
         run: |
           cd example
