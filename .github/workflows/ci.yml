@@ -23,7 +23,7 @@ jobs:
         uses: actions/cache@v3.0.1
         with:
           path: ./node_module
-          key: nodeModules
+          key: ${{ runner.os }}-nodeModules
 
       - name: Install
         if: steps.cache.outputs.cache-hit != 'true'
@@ -36,7 +36,7 @@ jobs:
         uses: actions/cache@v3.0.1
         with:
           path: ./example/node_module
-          key: exampleNodeModules
+          key: ${{ runner.os }}-exampleNodeModules
 
       - name: Install Example
         if: steps.exampleCache.outputs.cache-hit != 'true'
