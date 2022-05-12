@@ -120,7 +120,9 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: npm_config_yes=true npx semantic-release
+        run: |
+          yarn add @semantic-release/git -D
+          npm_config_yes=true npx semantic-release
 
 #  deploy2:
 #    if: github.event_name == 'push' && contains(github.ref, '/main')
