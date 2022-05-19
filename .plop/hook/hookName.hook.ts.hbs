@@ -1,0 +1,22 @@
+import { useCallback } from 'react';
+import type { DataI, {{ properCase name }}I } from './{{ camelCase name }}.types';
+
+const data: DataI = {
+  on(fn) {
+    this.event = fn;
+  },
+  // @ts-ignore
+  event(data) {},
+  _reset() {
+    // @ts-ignore
+    this.event = (data) => {};
+  },
+};
+
+const {{ fullName prefix name }} = (): {{ properCase name }}I => {
+  const _reset = useCallback(() => data._reset(), []);
+
+  return { _reset };
+};
+
+export default {{ fullName prefix name }};

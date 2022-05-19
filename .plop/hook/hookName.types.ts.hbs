@@ -1,0 +1,14 @@
+export type {{ properCase name }}DataObject = {};
+
+export interface DataI {
+  on(fn: (data: {{ properCase name }}DataObject[]) => void): void;
+  event(data: {{ properCase name }}DataObject[]): void;
+  _reset(): void;
+}
+
+export interface {{ properCase name }}I {
+  /**
+   * Resets the state
+   */
+  _reset: DataI['_reset'];
+}

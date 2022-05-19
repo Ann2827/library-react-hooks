@@ -1,0 +1,70 @@
+# {{ properCase name }} hook
+
+[comment]: <> (description)
+
+[comment]: <> (image)
+
+[Back](https://github.com/Ann2827/library-react-hooks/blob/main/README.md)
+
+## Table of Contents
+
+- [Usage](#usage)
+- [Properties](#properties)
+- [Demo](https://ann2827.github.io/library-react-hooks/{{ name }})
+
+## Usage <a name = "usage"></a>
+
+Place for message dispatch:
+
+```tsx
+import React from 'react';
+import { {{ fullName prefix name }} } from 'library-react-hooks';
+
+const Example: React.FC = () => {
+  const { } = {{ fullName prefix name }}();
+
+  return (
+    <div>
+
+    </div>
+  );
+};
+```
+
+{{ properCase name }} component:
+
+```tsx
+import React from 'react';
+import { {{ fullName prefix name }} } from 'library-react-hooks';
+
+const Toast: React.FC = () => {
+  const { } = {{ fullName prefix name }}();
+
+  return <div></div>;
+};
+```
+
+## Properties <a name = "properties"></a>
+
+### Set Once `{{ camelCase name }}Settings`
+
+```ts
+{{ camelCase name }}Settings({ ... });
+```
+
+| name | type | default | what`s doing |
+| ------ | ------ | ------ | ------ |
+|  |  |  |  |
+
+### Fn: `on`
+
+```ts
+const { on } = {{ fullName prefix name }}();
+
+on((data: {{ properCase name }}DataObject[]) => {
+  ...
+});
+```
+
+This function listens for the events of adding and deleting messages.
+Data contains: ...
