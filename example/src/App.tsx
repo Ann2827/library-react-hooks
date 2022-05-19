@@ -16,7 +16,7 @@ const Routes: React.FC<RoutesProps> = ({ routes }: RoutesProps) => {
 const App = () => {
   return (
     <div>
-      <BrowserRouter>
+      <BrowserRouter basename='/library-react-hooks'>
         <Routes routes={routesConfig} />
       </BrowserRouter>
       <Toast />
