@@ -79,15 +79,6 @@ jobs:
           path: ./dist
           retention-days: 1
 
-      - name: Deploy to GitHub Pages
-        continue-on-error: false
-        uses: Cecilapp/GitHub-Pages-deploy@v3
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          email: ann.bystrova96@mail.ru
-          build_dir: example/build
-
   deploy:
     needs: build
     if: github.event_name == 'push' && contains(github.ref, '/main')
