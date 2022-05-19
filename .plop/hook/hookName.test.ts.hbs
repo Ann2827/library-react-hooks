@@ -1,0 +1,14 @@
+import { {{ fullName prefix name }} } from '.';
+import { renderHook } from '@testing-library/react-hooks';
+
+describe('{{ camelCase name }}.hook function:', () => {
+  beforeEach(() => {
+    const { result } = renderHook(() => {{ fullName prefix name }}());
+    result.current._reset();
+  });
+
+  test('fnName: should ...', () => {
+    const { result } = renderHook(() => {{ fullName prefix name }}());
+    expect(result.current.data).toEqual([]);
+  });
+});
