@@ -24,25 +24,26 @@ your fork:
   cd library-react-hooks
 ```
 
-### Первый запуск
+### First run
 
-- Установить зависимости `npm install`
+- Install dependencies `yarn install`
+- Install dependencies for example `cd ./example && yarn install`
 
-### Запуск
+### Start
 
-- `yarn run start`
+- Terminal1 start hooks `yarn run start`
+- Terminal2 start example `cd ./example && yarn run start`
 
-### Автоматическое создание нового хука
+### Automatic creation of a new hook
 
 - `yarn run create`
 
-### Сборка
+### Build
 
-1. Выполнить тесты и линтеры `yarn run test`
-2. Собрать библиотеку `yarn run build`
-3. Деплой выполняется автоматически при PR в main
+1. Run tests and linters `yarn run test`
+2. Build a library `yarn run build`
 
 ### Описание архитектурных особенностей репозитория
 
-- src - библиотека
-- examples - примеры
+- src - library
+- examples - examples

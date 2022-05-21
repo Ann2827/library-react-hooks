@@ -7,7 +7,7 @@
 
 </div>
 
-> Библиотека с кастомными React хуками для админки.
+> A library with custom React hooks for the admin panel.
 
 ## Table of Contents
 
@@ -16,6 +16,7 @@
 - [Usage](#usage)
   - [Toast hook](#toast_hook)
   - [Loader hook](#loader_hook)
+  - [Helper hooks](#helper_hooks)
 - [Roadmap](#roadmap)
 - [Contributing](#contributing)
 - [License](#license)
@@ -48,17 +49,13 @@ npm install --save library-react-hooks
 
 [How to use](https://github.com/Ann2827/library-react-hooks/blob/main/src/hooks/loader/README.md)
 
-## Roadmap <a name = "roadmap"></a>
+### Helper hooks <a name = "helper_hooks"></a>
 
-- [ ] Hooks
-  - [x] Toast
-  - [x] Loader
-  - [ ] Http
-  - [ ] Helper hooks
-- [ ] Examples
-  - [x] Toast
-  - [ ] Toast with MUI
-  - [x] Pages
+> A few simple auxiliary hooks: useUpdateState
+
+[How to use](https://github.com/Ann2827/library-react-hooks/blob/main/src/hooks/helper/README.md)
+
+## Roadmap <a name = "roadmap"></a>
 
 ## 🤝 Contributing <a name = "contributing"></a>
 
