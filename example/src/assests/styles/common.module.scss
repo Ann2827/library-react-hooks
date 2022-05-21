@@ -1,84 +1,145 @@
 @import './constants';
 
-.buttonPrimary {
-  padding: 8px 16px;
-  border-radius: $borderRadius_m;
-  background-color: $color_primary;
-  color: $color_textPrimaryContrast;
-  cursor: pointer;
-  border: 0;
-  width: fit-content;
-
-  &:hover {
-    background-color: $color_primaryHover;
+.common {
+  &_column {
+    display: flex;
+    flex-direction: column;
   }
 
-  &.outlined {
-    background-color: inherit;
-    border: 1px solid $color_primary;
-    color: $color_textPrimary;
+  &_row {
+    display: flex;
+    flex-direction: row;
+  }
 
-    &:hover {
-      border: 1px solid $color_primaryHover;
-      color: $color_textSecondary;
+  &_buttons {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: $spacing_m;
+    gap: $spacing_m;
+    flex-direction: row;
+
+    @media all and (max-width: $screen_md_min)  {
+      gap: $spacing_m;
     }
   }
-}
 
-.buttonSecondary {
-  padding: 8px 16px;
-  border-radius: $borderRadius_m;
-  background-color: $color_secondary;
-  color: $color_textSecondaryContrast;
-  cursor: pointer;
-  border: 0;
-  width: fit-content;
-
-  &:hover {
-    background-color: $color_secondaryHover;
-  }
-
-  &.outlined {
-    background-color: inherit;
-    border: 1px solid $color_secondary;
-    color: $color_textPrimary;
+  &_buttonPrimary {
+    padding: $spacing_s $spacing_l;
+    border-radius: $borderRadius_m;
+    background-color: $color_primary;
+    color: $color_textPrimaryContrast;
+    cursor: pointer;
+    border: 0;
+    width: fit-content;
 
     &:hover {
-      border: 1px solid $color_secondaryHover;
-      color: $color_textSecondary;
+      background-color: $color_primaryHover;
+    }
+
+    &__outlined {
+      background-color: inherit;
+      border: 1px solid $color_primary;
+      color: $color_textPrimary;
+
+      &:hover {
+        border: 1px solid $color_primaryHover;
+        color: $color_textSecondary;
+      }
+    }
+
+    &__s {
+      padding: $spacing_xs $spacing_m;
+    }
+
+    &__xs {
+      padding: $spacing_xs;
     }
   }
-}
 
-.secondaryText {
-  color: $color_textSecondary;
-  font-size: 14px;
-}
+  &_buttonSecondary {
+    padding: $spacing_s $spacing_l;
+    border-radius: $borderRadius_m;
+    background-color: $color_secondary;
+    color: $color_textSecondaryContrast;
+    cursor: pointer;
+    border: 0;
+    width: fit-content;
 
-.divider {
-  margin: 0;
-  border-width: 0;
-  border-style: solid;
-  border-bottom-width: thin;
-  border-color: $color_textSecondary;
-  width: 50%;
-  opacity: 0.4;
-  border-radius: $borderRadius_s;
-  background-color: $color_textSecondary;
-}
+    &:hover {
+      background-color: $color_secondaryHover;
+    }
 
-.list {
-  font-size: 14px;
-  color: $color_textSecondary;
-  margin-left: $spacing_xxl;
-  margin-top: $spacing_s;
+    &__outlined {
+      background-color: inherit;
+      border: 1px solid $color_secondary;
+      color: $color_textPrimary;
 
-  ul {
-    margin-top: $spacing_s;
-    margin-left: $spacing_l;
+      &:hover {
+        border: 1px solid $color_secondaryHover;
+        color: $color_textSecondary;
+      }
+    }
+
+    &__s {
+      padding: $spacing_xs $spacing_m;
+    }
+
+    &__xs {
+      padding: $spacing_xs;
+    }
   }
 
-  > li:nth-child(n+2) {
+  &_secondaryText {
+    color: $color_textSecondary;
+    font-size: 14px;
+  }
+
+  &_divider {
+    margin: 0;
+    border-width: 0;
+    border-style: solid;
+    border-bottom-width: thin;
+    border-color: $color_textSecondary;
+    width: 50%;
+    opacity: 0.4;
+    border-radius: $borderRadius_s;
+    background-color: $color_textSecondary;
+  }
+
+  &_list {
+    font-size: 14px;
+    color: $color_textSecondary;
+    margin-left: $spacing_xxl;
     margin-top: $spacing_s;
+
+    ul {
+      margin-top: $spacing_s;
+      margin-left: $spacing_l;
+    }
+  }
+
+  &_listItem {
+    margin-top: $spacing_s;
+  }
+
+  &_margin {
+    &__xs {
+      margin-top: $spacing_xs;
+    }
+    &__s {
+      margin-top: $spacing_s;
+    }
+    &__m {
+      margin-top: $spacing_m;
+    }
+    &__l {
+      margin-top: $spacing_l;
+    }
+    &__xl {
+      margin-top: $spacing_xl;
+    }
+    &__xxl {
+      margin-top: $spacing_xxl;
+    }
   }
 }

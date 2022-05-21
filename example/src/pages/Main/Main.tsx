@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react';
 import { useToast, useLoader } from 'library-react-hooks';
-import styles from '../../assests/styles/pages.module.scss';
+import styles from '../../assests/styles/page.module.scss';
 import classNames from 'classnames';
 import { ReactComponent as ArrowRightIcon } from '../../assests/icons/arrowRight.svg';
 import { useNavigate } from 'react-router-dom';
@@ -12,16 +12,16 @@ const ToastDemo: React.FC = () => {
   const navigate = useNavigate();
 
   return (
-    <div className={styles.pageBlock}>
+    <div className={classNames(styles.common_margin__xxl, styles.common_column)}>
       <h5>Toast Hook</h5>
-      <div className={styles.buttons}>
+      <div className={styles.common_buttons}>
         <button
-          className={classNames(styles.buttonPrimary, { [styles.outlined]: true })}
+          className={classNames(styles.common_buttonPrimary, styles.common_buttonPrimary__outlined)}
           onClick={() => alert({ text: 'Some error message.', type: 'error', tag: 'error1' })}
         >
           Show
         </button>
-        <button className={styles.buttonPrimary} onClick={() => navigate(ROUTE_FULL_TOAST)}>
+        <button className={styles.common_buttonPrimary} onClick={() => navigate(ROUTE_FULL_TOAST)}>
           <ArrowRightIcon />
         </button>
       </div>
@@ -39,13 +39,16 @@ const LoaderDemo: React.FC = () => {
   }, [loaderOn, loaderStop]);
 
   return (
-    <div className={styles.pageBlock}>
+    <div className={classNames(styles.common_margin__xxl, styles.common_column)}>
       <h5>Loader Hook</h5>
-      <div className={styles.buttons}>
-        <button className={classNames(styles.buttonPrimary, { [styles.outlined]: true })} onClick={clickHandle}>
+      <div className={styles.common_buttons}>
+        <button
+          className={classNames(styles.common_buttonPrimary, styles.common_buttonPrimary__outlined)}
+          onClick={clickHandle}
+        >
           Show
         </button>
-        <button className={styles.buttonPrimary} onClick={() => navigate(ROUTE_FULL_LOADER)}>
+        <button className={styles.common_buttonPrimary} onClick={() => navigate(ROUTE_FULL_LOADER)}>
           <ArrowRightIcon />
         </button>
       </div>
@@ -53,21 +56,49 @@ const LoaderDemo: React.FC = () => {
   );
 };
 
+const HelperDemo: React.FC = () => {
+  return (
+    <div className={classNames(styles.common_margin__xxl, styles.common_column)}>
+      <h5>Helper Hooks</h5>
+      <div className={classNames(styles.common_column, styles.common_margin__l)}>
+        <div className={classNames(styles.page_row)}>
+          <h6>Update State Hook</h6>
+          <button
+            className={classNames(
+              styles.common_buttonSecondary,
+              styles.common_buttonSecondary__outlined,
+              styles.common_buttonSecondary__xs,
+            )}
+            onClick={() =>
+              openLink(
+                `https://github.com/Ann2827/library-react-hooks/blob/main/src/hooks/helper/README.md#update_state_hook`,
+              )
+            }
+          >
+            Docs
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+};
+
 const Main: React.FC = () => {
   return (
-    <div className={styles.page}>
-      <div className={styles.pageHeader}>
+    <div className={styles.page_wrapper}>
+      <div className={styles.page_header}>
         <h2>Hooks Demo</h2>
       </div>
-      <div className={styles.pageContent}>
+      <div className={styles.page_content}>
         <button
-          className={classNames(styles.buttonSecondary, { [styles.outlined]: true })}
+          className={classNames(styles.common_buttonSecondary, styles.common_buttonSecondary__outlined)}
           onClick={() => openLink(`https://github.com/Ann2827/library-react-hooks/blob/main/README.md`)}
         >
           Docs
         </button>
         <ToastDemo />
         <LoaderDemo />
+        <HelperDemo />
       </div>
     </div>
   );

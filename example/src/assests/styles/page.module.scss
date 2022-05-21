@@ -1,0 +1,29 @@
+@use './common.module';
+@import './constants';
+
+.page {
+  &_wrapper {
+    display: flex;
+    flex-direction: column;
+    margin: 0 50px;
+  }
+
+  &_header {
+    text-align: center;
+    margin: $spacing_l auto;
+  }
+
+  &_content {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: $spacing_xl;
+  }
+
+  &_row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: $spacing_s;
+    margin-left: $spacing_s;
+  }
+}
