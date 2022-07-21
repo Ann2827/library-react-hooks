@@ -18,6 +18,17 @@ prop transfers or provider wrapping.
 
 Place for message dispatch:
 
+```ts
+import { fnToast } from 'library-react-hooks';
+
+const { alert, clear } = fnToast();
+
+alert({ text: 'Some error message', type: 'error', tag: 'tag1' })
+clear();
+```
+
+or
+
 ```tsx
 import React from 'react';
 import { useToast } from 'library-react-hooks';

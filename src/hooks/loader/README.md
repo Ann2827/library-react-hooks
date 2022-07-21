@@ -16,6 +16,18 @@ prop transfers or provider wrapping.
 
 Place for loading dispatch:
 
+```ts
+import { fnLoader } from 'library-react-hooks';
+
+const { loaderOn, loaderOff, loaderStop } = fnLoader();
+
+loaderOn();
+loaderOff();
+loaderStop();
+```
+
+or
+
 ```tsx
 import React from 'react';
 import { useLoader } from 'library-react-hooks';

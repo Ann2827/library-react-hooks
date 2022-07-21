@@ -1,42 +1,6 @@
 import { useCallback, useEffect, useState } from 'react';
-import { DataI, LoaderI } from './loader.types';
-
-const data: DataI = {
-  active: false,
-  queue: 0,
-  activate() {
-    this.active = true;
-    this.queue += 1;
-    this.event(true);
-  },
-  determinate() {
-    if (this.queue > 1) {
-      this.queue -= 1;
-    } else {
-      this.active = false;
-      this.queue = 0;
-      this.event(false);
-    }
-  },
-  stop() {
-    this.active = false;
-    this.queue = 0;
-    this.event(false);
-  },
-  getActive() {
-    return this.active;
-  },
-  // @ts-ignore
-  event(value) {},
-  on(fn) {
-    this.event = fn;
-  },
-  _reset() {
-    this.active = false;
-    this.queue = 0;
-    this.event(false);
-  },
-};
+import { LoaderI } from './loader.types';
+import { data } from './data';
 
 const useLoader = (): LoaderI => {
   const [trigger, setTrigger] = useState(0);
