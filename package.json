@@ -38,8 +38,8 @@
     "create": "plop --plopfile ./.plop/plop.config.js"
   },
   "peerDependencies": {
-    "react": "^17.0.0",
-    "react-dom": "^17.0.0"
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0"
   },
   "devDependencies": {
     "@semantic-release/git": "^10.0.1",
