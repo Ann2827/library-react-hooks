@@ -50,22 +50,22 @@ const HttpHook: React.FC = () => {
             Docs
           </button>
         </div>
-        {/*<div className={classNames(styles.common_margin__xxl, styles.common_column)}>*/}
-        {/*  <h5>loaderOn</h5>*/}
-        {/*  <p className={classNames(styles.common_margin__l, styles.common_secondaryText)}>*/}
-        {/*    Loader start. Incremented (+1). You can click twice or more*/}
-        {/*  </p>*/}
-        {/*  <button*/}
-        {/*    className={classNames(*/}
-        {/*      styles.common_margin__l,*/}
-        {/*      styles.common_buttonPrimary,*/}
-        {/*      styles.common_buttonPrimary__outlined,*/}
-        {/*    )}*/}
-        {/*    onClick={() => {}}*/}
-        {/*  >*/}
-        {/*    Action*/}
-        {/*  </button>*/}
-        {/*</div>*/}
+        {/* <div className={classNames(styles.common_margin__xxl, styles.common_column)}> */}
+        {/*  <h5>loaderOn</h5> */}
+        {/*  <p className={classNames(styles.common_margin__l, styles.common_secondaryText)}> */}
+        {/*    Loader start. Incremented (+1). You can click twice or more */}
+        {/*  </p> */}
+        {/*  <button */}
+        {/*    className={classNames( */}
+        {/*      styles.common_margin__l, */}
+        {/*      styles.common_buttonPrimary, */}
+        {/*      styles.common_buttonPrimary__outlined, */}
+        {/*    )} */}
+        {/*    onClick={() => {}} */}
+        {/*  > */}
+        {/*    Action */}
+        {/*  </button> */}
+        {/* </div> */}
       </div>
     </div>
   );
