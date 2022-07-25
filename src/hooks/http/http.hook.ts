@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from 'react';
-import type { DataI, HttpI } from './http.types';
+import { DataI, HttpI } from './http.types';
 import data from './data';
 import { convertQuery, successFn } from './http.functions';
 import { useLoader } from '../loader';
