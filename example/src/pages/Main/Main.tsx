@@ -4,7 +4,7 @@ import styles from '../../assests/styles/page.module.scss';
 import classNames from 'classnames';
 import { ReactComponent as ArrowRightIcon } from '../../assests/icons/arrowRight.svg';
 import { useNavigate } from 'react-router-dom';
-import { ROUTE_FULL_LOADER, ROUTE_FULL_TOAST } from '../../constants/routes';
+import { ROUTE_FULL_HTTP, ROUTE_FULL_LOADER, ROUTE_FULL_TOAST } from '../../constants/routes';
 import { openLink } from '../../utils/url';
 
 const ToastDemo: React.FC = () => {
@@ -56,6 +56,27 @@ const LoaderDemo: React.FC = () => {
   );
 };
 
+const HttpDemo: React.FC = () => {
+  const navigate = useNavigate();
+
+  return (
+    <div className={classNames(styles.common_margin__xxl, styles.common_column)}>
+      <h5>Http Hook</h5>
+      <div className={styles.common_buttons}>
+        <button
+          className={classNames(styles.common_buttonPrimary, styles.common_buttonPrimary__outlined)}
+          onClick={() => {}}
+        >
+          Show
+        </button>
+        <button className={styles.common_buttonPrimary} onClick={() => navigate(ROUTE_FULL_HTTP)}>
+          <ArrowRightIcon />
+        </button>
+      </div>
+    </div>
+  );
+};
+
 const HelperDemo: React.FC = () => {
   return (
     <div className={classNames(styles.common_margin__xxl, styles.common_column)}>
@@ -98,6 +119,7 @@ const Main: React.FC = () => {
         </button>
         <ToastDemo />
         <LoaderDemo />
+        <HttpDemo />
         <HelperDemo />
       </div>
     </div>
