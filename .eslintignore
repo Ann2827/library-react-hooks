@@ -5,3 +5,6 @@ node_modules/
 *.min.js
 
 src/hooks/helper/updateState.hook.ts
+
+example/src/api/index.ts
+example/src/api/answer.types.ts
