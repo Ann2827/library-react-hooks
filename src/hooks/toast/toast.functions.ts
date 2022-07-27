@@ -7,6 +7,7 @@ export const toastSettings = (props: RecursivePartial<ToastSettingsI>): void => 
     sticky: props.sticky ?? initialSettings.sticky,
     duration: props.duration ?? initialSettings.duration,
     duplicate: props.duplicate ?? initialSettings.duplicate,
+    limit: props.limit ?? initialSettings.limit,
     types: {
       error: { ...initialSettings.types.error, ...props.types?.error },
       warning: { ...initialSettings.types.warning, ...props.types?.warning },

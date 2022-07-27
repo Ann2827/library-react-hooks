@@ -4,6 +4,7 @@ export const initialSettings: ToastSettingsI = {
   sticky: false,
   duration: 3000,
   duplicate: true,
+  limit: undefined,
   types: {
     error: {
       title: '',
@@ -71,7 +72,9 @@ export const data: DataI = {
       this.timeouts.push({ id, clear: timeout });
     }
 
-    this.event(this.data);
+    if (this.settings.limit) {
+      this.event(this.data.slice(-this.settings.limit));
+    } else this.event(this.data);
   },
   determinate(id) {
     let updated: ToastDataObject[] = [];
@@ -85,7 +88,9 @@ export const data: DataI = {
     this.data = updated;
     this.timeouts = timeouts;
 
-    this.event(updated);
+    if (this.settings.limit) {
+      this.event(updated.slice(-this.settings.limit));
+    } else this.event(updated);
   },
   getData() {
     return this.data;
