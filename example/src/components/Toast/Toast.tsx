@@ -5,6 +5,7 @@ import Notifications, { NotificationI } from './Notifications';
 toastSettings({
   sticky: true,
   duplicate: false,
+  limit: 5,
   types: {
     error: {
       title: 'Error',

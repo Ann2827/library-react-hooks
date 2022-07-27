@@ -39,6 +39,7 @@ const ToastHook: React.FC = () => {
             <ul className={styles.common_list}>
               <li>sticky - true</li>
               <li className={styles.common_listItem}>duplicate - false</li>
+              <li className={styles.common_listItem}>limit - 5</li>
               <li className={styles.common_listItem}>types:</li>
               <ul>
                 <li>error: title - Error, color: incorrect</li>

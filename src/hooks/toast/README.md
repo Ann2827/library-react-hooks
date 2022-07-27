@@ -86,6 +86,7 @@ toastSettings({ sticky: true, ... });
 | sticky | bool | false | The message will hang until it is closed manually. You can override this for individual message. |
 | duration | number (ms) | 3000 | Sets the auto-close timeout. If sticky = false. You can override this for individual message. |
 | duplicate | bool | true | Allows you to duplicate a message while the same is already hanging. When is false, you need to set tag for alert. If the tag is not specified, the message will be duplicated. |
+| limit | number or undefined | undefined | Max visible notifications. |
 | types | [object](#settings-by-types) | ... | Permanent settings for messages by type. |
 
 ### Property types for toastSettings <a name = "settings-by-types"></a>

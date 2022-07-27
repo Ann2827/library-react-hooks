@@ -85,6 +85,11 @@ export interface ToastSettingsI {
   duplicate: boolean;
 
   /**
+   * Max visible notifications.
+   */
+  limit?: number;
+
+  /**
    * Settings by types
    */
   types: {
