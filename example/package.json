@@ -5,8 +5,8 @@
   "private": false,
   "author": "Ann Bystrova <ann.bystrova96@mail.ru>",
   "engines": {
-    "node": "^14.18.0",
-    "npm": "^8.4.0"
+    "node": ">=14",
+    "npm": ">=8"
   },
   "scripts": {
     "start": "react-scripts start",
