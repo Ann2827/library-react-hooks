@@ -160,3 +160,12 @@ const { data } = useToast();
 
 Contains an array of active messages. Object: id, icon, text, color, type, title, actions, tag.
 (Data will not trigger in useEffect dependencies.)
+
+### Fn: `setTypes`
+
+```ts
+const { setTypes } = useToast();
+
+setTypes({ error: { title: i18next.t('error.title') } });
+```
+Dynamic updating of settings: title, icon, color

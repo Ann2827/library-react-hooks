@@ -8,7 +8,7 @@ import { openLink } from '../../utils/url';
 
 const ToastHook: React.FC = () => {
   const navigate = useNavigate();
-  const { alert } = useToast();
+  const { alert, setTypes } = useToast();
 
   return (
     <div className={styles.page_wrapper}>
@@ -60,16 +60,28 @@ const ToastHook: React.FC = () => {
               <li className={styles.common_listItem}>type - error</li>
             </ul>
           </div>
-          <button
-            className={classNames(
-              styles.common_buttonPrimary,
-              styles.common_buttonPrimary__outlined,
-              styles.common_margin__m,
-            )}
-            onClick={() => alert({ text: 'Some error message.', type: 'error' })}
-          >
-            Demo
-          </button>
+          <div className={styles.common_buttons}>
+            <button
+              className={classNames(
+                styles.common_buttonPrimary,
+                styles.common_buttonPrimary__outlined,
+                styles.common_margin__m,
+              )}
+              onClick={() => alert({ text: 'Some error message.', type: 'error' })}
+            >
+              Demo
+            </button>
+            <button
+              className={classNames(
+                styles.common_buttonPrimary,
+                styles.common_buttonPrimary__outlined,
+                styles.common_margin__m,
+              )}
+              onClick={() => setTypes({ error: { title: 'Dynamic title' } })}
+            >
+              Change title
+            </button>
+          </div>
         </div>
         <hr className={classNames(styles.common_margin__xl, styles.common_divider)} />
         <div className={classNames(styles.common_margin__xxl, styles.common_column)}>
