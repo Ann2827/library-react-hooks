@@ -38,6 +38,11 @@ export type ToastDataObject = {
    * Used for duplicate = false. It can also be used for additional notes
    */
   tag?: string;
+
+  /**
+   * The default title was used
+   */
+  titleDefault?: boolean;
 };
 
 type SettingsData = {
@@ -122,6 +127,7 @@ export interface DataI {
     clear: NodeJS.Timeout;
   }[];
   settings: ToastSettingsI;
+  updateSettings(props: RecursivePartial<ToastSettingsI>): void;
   activate(props: ToastPropsT): void;
   determinate(id?: number): void;
   getData(): DataI['data'];
@@ -152,6 +158,11 @@ export interface ToastI {
    * The function dispatches a new message.
    */
   alert({ text, type, duration }: ToastPropsT): void;
+
+  /**
+   * Dynamic updating settings types
+   */
+  setTypes(props: RecursivePartial<ToastSettingsI['types']>): void;
 
   /**
    * Resets the state

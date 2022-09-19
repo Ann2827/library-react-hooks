@@ -13,6 +13,7 @@ const useToast = (): ToastI =>
       on: (fn) => data.on(fn),
       clear: (id) => data.determinate(id),
       alert: toastAlert,
+      setTypes: (props) => data.updateSettings({ types: props }),
       _reset: () => data._reset(),
     }),
     [],

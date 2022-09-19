@@ -38,6 +38,30 @@ export const data: DataI = {
   data: [],
   timeouts: [],
   settings: { ...initialSettings },
+  updateSettings(props) {
+    this.settings = {
+      sticky: props.sticky ?? this.settings.sticky,
+      duration: props.duration ?? this.settings.duration,
+      duplicate: props.duplicate ?? this.settings.duplicate,
+      limit: props.limit ?? this.settings.limit,
+      types: {
+        error: { ...this.settings.types.error, ...props.types?.error },
+        warning: { ...this.settings.types.warning, ...props.types?.warning },
+        info: { ...this.settings.types.info, ...props.types?.info },
+        success: { ...this.settings.types.success, ...props.types?.success },
+      },
+    };
+
+    if (this.data.length > 0) {
+      for (let i = 0; i < this.data.length; i++) {
+        const type = this.data[i].type;
+        this.data[i].icon = props?.types?.[type]?.icon ?? this.settings.types[type].icon;
+        this.data[i].title = props?.types?.[type]?.title ?? this.settings.types[type].title;
+        this.data[i].color = props?.types?.[type]?.color ?? this.settings.types[type].color;
+      }
+      this.event(this.data);
+    }
+  },
   activate({ text, type, duration, sticky, title, actions, tag }) {
     if (!this.settings.duplicate && tag && this.data.find((item) => item.tag === tag)) {
       return;
@@ -60,6 +84,7 @@ export const data: DataI = {
       tag,
       icon: this.settings.types[type].icon,
       color: this.settings.types[type].color,
+      titleDefault: !title,
     };
     this.data.push(updated);
 

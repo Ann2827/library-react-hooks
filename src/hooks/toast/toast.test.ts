@@ -34,6 +34,7 @@ describe('toast.hook function:', () => {
         title: 'Test',
         type: 'error',
         color: '',
+        titleDefault: true,
       },
     ]);
   });
