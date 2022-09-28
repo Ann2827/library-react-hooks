@@ -12,7 +12,7 @@ export type ToastTypes = 'error' | 'warning' | 'info' | 'success';
 export type ToastDataObject = {
   id: number;
   icon: string | ReactNode;
-  text: string;
+  text?: string;
   color: string;
 
   /**
