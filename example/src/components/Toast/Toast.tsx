@@ -35,7 +35,7 @@ const Toast = () => {
       setMessages(
         data.map((item) => ({
           title: item.title || '',
-          text: item.text,
+          text: item.text || '',
           onClose: () => clear(item.id),
           color: item.color,
           actions: item.actions,
