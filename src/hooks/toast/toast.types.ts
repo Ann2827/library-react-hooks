@@ -9,6 +9,15 @@ export type RecursivePartial<T> = {
  */
 export type ToastTypes = 'error' | 'warning' | 'info' | 'success';
 
+export type TToastTranslationData = {
+  key: string;
+  options?: Record<string, unknown>;
+};
+export type TToastTranslationFn = (
+  key: TToastTranslationData['key'],
+  options?: TToastTranslationData['options'],
+) => string;
+
 export type ToastDataObject = {
   id: number;
   icon: string | ReactNode;
@@ -31,6 +40,7 @@ export type ToastDataObject = {
    */
   actions?: {
     text: string;
+    actionData?: TToastTranslationData;
     action(...args: any): void;
   }[];
 
@@ -43,6 +53,16 @@ export type ToastDataObject = {
    * The default title was used
    */
   titleDefault?: boolean;
+
+  /**
+   * Key and options for title translation fn
+   */
+  titleData?: TToastTranslationData;
+
+  /**
+   * Key and options for text translation fn
+   */
+  textData?: TToastTranslationData;
 };
 
 type SettingsData = {
@@ -50,6 +70,12 @@ type SettingsData = {
    * Title for this type
    */
   title: string;
+
+  /**
+   * TODO: add
+   * Key and options for title translation fn
+   */
+  // titleData?: TToastTranslationData;
 
   /**
    * Permanent icon for this type
@@ -127,6 +153,9 @@ export interface DataI {
     clear: NodeJS.Timeout;
   }[];
   settings: ToastSettingsI;
+  translationFn: TToastTranslationFn;
+  setTranslationFn(fn: TToastTranslationFn): void;
+  updateAlerts(): void;
   updateSettings(props: RecursivePartial<ToastSettingsI>): void;
   activate(props: ToastPropsT): void;
   determinate(id?: number): void;
@@ -163,6 +192,12 @@ export interface ToastI {
    * Dynamic updating settings types
    */
   setTypes(props: RecursivePartial<ToastSettingsI['types']>): void;
+
+  /**
+   * Translation function, for example: i18next.t
+   * @param fn
+   */
+  setTranslationFn: (fn: TToastTranslationFn) => void;
 
   /**
    * Resets the state

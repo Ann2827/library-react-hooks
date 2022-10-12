@@ -169,3 +169,23 @@ const { setTypes } = useToast();
 setTypes({ error: { title: i18next.t('error.title') } });
 ```
 Dynamic updating of settings: title, icon, color
+
+### Fn: `setTranslationFn`
+
+Run once file
+```ts
+const { t } = useTranslation(); // react-i18next
+const { setTranslationFn } = useToast();
+
+useEffect(() => {
+  setTranslationFn(t);
+}, [setTranslationFn, t]);
+```
+
+Component
+```ts
+const { alert } = useToast();
+
+alert({ titleData: { key: 'error.title', options: { ... } }, type: 'error', ... });
+```
+When the language is switched, the texts are updated
