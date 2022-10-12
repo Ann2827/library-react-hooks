@@ -14,6 +14,7 @@ const useToast = (): ToastI =>
       clear: (id) => data.determinate(id),
       alert: toastAlert,
       setTypes: (props) => data.updateSettings({ types: props }),
+      setTranslationFn: data.setTranslationFn,
       _reset: () => data._reset(),
     }),
     [],
