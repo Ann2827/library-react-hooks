@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect } from 'react';
 import styles from '../../assests/styles/page.module.scss';
 import { useToast } from 'library-react-hooks';
 import classNames from 'classnames';
@@ -166,7 +166,9 @@ const ToastHook: React.FC = () => {
           <h5>Translation Fn</h5>
           <div className={styles.common_margin__m}>
             <p className={styles.common_secondaryText}>Dynamic translation with help i18next:</p>
-            <p className={styles.common_secondaryText}>Current lang: <b>{i18n.language}</b></p>
+            <p className={styles.common_secondaryText}>
+              Current lang: <b>{i18n.language}</b>
+            </p>
           </div>
           <div className={styles.common_buttons}>
             <button
@@ -176,7 +178,12 @@ const ToastHook: React.FC = () => {
                 styles.common_margin__m,
               )}
               onClick={() =>
-                alert({ titleData: { key: 'message.title' }, textData: { key: 'message.text', options: { type: 'type.info' } }, type: 'info', actions: [{ text: '', actionData: { key: 'message.button' }, action: () => {} }] })
+                alert({
+                  titleData: { key: 'message.title' },
+                  textData: { key: 'message.text', options: { type: 'type.info' } },
+                  type: 'info',
+                  actions: [{ text: '', actionData: { key: 'message.button' }, action: () => {} }],
+                })
               }
             >
               Alert

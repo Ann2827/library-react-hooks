@@ -4,30 +4,28 @@ import ru from './ru/translation.json';
 import en from './en/translation.json';
 
 // eslint-disable-next-line import/no-named-as-default-member
-i18n
-  .use(initReactI18next)
-  .init({
-    fallbackLng: 'en',
-    lng: 'en',
-    supportedLngs: ['ru', 'en'],
-    nonExplicitSupportedLngs: true,
-    resources: {
-      ru: {
-        translation: ru,
-      },
-      en: {
-        translation: en,
-      },
+i18n.use(initReactI18next).init({
+  fallbackLng: 'en',
+  lng: 'en',
+  supportedLngs: ['ru', 'en'],
+  nonExplicitSupportedLngs: true,
+  resources: {
+    ru: {
+      translation: ru,
     },
-    debug: false,
-    interpolation: {
-      escapeValue: false,
+    en: {
+      translation: en,
     },
-    react: {
-      useSuspense: true,
-      transSupportBasicHtmlNodes: true,
-      transKeepBasicHtmlNodesFor: ['br', 'strong', 'i', 'p'],
-    },
-  });
+  },
+  debug: false,
+  interpolation: {
+    escapeValue: false,
+  },
+  react: {
+    useSuspense: true,
+    transSupportBasicHtmlNodes: true,
+    transKeepBasicHtmlNodesFor: ['br', 'strong', 'i', 'p'],
+  },
+});
 
 export default i18n;
