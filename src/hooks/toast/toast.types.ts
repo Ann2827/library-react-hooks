@@ -154,6 +154,7 @@ export interface DataI {
   }[];
   settings: ToastSettingsI;
   translationFn: TToastTranslationFn;
+  workWithOptions(options: TToastTranslationData['options']): TToastTranslationData['options'];
   setTranslationFn(fn: TToastTranslationFn): void;
   updateAlerts(): void;
   updateSettings(props: RecursivePartial<ToastSettingsI>): void;
