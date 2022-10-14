@@ -38,7 +38,7 @@ const Toast = () => {
           text: item.text || '',
           onClose: () => clear(item.id),
           color: item.color,
-          actions: item.actions,
+          actions: item.actions?.map((action) => ({ action: action.action, text: action.text || '' })),
         })),
       );
     });

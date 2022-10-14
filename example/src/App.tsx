@@ -4,6 +4,7 @@ import Toast from './components/Toast';
 import Loader from './components/Loader';
 import routesConfig from './routesConfig';
 import { RouteObject } from 'react-router';
+import './locales';
 
 type RoutesProps = {
   routes: RouteObject[];
