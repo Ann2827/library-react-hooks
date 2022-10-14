@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { ROUTE_MAIN } from '../../constants/routes';
 import { openLink } from '../../utils/url';
 import { useTranslation } from 'react-i18next';
+import { TToastTranslationFn } from '../../../../src';
 
 const ToastHook: React.FC = () => {
   const navigate = useNavigate();
@@ -180,7 +181,7 @@ const ToastHook: React.FC = () => {
               onClick={() =>
                 alert({
                   titleData: { key: 'message.title' },
-                  textData: { key: 'message.text', options: { type: 'type.info' } },
+                  textData: { key: 'message.text', options: { type: (fn: TToastTranslationFn) => fn('type.info') } },
                   type: 'info',
                   actions: [{ text: '', actionData: { key: 'message.button' }, action: () => {} }],
                 })

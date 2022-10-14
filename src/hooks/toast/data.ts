@@ -41,23 +41,35 @@ export const data: DataI = {
   timeouts: [],
   settings: { ...initialSettings },
   translationFn: initialTranslationFn,
+  workWithOptions(options) {
+    if (!options) return undefined;
+    return Object.fromEntries(
+      Object.entries(options).map(([key, value]) => {
+        if (typeof value === 'function') return [key, value(this.translationFn)];
+        return [key, value];
+      }),
+    );
+  },
   updateAlerts() {
     if (this.data.length > 0) {
       for (let i = 0; i < this.data.length; i++) {
         const titleData = this.data[i].titleData;
         if (typeof titleData === 'object') {
-          this.data[i].title = this.translationFn(titleData.key, titleData.options);
+          this.data[i].title = this.translationFn(titleData.key, this.workWithOptions(titleData.options));
         }
         const textData = this.data[i].textData;
         if (typeof textData === 'object') {
-          this.data[i].text = this.translationFn(textData.key, textData.options);
+          this.data[i].text = this.translationFn(textData.key, this.workWithOptions(textData.options));
         }
         const actions = this.data[i].actions;
         if (actions && actions.length) {
           for (let j = 0; j < actions.length; j++) {
             const actionData = actions[j].actionData;
             if (typeof actionData === 'object') {
-              this.data[i].actions![j].text = this.translationFn(actionData.key, actionData.options);
+              this.data[i].actions![j].text = this.translationFn(
+                actionData.key,
+                this.workWithOptions(actionData.options),
+              );
             }
           }
         }
@@ -102,9 +114,9 @@ export const data: DataI = {
     this.lastID += 1;
     const id = this.lastID;
     const alertTitle = titleData
-      ? this.translationFn(titleData.key, titleData.options)
+      ? this.translationFn(titleData.key, this.workWithOptions(titleData.options))
       : title ?? this.settings.types[type].title;
-    const alertText = textData ? this.translationFn(textData.key, textData.options) : text;
+    const alertText = textData ? this.translationFn(textData.key, this.workWithOptions(textData.options)) : text;
     const updated: ToastDataObject = {
       text: alertText,
       type,
@@ -112,7 +124,7 @@ export const data: DataI = {
       title: alertTitle,
       actions: actions?.map((item) => {
         const alertAction = item.actionData
-          ? this.translationFn(item.actionData.key, item.actionData.options)
+          ? this.translationFn(item.actionData.key, this.workWithOptions(item.actionData.options))
           : item.text;
         return {
           text: alertAction,
