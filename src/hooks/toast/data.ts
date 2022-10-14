@@ -116,6 +116,7 @@ export const data: DataI = {
           : item.text;
         return {
           text: alertAction,
+          actionData: item.actionData,
           action: () => {
             item.action();
             this.determinate(id);
@@ -126,6 +127,8 @@ export const data: DataI = {
       icon: this.settings.types[type].icon,
       color: this.settings.types[type].color,
       titleDefault: !title,
+      titleData,
+      textData,
     };
     this.data.push(updated);
 

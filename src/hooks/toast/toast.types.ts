@@ -39,7 +39,7 @@ export type ToastDataObject = {
    * Buttons
    */
   actions?: {
-    text: string;
+    text?: string;
     actionData?: TToastTranslationData;
     action(...args: any): void;
   }[];

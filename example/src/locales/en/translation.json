@@ -1,0 +1,11 @@
+{
+  "//": "i18next",
+  "message": {
+    "title": "Message title",
+    "text": "{{type}} message text",
+    "button": "My button"
+  },
+  "type": {
+    "info": "Information"
+  }
+}

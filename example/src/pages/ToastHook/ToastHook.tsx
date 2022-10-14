@@ -1,14 +1,20 @@
-import React from 'react';
+import React, { useEffect } from "react";
 import styles from '../../assests/styles/page.module.scss';
 import { useToast } from 'library-react-hooks';
 import classNames from 'classnames';
 import { useNavigate } from 'react-router-dom';
 import { ROUTE_MAIN } from '../../constants/routes';
 import { openLink } from '../../utils/url';
+import { useTranslation } from 'react-i18next';
 
 const ToastHook: React.FC = () => {
   const navigate = useNavigate();
-  const { alert, setTypes } = useToast();
+  const { alert, setTypes, setTranslationFn } = useToast();
+  const { t, i18n } = useTranslation();
+
+  useEffect(() => {
+    setTranslationFn(t);
+  }, [setTranslationFn, t]);
 
   return (
     <div className={styles.page_wrapper}>
@@ -154,6 +160,48 @@ const ToastHook: React.FC = () => {
           >
             Demo
           </button>
+        </div>
+        <hr className={classNames(styles.common_margin__xl, styles.common_divider)} />
+        <div className={classNames(styles.common_margin__xxl, styles.common_column)}>
+          <h5>Translation Fn</h5>
+          <div className={styles.common_margin__m}>
+            <p className={styles.common_secondaryText}>Dynamic translation with help i18next:</p>
+            <p className={styles.common_secondaryText}>Current lang: <b>{i18n.language}</b></p>
+          </div>
+          <div className={styles.common_buttons}>
+            <button
+              className={classNames(
+                styles.common_buttonPrimary,
+                styles.common_buttonPrimary__outlined,
+                styles.common_margin__m,
+              )}
+              onClick={() =>
+                alert({ titleData: { key: 'message.title' }, textData: { key: 'message.text', options: { type: 'type.info' } }, type: 'info', actions: [{ text: '', actionData: { key: 'message.button' }, action: () => {} }] })
+              }
+            >
+              Alert
+            </button>
+            <button
+              className={classNames(
+                styles.common_buttonPrimary,
+                styles.common_buttonPrimary__outlined,
+                styles.common_margin__m,
+              )}
+              onClick={() => i18n.changeLanguage('ru')}
+            >
+              Switch ru
+            </button>
+            <button
+              className={classNames(
+                styles.common_buttonPrimary,
+                styles.common_buttonPrimary__outlined,
+                styles.common_margin__m,
+              )}
+              onClick={() => i18n.changeLanguage('en')}
+            >
+              Switch en
+            </button>
+          </div>
         </div>
       </div>
     </div>

@@ -1,8 +1,8 @@
 import { ToastPropsT } from './toast.types';
 import { data } from './data';
 
-const toastAlert = ({ text, type = 'error', duration, sticky, title, actions, tag }: ToastPropsT): void => {
-  data.activate({ text, type, duration, sticky, title, actions, tag });
+const toastAlert = ({ text, type = 'error', duration, sticky, title, actions, tag, titleData, textData }: ToastPropsT): void => {
+  data.activate({ text, type, duration, sticky, title, actions, tag, titleData, textData });
 
   if (type === 'error' && data.console('error'))
     console.error('%c Error ', 'color: white; background-color: #FF1744; border-radius: 5px', text);
