@@ -9,6 +9,7 @@ const Loader: React.FC = () => {
   const [loading, setLoading] = useState<boolean>(false);
   useEffect(() => {
     on((is) => setLoading(is));
+    return () => on((_is) => {});
   }, [on]);
 
   if (!loading) return null;

@@ -42,6 +42,7 @@ const Toast = () => {
         })),
       );
     });
+    return () => on((_data) => {});
   }, [on, clear]);
 
   if (!messages.length) return null;

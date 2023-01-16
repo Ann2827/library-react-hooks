@@ -30,6 +30,7 @@ describe('toast.hook function:', () => {
         icon: '',
         id: 1,
         tag: undefined,
+        group: undefined,
         text: 'Text',
         title: 'Test',
         type: 'error',

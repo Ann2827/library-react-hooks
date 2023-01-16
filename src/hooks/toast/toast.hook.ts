@@ -11,7 +11,7 @@ const useToast = (): ToastI =>
     () => ({
       data: data.getData(),
       on: (fn) => data.on(fn),
-      clear: (id) => data.determinate(id),
+      clear: (idOrGroup) => data.determinate(idOrGroup),
       alert: toastAlert,
       setTypes: (props) => data.updateSettings({ types: props }),
       setTranslationFn: (fn) => data.setTranslationFn(fn),
