@@ -23,8 +23,9 @@
   "source": "src/index.tsx",
   "types": "dist/index.d.ts",
   "engines": {
-    "node": ">=14",
-    "npm": ">=8"
+    "node": ">=16",
+    "npm": ">=9",
+    "yarn": ">=1"
   },
   "scripts": {
     "build": "microbundle-crl --no-compress --format modern,cjs",
