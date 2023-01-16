@@ -65,6 +65,7 @@ const Toast: React.FC = () => {
         })),
       );
     });
+    return () => on((_d) => {});
   }, [on, clear]);
 
   if (!messages.length) return null;
@@ -111,15 +112,16 @@ const { alert } = useToast();
 alert({ text: 'Message', type: 'error', ... });
 ```
 
-| name | type | required | what`s doing |
-| ------ | ------ | ------ | ------ |
-| text | string | true | Message text |
-| type | error, warning, info, success | true | Message type. |
-| duration | number (ms) | false | Display duration. |
-| sticky | bool | false | The message will hang until it is closed manually. |
-| title | string | false | Title for this message. |
-| actions | [array](#alert-actions) | false | Buttons. |
-| tag | string | false | This tag marks the message. This works with duplicate = false. |
+| name     | type | required | what`s doing                                                                |
+|----------| ------ | ------ |-----------------------------------------------------------------------------|
+| text     | string | true | Message text                                                                |
+| type     | error, warning, info, success | true | Message type.                                                               |
+| duration | number (ms) | false | Display duration.                                                           |
+| sticky   | bool | false | The message will hang until it is closed manually.                          |
+| title    | string | false | Title for this message.                                                     |
+| actions  | [array](#alert-actions) | false | Buttons.                                                                    |
+| tag      | string | false | This tag marks the message. This works with duplicate = false.              |
+| group    | string | false | This group marks the message. You can clear all messages by group name. |
 
 ### Property actions for alert <a name = "alert-actions"></a>
 

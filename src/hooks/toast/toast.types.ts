@@ -50,6 +50,11 @@ export type ToastDataObject = {
   tag?: string;
 
   /**
+   * For clearing by group name
+   */
+  group?: string;
+
+  /**
    * The default title was used
    */
   titleDefault?: boolean;
@@ -151,6 +156,7 @@ export interface DataI {
   timeouts: {
     id: number;
     clear: NodeJS.Timeout;
+    group?: string;
   }[];
   settings: ToastSettingsI;
   translationFn: TToastTranslationFn;
@@ -159,7 +165,7 @@ export interface DataI {
   updateAlerts(): void;
   updateSettings(props: RecursivePartial<ToastSettingsI>): void;
   activate(props: ToastPropsT): void;
-  determinate(id?: number): void;
+  determinate(idOrGroup?: number | string): void;
   getData(): DataI['data'];
   on(fn: (data: ToastDataObject[]) => void): void;
   event(data: ToastDataObject[]): void;
@@ -180,7 +186,7 @@ export interface ToastI {
 
   /**
    * The function clears all hanging messages (if id undefined)
-   * or delete one message (if id is defined).
+   * or delete one message (if id is defined). You can delete by id or group name.
    */
   clear: DataI['determinate'];
 

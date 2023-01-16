@@ -10,7 +10,7 @@ import { TToastTranslationFn } from '../../../../src';
 
 const ToastHook: React.FC = () => {
   const navigate = useNavigate();
-  const { alert, setTypes, setTranslationFn } = useToast();
+  const { alert, setTypes, setTranslationFn, clear } = useToast();
   const { t, i18n } = useTranslation();
 
   useEffect(() => {
@@ -57,7 +57,9 @@ const ToastHook: React.FC = () => {
             </ul>
           </div>
         </div>
+
         <hr className={classNames(styles.common_margin__xl, styles.common_divider)} />
+
         <div className={classNames(styles.common_margin__xxl, styles.common_column)}>
           <h5>Error</h5>
           <div className={styles.common_margin__m}>
@@ -90,7 +92,9 @@ const ToastHook: React.FC = () => {
             </button>
           </div>
         </div>
+
         <hr className={classNames(styles.common_margin__xl, styles.common_divider)} />
+
         <div className={classNames(styles.common_margin__xxl, styles.common_column)}>
           <h5>Warning & No Duplicate</h5>
           <div className={styles.common_margin__m}>
@@ -112,7 +116,9 @@ const ToastHook: React.FC = () => {
             Demo
           </button>
         </div>
+
         <hr className={classNames(styles.common_margin__xl, styles.common_divider)} />
+
         <div className={classNames(styles.common_margin__xxl, styles.common_column)}>
           <h5>Success & Duration</h5>
           <div className={styles.common_margin__m}>
@@ -135,7 +141,9 @@ const ToastHook: React.FC = () => {
             Demo
           </button>
         </div>
+
         <hr className={classNames(styles.common_margin__xl, styles.common_divider)} />
+
         <div className={classNames(styles.common_margin__xxl, styles.common_column)}>
           <h5>Info & Actions</h5>
           <div className={styles.common_margin__m}>
@@ -162,7 +170,9 @@ const ToastHook: React.FC = () => {
             Demo
           </button>
         </div>
+
         <hr className={classNames(styles.common_margin__xl, styles.common_divider)} />
+
         <div className={classNames(styles.common_margin__xxl, styles.common_column)}>
           <h5>Translation Fn</h5>
           <div className={styles.common_margin__m}>
@@ -208,6 +218,57 @@ const ToastHook: React.FC = () => {
               onClick={() => i18n.changeLanguage('en')}
             >
               Switch en
+            </button>
+          </div>
+        </div>
+
+        <hr className={classNames(styles.common_margin__xl, styles.common_divider)} />
+
+        <div className={classNames(styles.common_margin__xxl, styles.common_column)}>
+          <h5>Clear by group name</h5>
+          <div className={styles.common_margin__m}>
+            <p className={styles.common_secondaryText}>Info message with buttons. Alert properties:</p>
+            <ul className={styles.common_list}>
+              <li>text - Some info message.</li>
+              <li className={styles.common_listItem}>type - info</li>
+              <li className={styles.common_listItem}>tag - myInfoMessage</li>
+            </ul>
+          </div>
+          <div className={styles.common_buttons}>
+            <button
+              className={classNames(
+                styles.common_buttonPrimary,
+                styles.common_buttonPrimary__outlined,
+                styles.common_margin__m,
+              )}
+              onClick={() => {
+                alert({ text: 'Some info message with group 1.', type: 'info', group: 'myInfoMessage' });
+                alert({ text: 'Some info message with group 2.', type: 'info', group: 'myInfoMessage' });
+                alert({ text: 'Some info message with another group.', type: 'info', group: 'another' });
+                alert({ text: 'Some info message without group.', type: 'info' });
+              }}
+            >
+              Alert messages
+            </button>
+            <button
+              className={classNames(
+                styles.common_buttonPrimary,
+                styles.common_buttonPrimary__outlined,
+                styles.common_margin__m,
+              )}
+              onClick={() => clear('myInfoMessage')}
+            >
+              Clear by Tag name
+            </button>
+            <button
+              className={classNames(
+                styles.common_buttonPrimary,
+                styles.common_buttonPrimary__outlined,
+                styles.common_margin__m,
+              )}
+              onClick={() => clear()}
+            >
+              Clear all
             </button>
           </div>
         </div>

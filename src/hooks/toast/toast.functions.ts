@@ -9,6 +9,6 @@ export const toastSettings = (props: RecursivePartial<ToastSettingsI>): void => 
 export const fnToast = (): Pick<ToastI, 'alert' | 'clear'> => {
   return {
     alert: toastAlert,
-    clear: (id) => data.determinate(id),
+    clear: (idOrGroup) => data.determinate(idOrGroup),
   };
 };

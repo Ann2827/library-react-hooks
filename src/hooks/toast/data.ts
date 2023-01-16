@@ -106,7 +106,7 @@ export const data: DataI = {
       this.event(this.data);
     }
   },
-  activate({ text, type, duration, sticky, title, actions, tag, titleData, textData }) {
+  activate({ text, type, duration, sticky, title, actions, tag, titleData, textData, group }) {
     if (!this.settings.duplicate && tag && this.data.find((item) => item.tag === tag)) {
       return;
     }
@@ -136,6 +136,7 @@ export const data: DataI = {
         };
       }),
       tag,
+      group,
       icon: this.settings.types[type].icon,
       color: this.settings.types[type].color,
       titleDefault: !title,
@@ -150,22 +151,31 @@ export const data: DataI = {
         this.determinate(id);
         this.timeouts = this.timeouts.filter((item) => item.id !== id);
       }, time);
-      this.timeouts.push({ id, clear: timeout });
+      this.timeouts.push({ id, clear: timeout, group });
     }
 
     if (this.settings.limit) {
       this.event(this.data.slice(-this.settings.limit));
     } else this.event(this.data);
   },
-  determinate(id) {
+  determinate(idOrGroup) {
     let updated: ToastDataObject[] = [];
     let timeouts: DataI['timeouts'] = [];
-    if (id) {
-      updated = this.data.filter((item) => item.id !== id);
-      const timeout = this.timeouts.find((item) => item.id === id);
+
+    if (idOrGroup && typeof idOrGroup === 'number') {
+      updated = this.data.filter((item) => item.id !== idOrGroup);
+      const timeout = this.timeouts.find((item) => item.id === idOrGroup);
       if (timeout) clearTimeout(timeout.clear);
-      timeouts = this.timeouts.filter((item) => item.id !== id);
+      timeouts = this.timeouts.filter((item) => item.id !== idOrGroup);
     }
+
+    if (idOrGroup && typeof idOrGroup === 'string') {
+      updated = this.data.filter((item) => item.group !== idOrGroup);
+      const timeout = this.timeouts.find((item) => item.group === idOrGroup);
+      if (timeout) clearTimeout(timeout.clear);
+      timeouts = this.timeouts.filter((item) => item.group !== idOrGroup);
+    }
+
     this.data = updated;
     this.timeouts = timeouts;
 
@@ -179,8 +189,7 @@ export const data: DataI = {
   on(fn) {
     this.event = fn;
   },
-  // @ts-ignore
-  event(data) {},
+  event(_data) {},
   console(type) {
     return this.settings.types[type].console;
   },

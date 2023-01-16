@@ -11,8 +11,9 @@ const toastAlert = ({
   tag,
   titleData,
   textData,
+  group,
 }: ToastPropsT): void => {
-  data.activate({ text, type, duration, sticky, title, actions, tag, titleData, textData });
+  data.activate({ text, type, duration, sticky, title, actions, tag, titleData, textData, group });
 
   if (type === 'error' && data.console('error'))
     console.error('%c Error ', 'color: white; background-color: #FF1744; border-radius: 5px', text);
