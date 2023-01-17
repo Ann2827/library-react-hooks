@@ -42,7 +42,7 @@
     "react-dom": ">=16.0.0"
   },
   "devDependencies": {
-    "@semantic-release/git": "^10.0.1",
+    "@semantic-release/git": "10.0.0",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^12.1.2",
     "@testing-library/react-hooks": "^7.0.2",
