@@ -21,7 +21,7 @@ jobs:
         id: cache-save
         uses: actions/cache/save@v3
         with:
-          path: ./node_module
+          path: node_module
           key: cache-nodeModules
 
       - name: Install Example
@@ -102,7 +102,7 @@ jobs:
         id: cache-restore
         uses: actions/cache/restore@v3
         with:
-          path: ./node_module
+          path: node_module
           key: cache-nodeModules
 
       - name: Release
