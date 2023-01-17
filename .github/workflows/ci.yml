@@ -109,7 +109,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: npx semantic-release
+        run: yarn release
 #        run: |
 #          yarn add @semantic-release/git@10.0.0 -D
 #          npm_config_yes=true npx semantic-release
