@@ -6,8 +6,7 @@
   "author": "Ann Bystrova <ann.bystrova96@mail.ru>",
   "engines": {
     "node": ">=16",
-    "npm": ">=9",
-    "yarn": ">=1"
+    "npm": ">=8"
   },
   "scripts": {
     "start": "react-scripts start",
