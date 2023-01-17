@@ -121,7 +121,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
-          yarn add @semantic-release@19.0.5/git -D
+          yarn add @semantic-release/git@10.0.0 -D
           npm_config_yes=true npx semantic-release
 
 #  deploy2:
