@@ -22,7 +22,7 @@ jobs:
         uses: actions/cache/save@v3
         with:
           path: ./node_modules
-          key: cache-nodeModules
+          key: ${{ runner.os }}-nodeModules
 
       - name: Install Example
         continue-on-error: false
@@ -103,13 +103,13 @@ jobs:
         uses: actions/cache/restore@v3
         with:
           path: ./node_modules
-          key: cache-nodeModules
+          key: ${{ runner.os }}-nodeModules
 
       - name: Release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: yarn release
+        run: yarn semantic-release
 #        run: |
 #          yarn add @semantic-release/git@10.0.0 -D
 #          npm_config_yes=true npx semantic-release
