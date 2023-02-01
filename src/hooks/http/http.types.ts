@@ -33,6 +33,9 @@ export type EventT = {
 export type DataIStates = 'pending' | 'success' | 'error';
 
 export interface DataI {
+  _states: {
+    [K in string]: DataIStates;
+  };
   loader: boolean;
   toast: boolean;
   blockRepeatWhenPending: boolean;
@@ -44,9 +47,8 @@ export interface DataI {
   errors: {
     [K in number]: string;
   };
-  states: {
-    [K in string]: DataIStates;
-  };
+  _event(e: EventT): void;
+  _reset(): void;
   onError(response: Response): void;
   responseFormat(d: any): any;
   setOnError(fn: (response: Response) => void): void;
@@ -77,8 +79,6 @@ export interface DataI {
   setState(url: string, state: DataIStates): void;
   getState(url: string): DataIStates | undefined;
   on(fn: (e: EventT) => void): void;
-  event(e: EventT): void;
-  _reset(): void;
 }
 
 export interface HttpI {

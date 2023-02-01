@@ -1,6 +1,7 @@
 import { DataI } from './http.types';
 
 const data: DataI = {
+  _states: {},
   loader: true,
   toast: true,
   blockRepeatWhenPending: true,
@@ -8,9 +9,20 @@ const data: DataI = {
   tokens: {},
   requests: {},
   errors: {},
-  states: {},
-  // @ts-ignore
-  onError(response) {},
+  _event(_d) {},
+  _reset() {
+    this.loader = true;
+    this.toast = true;
+    this.tokens = {};
+    this.requests = {};
+    this.errors = {};
+    this._states = {};
+    this.onError = (_response) => {};
+    this.responseFormat = (d) => {
+      return d;
+    };
+  },
+  onError(_response) {},
   responseFormat(d) {
     return d;
   },
@@ -43,7 +55,7 @@ const data: DataI = {
   setToken(name, value) {
     if (name in this.tokens) {
       this.tokens[name] = value;
-      this.event({ action: 'token', type: 'change', status: !!value });
+      this._event({ action: 'token', type: 'change', status: !!value });
     }
   },
   getError(status) {
@@ -63,28 +75,13 @@ const data: DataI = {
     return Boolean(this.tokens[tokenName]);
   },
   setState(url, state) {
-    this.states[url] = state;
+    this._states[url] = state;
   },
   getState(url) {
-    return this.states?.[url];
+    return this._states?.[url];
   },
   on(fn) {
-    this.event = fn;
-  },
-  // @ts-ignore
-  event(d) {},
-  _reset() {
-    this.loader = true;
-    this.toast = true;
-    this.tokens = {};
-    this.requests = {};
-    this.errors = {};
-    this.states = {};
-    // @ts-ignore
-    this.onError = (response) => {};
-    this.responseFormat = (d) => {
-      return d;
-    };
+    this._event = fn;
   },
 };
 

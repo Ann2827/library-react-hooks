@@ -151,26 +151,26 @@ export type ToastPropsT = Omit<Omit<Omit<ToastDataObject, 'id'>, 'icon'>, 'color
 };
 
 export interface DataI {
-  lastID: number;
-  data: ToastDataObject[];
-  timeouts: {
+  _lastID: number;
+  _timeouts: {
     id: number;
     clear: NodeJS.Timeout;
     group?: string;
   }[];
-  settings: ToastSettingsI;
-  translationFn: TToastTranslationFn;
-  workWithOptions(options: TToastTranslationData['options']): TToastTranslationData['options'];
+  _settings: ToastSettingsI;
+  data: ToastDataObject[];
+  _translationFn: TToastTranslationFn;
+  _event(data: ToastDataObject[]): void;
+  _reset(): void;
+  _workWithOptions(options: TToastTranslationData['options']): TToastTranslationData['options'];
   setTranslationFn(fn: TToastTranslationFn): void;
-  updateAlerts(): void;
+  _updateAlerts(): void;
   updateSettings(props: RecursivePartial<ToastSettingsI>): void;
   activate(props: ToastPropsT): void;
   determinate(idOrGroup?: number | string): void;
   getData(): DataI['data'];
   on(fn: (data: ToastDataObject[]) => void): void;
-  event(data: ToastDataObject[]): void;
   console(type: ToastTypes): boolean;
-  _reset(): void;
 }
 
 export interface ToastI {

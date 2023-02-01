@@ -2,14 +2,12 @@ import { useCallback } from 'react';
 import type { DataI, {{ properCase name }}I } from './{{ camelCase name }}.types';
 
 const data: DataI = {
+  _event(_data) {},
+  _reset() {
+    this.event = (_data) => {};
+  },
   on(fn) {
     this.event = fn;
-  },
-  // @ts-ignore
-  event(data) {},
-  _reset() {
-    // @ts-ignore
-    this.event = (data) => {};
   },
 };
 

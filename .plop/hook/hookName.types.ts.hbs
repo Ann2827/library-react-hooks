@@ -1,9 +1,9 @@
 export type {{ properCase name }}DataObject = {};
 
 export interface DataI {
-  on(fn: (data: {{ properCase name }}DataObject[]) => void): void;
-  event(data: {{ properCase name }}DataObject[]): void;
+  _event(data: {{ properCase name }}DataObject[]): void;
   _reset(): void;
+  on(fn: (data: {{ properCase name }}DataObject[]) => void): void;
 }
 
 export interface {{ properCase name }}I {
