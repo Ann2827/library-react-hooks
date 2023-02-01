@@ -1,13 +1,13 @@
 export interface DataI {
-  active: boolean;
-  queue: number;
+  _active: boolean;
+  _queue: number;
+  _event(value: boolean): void;
+  _reset(): void;
   activate(): void;
   determinate(): void;
   stop(): void;
   getActive(): boolean;
-  event(value: boolean): void;
   on(fn: (value: boolean) => void): void;
-  _reset(): void;
 }
 
 export interface LoaderI {

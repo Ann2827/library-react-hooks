@@ -1,38 +1,37 @@
 import { DataI } from './loader.types';
 
 export const data: DataI = {
-  active: false,
-  queue: 0,
+  _active: false,
+  _queue: 0,
+  _event(_value) {},
+  _reset() {
+    this._active = false;
+    this._queue = 0;
+    this._event(false);
+  },
   activate() {
-    this.active = true;
-    this.queue += 1;
-    this.event(true);
+    this._active = true;
+    this._queue += 1;
+    this._event(true);
   },
   determinate() {
-    if (this.queue > 1) {
-      this.queue -= 1;
+    if (this._queue > 1) {
+      this._queue -= 1;
     } else {
-      this.active = false;
-      this.queue = 0;
-      this.event(false);
+      this._active = false;
+      this._queue = 0;
+      this._event(false);
     }
   },
   stop() {
-    this.active = false;
-    this.queue = 0;
-    this.event(false);
+    this._active = false;
+    this._queue = 0;
+    this._event(false);
   },
   getActive() {
-    return this.active;
+    return this._active;
   },
-  // @ts-ignore
-  event(value) {},
   on(fn) {
-    this.event = fn;
-  },
-  _reset() {
-    this.active = false;
-    this.queue = 0;
-    this.event(false);
+    this._event = fn;
   },
 };
