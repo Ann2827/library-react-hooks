@@ -1,8 +1,17 @@
 export type T{{ properCase name }}Event = {};
+/** @private **/
+export type TFn = (e: T{{ properCase name }}Event) => void;
 
+/**
+ * @private
+ * @ignore
+ */
 export interface IData {
-  _event(event: T{{ properCase name }}Event): void;
-  on(fn: (event: T{{ properCase name }}Event) => void): void;
+  /** @protected **/
+  _listeners: Array<TFn>;
+  /** @protected **/
+  _event: TFn;
+  on(fn: TFn): () => void;
   reset(): void;
 }
 

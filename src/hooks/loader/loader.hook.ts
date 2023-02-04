@@ -18,7 +18,7 @@ const useLoader = (): LoaderI => {
     setActive(data.getActive());
   }, [trigger]);
   const loaderStop = useCallback(() => data.stop(), []);
-  const _reset = useCallback(() => data._reset(), []);
+  const _reset = useCallback(() => data.reset(), []);
 
   return { active, loaderOn, loaderOff, on, loaderStop, _reset };
 };

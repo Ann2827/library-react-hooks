@@ -36,10 +36,14 @@ export const initialSettings: ToastSettingsI = {
 };
 
 export const data: DataI = {
+  _listeners: [],
   _lastID: 0,
   _timeouts: [],
   _settings: { ...initialSettings },
   data: [],
+  _event(e) {
+    this._listeners.forEach((listener) => listener(e));
+  },
   _translationFn: initialTranslationFn,
   _workWithOptions(options) {
     if (!options) return undefined;
@@ -76,15 +80,6 @@ export const data: DataI = {
       }
       this._event(this.data);
     }
-  },
-  _event(_data) {},
-  _reset() {
-    this._lastID = 0;
-    this.data = [];
-    this._timeouts = [];
-    this._settings = { ...initialSettings };
-    this._event = (_data) => {};
-    this._translationFn = initialTranslationFn;
   },
   setTranslationFn(fn) {
     this._translationFn = fn;
@@ -196,9 +191,18 @@ export const data: DataI = {
     return this.data;
   },
   on(fn) {
-    this._event = fn;
+    this._listeners.push(fn);
+    return () => (this._listeners = this._listeners.filter((listener) => listener !== fn));
   },
   console(type) {
     return this._settings.types[type].console;
+  },
+  reset() {
+    this._lastID = 0;
+    this.data = [];
+    this._timeouts = [];
+    this._settings = { ...initialSettings };
+    this._event = (_data) => {};
+    this._translationFn = initialTranslationFn;
   },
 };
