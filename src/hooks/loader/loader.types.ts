@@ -1,13 +1,25 @@
+export type TEvent = boolean;
+export type TFn = (e: TEvent) => void;
+
+/**
+ * @private
+ * @ignore
+ */
 export interface DataI {
+  /** @protected **/
+  _listeners: Array<TFn>;
+  /** @protected **/
   _active: boolean;
+  /** @protected **/
   _queue: number;
-  _event(value: boolean): void;
-  _reset(): void;
+  /** @protected **/
+  _event: TFn;
   activate(): void;
   determinate(): void;
   stop(): void;
   getActive(): boolean;
-  on(fn: (value: boolean) => void): void;
+  on(fn: TFn): () => void;
+  reset(): void;
 }
 
 export interface LoaderI {
@@ -39,5 +51,5 @@ export interface LoaderI {
   /**
    * Resets the state
    */
-  _reset: DataI['_reset'];
+  _reset: DataI['reset'];
 }

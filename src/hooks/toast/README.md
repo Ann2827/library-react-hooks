@@ -56,7 +56,7 @@ const Toast: React.FC = () => {
 
   const [messages, setMessages] = useState([]);
   useEffect(() => {
-    on((data: ToastDataObject[]) => {
+    const cleanListener = on((data: ToastDataObject[]) => {
       setMessages(
         data.map((item) => ({
           title: item.title || '',
@@ -65,7 +65,7 @@ const Toast: React.FC = () => {
         })),
       );
     });
-    return () => on((_d) => {});
+    return () => cleanListener();
   }, [on, clear]);
 
   if (!messages.length) return null;

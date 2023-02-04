@@ -31,7 +31,7 @@ const Toast = () => {
 
   const [messages, setMessages] = useState<NotificationI[]>([]);
   useEffect(() => {
-    on((data: ToastDataObject[]) => {
+    const clearListener = on((data: ToastDataObject[]) => {
       setMessages(
         data.map((item) => ({
           title: item.title || '',
@@ -42,7 +42,7 @@ const Toast = () => {
         })),
       );
     });
-    return () => on((_data) => {});
+    return () => clearListener();
   }, [on, clear]);
 
   if (!messages.length) return null;

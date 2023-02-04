@@ -1,13 +1,11 @@
 import { DataI } from './loader.types';
 
 export const data: DataI = {
+  _listeners: [],
   _active: false,
   _queue: 0,
-  _event(_value) {},
-  _reset() {
-    this._active = false;
-    this._queue = 0;
-    this._event(false);
+  _event(e) {
+    this._listeners.forEach((listener) => listener(e));
   },
   activate() {
     this._active = true;
@@ -32,6 +30,12 @@ export const data: DataI = {
     return this._active;
   },
   on(fn) {
-    this._event = fn;
+    this._listeners.push(fn);
+    return () => (this._listeners = this._listeners.filter((listener) => listener !== fn));
+  },
+  reset() {
+    this._listeners = [];
+    this._active = false;
+    this._queue = 0;
   },
 };
