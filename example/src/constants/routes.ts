@@ -10,5 +10,8 @@ export const ROUTE_FULL_TOAST = withSlash([ROUTE_MAIN, ROUTE_TOAST]);
 export const ROUTE_LOADER = 'loader';
 export const ROUTE_FULL_LOADER = withSlash([ROUTE_MAIN, ROUTE_LOADER]);
 
+export const ROUTE_TIMER = 'timer';
+export const ROUTE_FULL_TIMER = withSlash([ROUTE_MAIN, ROUTE_TIMER]);
+
 export const ROUTE_HTTP = 'http';
 export const ROUTE_FULL_HTTP = withSlash([ROUTE_MAIN, ROUTE_HTTP]);

@@ -58,6 +58,12 @@ const hookGenerator = {
                 templateFile: './hook/README.md.hbs',
                 abortOnFail: true,
             },
+            {
+                type: 'add',
+                path: `../${path}/{{ name }}/data.ts`,
+                templateFile: './hook/data.ts.hbs',
+                abortOnFail: true,
+            },
             // add imports
             {
                 type: 'append',

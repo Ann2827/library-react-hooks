@@ -1,0 +1,11 @@
+import type { IData } from './{{ camelCase name }}.types';
+
+export const data: IData = {
+  _event(_event) {},
+  on(fn) {
+    this._event = fn;
+  },
+  reset() {
+    this._event = (_event) => {};
+  },
+};

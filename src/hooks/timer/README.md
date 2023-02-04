@@ -1,4 +1,4 @@
-# {{ properCase name }} hook
+# Timer hook
 
 [comment]: <> (description)
 
@@ -10,7 +10,7 @@
 
 - [Usage](#usage)
 - [Properties](#properties)
-- [Demo](https://ann2827.github.io/library-react-hooks/{{ name }})
+- [Demo](https://ann2827.github.io/library-react-hooks/timer)
 
 ## Usage <a name = "usage"></a>
 
@@ -18,10 +18,10 @@ Place for message dispatch:
 
 ```tsx
 import React from 'react';
-import { {{ fullName prefix name }} } from 'library-react-hooks';
+import { useTimer } from 'library-react-hooks';
 
 const Example: React.FC = () => {
-  const { } = {{ fullName prefix name }}();
+  const { } = useTimer();
 
   return (
     <div>
@@ -31,14 +31,14 @@ const Example: React.FC = () => {
 };
 ```
 
-{{ properCase name }} component:
+Timer component:
 
 ```tsx
 import React from 'react';
-import { {{ fullName prefix name }} } from 'library-react-hooks';
+import { useTimer } from 'library-react-hooks';
 
 const Toast: React.FC = () => {
-  const { } = {{ fullName prefix name }}();
+  const { } = useTimer();
 
   return <div></div>;
 };
@@ -46,10 +46,10 @@ const Toast: React.FC = () => {
 
 ## Properties <a name = "properties"></a>
 
-### Set Once `{{ camelCase name }}Settings`
+### Set Once `timerSettings`
 
 ```ts
-{{ camelCase name }}Settings({ ... });
+timerSettings({ ... });
 ```
 
 | name | type | default | what`s doing |
@@ -59,9 +59,9 @@ const Toast: React.FC = () => {
 ### Fn: `on`
 
 ```ts
-const { on } = {{ fullName prefix name }}();
+const { on } = useTimer();
 
-on((event: T{{ properCase name }}Event) => {
+on((event: TTimerEvent) => {
   ...
 });
 ```

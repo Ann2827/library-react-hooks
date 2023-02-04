@@ -1,3 +1,4 @@
+export * from './hooks/timer';
 export * from './hooks/http';
 export * from './hooks/helper';
 export * from './hooks/toast';

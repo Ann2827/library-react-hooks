@@ -4,10 +4,11 @@ import styles from '../../assests/styles/page.module.scss';
 import classNames from 'classnames';
 import { ReactComponent as ArrowRightIcon } from '../../assests/icons/arrowRight.svg';
 import { useNavigate } from 'react-router-dom';
-import { ROUTE_FULL_HTTP, ROUTE_FULL_LOADER, ROUTE_FULL_TOAST } from '../../constants/routes';
+import { ROUTE_FULL_HTTP, ROUTE_FULL_LOADER, ROUTE_FULL_TIMER, ROUTE_FULL_TOAST } from '../../constants/routes';
 import { openLink } from '../../utils/url';
+import {useTimer} from "../../../../src";
 
-const ToastDemo: React.FC = () => {
+const ToastDemo: React.VFC = () => {
   const { alert } = useToast();
   const navigate = useNavigate();
 
@@ -29,7 +30,7 @@ const ToastDemo: React.FC = () => {
   );
 };
 
-const LoaderDemo: React.FC = () => {
+const LoaderDemo: React.VFC = () => {
   const { loaderOn, loaderStop } = useLoader();
   const navigate = useNavigate();
 
@@ -56,7 +57,35 @@ const LoaderDemo: React.FC = () => {
   );
 };
 
-const HttpDemo: React.FC = () => {
+const TimerDemo: React.VFC = () => {
+  const { setTimer } = useTimer();
+  const navigate = useNavigate();
+  const timerName = 'myTimer';
+
+  const clickHandle = useCallback(() => {
+    setTimer(5000, { name: timerName });
+  }, [setTimer]);
+
+  return (
+    <div className={classNames(styles.common_margin__xxl, styles.common_column)}>
+      <h5>Timer Hook</h5>
+      <p>time: </p>
+      <div className={styles.common_buttons}>
+        <button
+          className={classNames(styles.common_buttonPrimary, styles.common_buttonPrimary__outlined)}
+          onClick={clickHandle}
+        >
+          Show
+        </button>
+        <button className={styles.common_buttonPrimary} onClick={() => navigate(ROUTE_FULL_TIMER)}>
+          <ArrowRightIcon />
+        </button>
+      </div>
+    </div>
+  );
+};
+
+const HttpDemo: React.VFC = () => {
   const navigate = useNavigate();
 
   return (
@@ -77,7 +106,7 @@ const HttpDemo: React.FC = () => {
   );
 };
 
-const HelperDemo: React.FC = () => {
+const HelperDemo: React.VFC = () => {
   return (
     <div className={classNames(styles.common_margin__xxl, styles.common_column)}>
       <h5>Helper Hooks</h5>
@@ -104,7 +133,7 @@ const HelperDemo: React.FC = () => {
   );
 };
 
-const Main: React.FC = () => {
+const Main: React.VFC = () => {
   return (
     <div className={styles.page_wrapper}>
       <div className={styles.page_header}>
@@ -119,6 +148,7 @@ const Main: React.FC = () => {
         </button>
         <ToastDemo />
         <LoaderDemo />
+        <TimerDemo />
         <HttpDemo />
         <HelperDemo />
       </div>
