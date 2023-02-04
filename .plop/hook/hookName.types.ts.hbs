@@ -1,9 +1,19 @@
 export type {{ properCase name }}DataObject = {};
 
+export type TEvent = {};
+export type TFn = (e: TEvent) => void;
+
+/**
+ * @private
+ * @ignore
+ */
 export interface DataI {
-  _event(data: {{ properCase name }}DataObject[]): void;
-  _reset(): void;
-  on(fn: (data: {{ properCase name }}DataObject[]) => void): void;
+  /** @protected **/
+  _listeners: Array<TFn>;
+  /** @protected **/
+  _event: TFn;
+  on(fn: TFn) => void): void;
+  reset(): void;
 }
 
 export interface {{ properCase name }}I {

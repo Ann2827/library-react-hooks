@@ -150,18 +150,31 @@ export type ToastPropsT = Omit<Omit<Omit<ToastDataObject, 'id'>, 'icon'>, 'color
   sticky?: boolean;
 };
 
+export type TEvent = ToastDataObject[];
+export type TFn = (e: TEvent) => void;
+
+/**
+ * @private
+ * @ignore
+ */
 export interface DataI {
+  /** @protected **/
+  _listeners: Array<TFn>;
+  /** @protected **/
   _lastID: number;
+  /** @protected **/
   _timeouts: {
     id: number;
     clear: NodeJS.Timeout;
     group?: string;
   }[];
+  /** @protected **/
   _settings: ToastSettingsI;
   data: ToastDataObject[];
+  /** @protected **/
   _translationFn: TToastTranslationFn;
-  _event(data: ToastDataObject[]): void;
-  _reset(): void;
+  /** @protected **/
+  _event: TFn;
   _workWithOptions(options: TToastTranslationData['options']): TToastTranslationData['options'];
   setTranslationFn(fn: TToastTranslationFn): void;
   _updateAlerts(): void;
@@ -169,8 +182,9 @@ export interface DataI {
   activate(props: ToastPropsT): void;
   determinate(idOrGroup?: number | string): void;
   getData(): DataI['data'];
-  on(fn: (data: ToastDataObject[]) => void): void;
+  on(fn: TFn): () => void;
   console(type: ToastTypes): boolean;
+  reset(): void;
 }
 
 export interface ToastI {
@@ -209,5 +223,5 @@ export interface ToastI {
   /**
    * Resets the state
    */
-  _reset: DataI['_reset'];
+  _reset: DataI['reset'];
 }

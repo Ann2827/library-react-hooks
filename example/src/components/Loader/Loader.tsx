@@ -8,8 +8,8 @@ const Loader: React.FC = () => {
 
   const [loading, setLoading] = useState<boolean>(false);
   useEffect(() => {
-    on((is) => setLoading(is));
-    return () => on((_is) => {});
+    const clearListener = on((is) => setLoading(is));
+    return () => clearListener();
   }, [on]);
 
   if (!loading) return null;
