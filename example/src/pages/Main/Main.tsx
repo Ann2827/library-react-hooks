@@ -1,12 +1,11 @@
-import React, { useCallback } from 'react';
-import { useToast, useLoader } from 'library-react-hooks';
+import React, { useCallback, useEffect } from 'react';
+import { useToast, useLoader, useTimer } from 'library-react-hooks';
 import styles from '../../assests/styles/page.module.scss';
 import classNames from 'classnames';
 import { ReactComponent as ArrowRightIcon } from '../../assests/icons/arrowRight.svg';
 import { useNavigate } from 'react-router-dom';
 import { ROUTE_FULL_HTTP, ROUTE_FULL_LOADER, ROUTE_FULL_TIMER, ROUTE_FULL_TOAST } from '../../constants/routes';
 import { openLink } from '../../utils/url';
-import {useTimer} from "../../../../src";
 
 const ToastDemo: React.VFC = () => {
   const { alert } = useToast();
@@ -58,24 +57,31 @@ const LoaderDemo: React.VFC = () => {
 };
 
 const TimerDemo: React.VFC = () => {
-  const { setTimer } = useTimer();
+  const { setTimer, time, on } = useTimer();
   const navigate = useNavigate();
   const timerName = 'myTimer';
 
+  useEffect(() => {
+    const clear = on((e) => {
+      console.log('e', e);
+    });
+    return () => clear();
+  }, [on]);
+
   const clickHandle = useCallback(() => {
-    setTimer(5000, { name: timerName });
+    setTimer(10, { name: timerName, observe: true, listen: true });
   }, [setTimer]);
 
   return (
     <div className={classNames(styles.common_margin__xxl, styles.common_column)}>
       <h5>Timer Hook</h5>
-      <p>time: </p>
+      <p className={classNames(styles.common_margin__m, styles.common_secondaryText)}>time: {time[timerName]}</p>
       <div className={styles.common_buttons}>
         <button
           className={classNames(styles.common_buttonPrimary, styles.common_buttonPrimary__outlined)}
           onClick={clickHandle}
         >
-          Show
+          Start
         </button>
         <button className={styles.common_buttonPrimary} onClick={() => navigate(ROUTE_FULL_TIMER)}>
           <ArrowRightIcon />

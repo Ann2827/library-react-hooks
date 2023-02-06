@@ -9,5 +9,6 @@ export type {
   ToastDataObject,
   RecursivePartial,
   TToastTranslationFn,
+  TToastEvent,
 } from './toast.types';
 export { useToast };

@@ -1,16 +1,19 @@
 import type { IData } from './timer.types';
 
-export const data: IData = {
+const data: IData = {
+  _listeners: [],
   _timers: {},
+  time: {},
   _onDone(options) {
-    if (options.dispatch)
-      this._event({ name: options.name, action: 'done', params: options.params, onExpired: options.onExpired });
-    if (typeof options.onExpired === 'function' && options.autoFinish) options.onExpired();
+    if (options.listen)
+      this._event({ name: options.name, action: 'done', params: options.params, callback: options.callback });
+    if (typeof options.callback === 'function' && options.autoFinish) options.callback();
     this._timers[options.name] = undefined;
+    this.time[options.name] = 0;
   },
   _startTimeout(time, options) {
-    if (options.dispatch)
-      this._event({ name: options.name, action: 'start', params: options.params, onExpired: options.onExpired });
+    if (options.listen)
+      this._event({ name: options.name, action: 'start', params: options.params, callback: options.callback });
     this._timers[options.name] = {
       type: 'timeout',
       time,
@@ -19,8 +22,8 @@ export const data: IData = {
     };
   },
   _startInterval(time, options) {
-    if (options.dispatch)
-      this._event({ name: options.name, action: 'start', params: options.params, onExpired: options.onExpired });
+    if (options.listen)
+      this._event({ name: options.name, action: 'start', params: options.params, callback: options.callback });
     this._timers[options.name] = {
       type: 'interval',
       time,
@@ -31,15 +34,16 @@ export const data: IData = {
 
         const leftTime = Number(timer.time);
         if (leftTime > 0) {
-          if (options.dispatch)
+          if (options.listen)
             this._event({
               name: options.name,
               action: 'change',
               params: options.params,
-              onExpired: options.onExpired,
+              callback: options.callback,
               time: leftTime - 1,
             });
           this._timers[options.name]!.time = leftTime - 1;
+          this.time[options.name] = leftTime - 1;
         } else {
           const interval: NodeJS.Timeout | null = timer.clear;
           if (interval) {
@@ -50,10 +54,19 @@ export const data: IData = {
       }, 1000),
     };
   },
-  _event(_e) {},
+  _event(e) {
+    this._listeners.forEach((listener) => listener(e));
+  },
+  // get time() {
+  //   return this._time;
+  // },
   setTimer(time, options) {
-    if (time <= 0) return;
+    if (time <= 0) {
+      this.time[options.name] = 0;
+      return;
+    }
 
+    this.time[options.name] = time;
     if (options.observe) {
       this._startInterval(time, options);
       return;
@@ -63,8 +76,8 @@ export const data: IData = {
   cancelTimer(name: string) {
     const timer = this._timers[name];
     if (!timer) return;
-    if (timer.options.dispatch)
-      this._event({ name, action: 'cancel', params: timer.options.params, onExpired: timer.options.onExpired });
+    if (timer.options.listen)
+      this._event({ name, action: 'cancel', params: timer.options.params, callback: timer.options.callback });
     if (timer.type === 'interval') {
       clearInterval(timer.clear);
     }
@@ -84,11 +97,37 @@ export const data: IData = {
     return 0;
   },
   on(fn) {
-    this._event = fn;
+    this._listeners.push(fn);
+    return () => (this._listeners = this._listeners.filter((listener) => listener !== fn));
   },
   reset() {
     this.clear();
+    this._listeners = [];
     this._timers = {};
-    this._event = (_e) => {};
+    this.time = {};
   },
 };
+
+data.time = new Proxy<IData['time']>(data.time, {
+  get(target, prop, _receiver) {
+    if (typeof prop === 'string' && prop in target) {
+      return target[prop];
+    } else {
+      return 0;
+    }
+  },
+  // set(target, prop, newValue, _receiver): boolean {
+  //   console.log('data.time Proxy set', target, prop, newValue);
+  //   if (typeof prop !== 'string') return false;
+  //   const value = target?.[prop];
+  //   if (typeof value === 'function') {
+  //     target[prop] = newValue;
+  //     return true;
+  //   }
+  //   return false;
+  // },
+});
+
+// data = new Proxy<IData>(data, privateProxy<IData>());
+
+export default data;

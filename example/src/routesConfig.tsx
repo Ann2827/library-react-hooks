@@ -6,6 +6,7 @@ import ToastHook from './pages/ToastHook';
 import LoaderHook from './pages/LoaderHook';
 import HttpHook from './pages/HttpHook';
 import { ROUTE_MAIN, ROUTE_LOADER, ROUTE_TOAST, ROUTE_HTTP, ROUTE_TIMER } from './constants/routes';
+import TimeHook from './pages/TimeHook';
 // import { withSlash } from './utils/url';
 
 const routesConfig: RouteObject[] = [
@@ -26,7 +27,7 @@ const routesConfig: RouteObject[] = [
       },
       {
         path: ROUTE_TIMER,
-        element: <LoaderHook />,
+        element: <TimeHook />,
       },
       {
         path: ROUTE_HTTP,

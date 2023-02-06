@@ -150,8 +150,9 @@ export type ToastPropsT = Omit<Omit<Omit<ToastDataObject, 'id'>, 'icon'>, 'color
   sticky?: boolean;
 };
 
-export type TEvent = ToastDataObject[];
-export type TFn = (e: TEvent) => void;
+export type TToastEvent = ToastDataObject[];
+/** @private **/
+export type TFn = (e: TToastEvent) => void;
 
 /**
  * @private
