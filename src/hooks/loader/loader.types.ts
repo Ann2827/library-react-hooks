@@ -1,5 +1,6 @@
-export type TEvent = boolean;
-export type TFn = (e: TEvent) => void;
+export type TLoaderEvent = boolean;
+/** @private **/
+export type TFn = (e: TLoaderEvent) => void;
 
 /**
  * @private

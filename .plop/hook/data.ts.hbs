@@ -1,0 +1,15 @@
+import type { IData } from './{{ camelCase name }}.types';
+
+export const data: IData = {
+  _listeners: [],
+  _event(e) {
+    this._listeners.forEach((listener) => listener(e));
+  },
+  on(fn) {
+    this._listeners.push(fn);
+    return () => (this._listeners = this._listeners.filter((listener) => listener !== fn));
+  },
+  reset() {
+    this._listeners = [];
+  },
+};

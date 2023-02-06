@@ -1,24 +1,23 @@
-export type {{ properCase name }}DataObject = {};
-
-export type TEvent = {};
-export type TFn = (e: TEvent) => void;
+export type T{{ properCase name }}Event = {};
+/** @private **/
+export type TFn = (e: T{{ properCase name }}Event) => void;
 
 /**
  * @private
  * @ignore
  */
-export interface DataI {
+export interface IData {
   /** @protected **/
   _listeners: Array<TFn>;
   /** @protected **/
   _event: TFn;
-  on(fn: TFn) => void): void;
+  on(fn: TFn): () => void;
   reset(): void;
 }
 
-export interface {{ properCase name }}I {
+export interface I{{ properCase name }} {
   /**
    * Resets the state
    */
-  _reset: DataI['_reset'];
+  reset: IData['reset'];
 }
