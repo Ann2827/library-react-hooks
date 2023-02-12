@@ -61,7 +61,9 @@ export interface IData {
   };
   time: Record<string, number>;
   /** @protected **/
-  _onDone(options: TTimerOptions): void;
+  _onDone(name: TTimerOptions['name']): void;
+  /** @protected **/
+  _clearTimer(name: TTimerOptions['name']): void;
   /** @protected **/
   _startTimeout(time: number, options: TTimerOptions): void;
   /** @protected **/
