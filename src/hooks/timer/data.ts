@@ -4,12 +4,34 @@ const data: IData = {
   _listeners: [],
   _timers: {},
   time: {},
-  _onDone(options) {
-    if (options.listen)
-      this._event({ name: options.name, action: 'done', params: options.params, callback: options.callback });
-    if (typeof options.callback === 'function' && options.autoFinish) options.callback();
-    this._timers[options.name] = undefined;
-    this.time[options.name] = 0;
+  _onDone(name) {
+    const timer = this._timers[name];
+    if (!timer) return;
+
+    if (timer.options.listen)
+      this._event({ name, action: 'done', params: timer.options.params, callback: timer.options.callback });
+    // Timeout при onDone выполнился сам
+    if (timer.type === 'interval') {
+      clearInterval(timer.clear);
+    }
+    if (typeof timer.options.callback === 'function' && timer.options.autoFinish) timer.options.callback();
+    this._timers[name] = undefined;
+    this.time[name] = 0;
+  },
+  _clearTimer(name) {
+    const timer = this._timers[name];
+    if (!timer) return;
+
+    if (timer.options.listen)
+      this._event({ name, action: 'cancel', params: timer.options.params, callback: timer.options.callback });
+    if (timer.type === 'timeout') {
+      clearTimeout(timer.clear);
+    }
+    if (timer.type === 'interval') {
+      clearInterval(timer.clear);
+    }
+    this._timers[name] = undefined;
+    this.time[name] = 0;
   },
   _startTimeout(time, options) {
     if (options.listen)
@@ -18,7 +40,7 @@ const data: IData = {
       type: 'timeout',
       time,
       options,
-      clear: setTimeout(() => this._onDone(options), time * 1000),
+      clear: setTimeout(() => this._onDone(options.name), time * 1000),
     };
   },
   _startInterval(time, options) {
@@ -45,11 +67,7 @@ const data: IData = {
           this._timers[options.name]!.time = leftTime - 1;
           this.time[options.name] = leftTime - 1;
         } else {
-          const interval: NodeJS.Timeout | null = timer.clear;
-          if (interval) {
-            clearInterval(interval);
-          }
-          this._onDone(options);
+          this._onDone(options.name);
         }
       }, 1000),
     };
@@ -65,6 +83,7 @@ const data: IData = {
       this.time[options.name] = 0;
       return;
     }
+    this._clearTimer(options.name);
 
     this.time[options.name] = time;
     if (options.observe) {
@@ -74,17 +93,7 @@ const data: IData = {
     this._startTimeout(time, options);
   },
   cancelTimer(name: string) {
-    const timer = this._timers[name];
-    if (!timer) return;
-    if (timer.options.listen)
-      this._event({ name, action: 'cancel', params: timer.options.params, callback: timer.options.callback });
-    if (timer.type === 'interval') {
-      clearInterval(timer.clear);
-    }
-    if (timer.type === 'timeout') {
-      clearTimeout(timer.clear);
-    }
-    this._timers[name] = undefined;
+    this._clearTimer(name);
   },
   clear() {
     Object.keys(this._timers).forEach((name) => {

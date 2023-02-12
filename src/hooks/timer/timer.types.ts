@@ -61,7 +61,9 @@ export interface IData {
   };
   time: Record<string, number>;
   /** @protected **/
-  _onDone(options: TTimerOptions): void;
+  _onDone(name: TTimerOptions['name']): void;
+  /** @protected **/
+  _clearTimer(name: TTimerOptions['name']): void;
   /** @protected **/
   _startTimeout(time: number, options: TTimerOptions): void;
   /** @protected **/
@@ -78,6 +80,10 @@ export interface IData {
 }
 
 export interface ITimer {
+  /**
+   * @deprecated
+   * Use useListenTime hook
+   */
   time: IData['time'];
   expToTime(exp: number): number;
   on: IData['on'];
@@ -90,3 +96,5 @@ export interface ITimer {
    */
   reset: IData['reset'];
 }
+
+export type TListenTime = IData['time'];
