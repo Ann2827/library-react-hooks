@@ -1,4 +1,5 @@
 import useTimer from './timer.hook';
+import useListenTime from './listenTime.hook';
 
-export { useTimer };
-export type { ITimer, TTimerEvent } from './timer.types';
+export { useTimer, useListenTime };
+export type { ITimer, TTimerEvent, TListenTime } from './timer.types';

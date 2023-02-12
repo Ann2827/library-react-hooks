@@ -14,33 +14,39 @@
 
 ## Usage <a name = "usage"></a>
 
-Place for message dispatch:
+Starting the timer:
 
 ```tsx
 import React from 'react';
 import { useTimer } from 'library-react-hooks';
 
 const Example: React.FC = () => {
-  const { } = useTimer();
+  const { setTimer} = useTimer();
 
   return (
     <div>
-
+      <button onClick={() => setTimer(10, { name: 'myTimer', autoFinish: true, callback: () => { console.log('finish') } })}>Button</button>
     </div>
   );
 };
 ```
 
-Timer component:
+Attention! The component will be rerendered every second:
 
 ```tsx
 import React from 'react';
-import { useTimer } from 'library-react-hooks';
+import { useListenTime } from 'library-react-hooks';
 
-const Toast: React.FC = () => {
-  const { } = useTimer();
+const Example: React.FC = () => {
+  const time = useListenTime();
+  const { setTimer} = useTimer();
 
-  return <div></div>;
+  return (
+    <div>
+      <p>My time: {time.timer1}</p>
+      <button onClick={() => setTimer(10, { name: 'timer1', observe: true, listen: true })}>Button</button>
+    </div>
+  );
 };
 ```
 

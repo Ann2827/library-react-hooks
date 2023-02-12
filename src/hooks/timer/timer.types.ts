@@ -80,6 +80,10 @@ export interface IData {
 }
 
 export interface ITimer {
+  /**
+   * @deprecated
+   * Use useListenTime hook
+   */
   time: IData['time'];
   expToTime(exp: number): number;
   on: IData['on'];
@@ -92,3 +96,5 @@ export interface ITimer {
    */
   reset: IData['reset'];
 }
+
+export type TListenTime = IData['time'];
