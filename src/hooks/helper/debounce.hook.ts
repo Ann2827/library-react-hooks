@@ -4,7 +4,10 @@ const useDebounce = (): ((callback: () => void, debounceTime: number) => () => v
   const timeout = React.useRef<ReturnType<typeof setTimeout>>();
   const counter = React.useRef<number>(0);
   const clear = React.useCallback(() => {
-    if (timeout.current) clearTimeout(timeout.current);
+    if (timeout.current) {
+      clearTimeout(timeout.current);
+      timeout.current = undefined;
+    }
   }, []);
 
   return React.useCallback(
@@ -13,10 +16,10 @@ const useDebounce = (): ((callback: () => void, debounceTime: number) => () => v
       if (count === 0) {
         counter.current = count + 1;
         callback();
-      } else {
-        clear();
+      } else if (!timeout.current) {
         timeout.current = setTimeout(() => {
           counter.current = count + 1;
+          clear();
           callback();
         }, debounceTime);
       }
