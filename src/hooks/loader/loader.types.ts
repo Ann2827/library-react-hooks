@@ -21,6 +21,7 @@ export interface DataI {
   getActive(): boolean;
   on(fn: TFn): () => void;
   reset(): void;
+  getQuantity(): number;
 }
 
 export interface LoaderI {
@@ -53,4 +54,6 @@ export interface LoaderI {
    * Resets the state
    */
   _reset: DataI['reset'];
+
+  quantity: number;
 }

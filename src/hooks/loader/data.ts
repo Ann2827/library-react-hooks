@@ -1,5 +1,18 @@
 import { DataI } from './loader.types';
 
+// const storageAvailable = (type: 'localStorage' | 'sessionStorage'): boolean => {
+//   try {
+//     return type in window && typeof window[type].getItem === 'function' && typeof window[type].setItem === 'function';
+//   } catch {
+//     return false;
+//   }
+// };
+// const DEBUG_LOADER_KEY = 'debug-loader-key';
+// let debug = false;
+// if (storageAvailable('localStorage') && window.localStorage.getItem(DEBUG_LOADER_KEY)) {
+//   debug = true;
+// }
+
 export const data: DataI = {
   _listeners: [],
   _active: false,
@@ -28,6 +41,9 @@ export const data: DataI = {
   },
   getActive() {
     return this._active;
+  },
+  getQuantity() {
+    return this._queue;
   },
   on(fn) {
     this._listeners.push(fn);
