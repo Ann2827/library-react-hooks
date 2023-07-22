@@ -1,3 +1,4 @@
+export * from './hooks/imagePreloader';
 export * from './hooks/create';
 export * from './hooks/timer';
 export * from './hooks/http';
