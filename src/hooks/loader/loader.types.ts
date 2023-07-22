@@ -1,17 +1,10 @@
 import { IData } from '../create';
 
-/**
- * @private
- * @ignore
- */
 export type TLoaderState = {
   active: boolean;
   quantity: number;
 };
-/**
- * @private
- * @ignore
- */
+
 export type TLoaderEvent = {
   type: 'updated';
 };

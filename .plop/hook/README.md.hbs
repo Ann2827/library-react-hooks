@@ -20,7 +20,7 @@ Place for message dispatch:
 import React from 'react';
 import { {{ fullName prefix name }} } from 'library-react-hooks';
 
-const Example: React.FC = () => {
+const Example: React.VFC = () => {
   const { } = {{ fullName prefix name }}();
 
   return (
@@ -37,7 +37,7 @@ const Example: React.FC = () => {
 import React from 'react';
 import { {{ fullName prefix name }} } from 'library-react-hooks';
 
-const Toast: React.FC = () => {
+const {{ properCase name }}: React.VFC = () => {
   const { } = {{ fullName prefix name }}();
 
   return <div></div>;
@@ -64,6 +64,16 @@ const { on } = {{ fullName prefix name }}();
 on((event: T{{ properCase name }}Event) => {
   ...
 });
+```
+
+### Hook: `useEffectOn{{ properCase name }}`
+
+```ts
+import { useEffectOn{{ properCase name }} } from 'library-react-hooks';
+
+useEffectOn{{ properCase name }}((event, newState) => {
+  ...
+}, []);
 ```
 
 This function listens for the events of adding and deleting messages.

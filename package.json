@@ -38,7 +38,7 @@
     "test:watch": "react-scripts test --env=jsdom",
     "predeploy": "cd example && yarn build",
     "deploy": "gh-pages -d example/build",
-    "create": "plop --plopfile ./.plop/plop.config.js",
+    "create": "plop --plopfile ./.plop/plop.config.cjs",
     "release": "semantic-release"
   },
   "peerDependencies": {
