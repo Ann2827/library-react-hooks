@@ -1,5 +1,6 @@
 import useLoader from './loader.hook';
 import fnLoader from './loader.functions';
+import { useEffectOnLoader } from './data';
 
-export { useLoader, fnLoader };
-export type { LoaderI } from './loader.types';
+export { useLoader, fnLoader, useEffectOnLoader };
+export type { LoaderI, ILoader } from './loader.types';

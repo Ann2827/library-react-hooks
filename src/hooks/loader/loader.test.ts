@@ -1,10 +1,10 @@
 import { act, renderHook } from '@testing-library/react-hooks';
-import { useLoader } from '.';
+import { useLoader, useEffectOnLoader } from '.';
 
 describe('loader.hook function:', () => {
   beforeEach(() => {
     const { result } = renderHook(() => useLoader());
-    act(() => result.current._reset());
+    act(() => result.current.reset());
   });
 
   test('useLoader: should be active', () => {
@@ -43,5 +43,18 @@ describe('loader.hook function:', () => {
       result.current.loaderOn();
     });
     expect(state).toEqual(true);
+  });
+
+  test('useLoader: should be listen useEffectOnLoader', () => {
+    const { result } = renderHook(() => useLoader());
+    renderHook(() =>
+      useEffectOnLoader((event, newState) => {
+        expect(event).toEqual({ type: 'updated' });
+        expect(newState).toEqual({ active: true, quantity: 1 });
+      }, []),
+    );
+    act(() => {
+      result.current.loaderOn();
+    });
   });
 });

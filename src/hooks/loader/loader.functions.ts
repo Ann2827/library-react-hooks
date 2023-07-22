@@ -1,7 +1,7 @@
-import { LoaderI } from './loader.types';
+import { ILoader } from './loader.types';
 import { data } from './data';
 
-const fnLoader = (): Pick<LoaderI, 'loaderOn' | 'loaderOff' | 'loaderStop'> => {
+const fnLoader = (): Pick<ILoader, 'loaderOn' | 'loaderOff' | 'loaderStop'> => {
   return {
     loaderOn: () => data.activate(),
     loaderOff: () => data.determinate(),

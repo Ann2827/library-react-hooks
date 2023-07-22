@@ -1,56 +1,67 @@
-export type TLoaderEvent = boolean;
-/** @private **/
-export type TFn = (e: TLoaderEvent) => void;
+import { IData } from '../create';
 
 /**
  * @private
  * @ignore
  */
-export interface DataI {
-  /** @protected **/
-  _listeners: Array<TFn>;
-  /** @protected **/
-  _active: boolean;
-  /** @protected **/
-  _queue: number;
-  /** @protected **/
-  _event: TFn;
+export type TLoaderState = {
+  active: boolean;
+  quantity: number;
+};
+/**
+ * @private
+ * @ignore
+ */
+export type TLoaderEvent = {
+  type: 'updated';
+};
+/**
+ * @private
+ * @ignore
+ */
+export interface ILoaderData extends IData<TLoaderState, TLoaderEvent> {
   activate(): void;
   determinate(): void;
   stop(): void;
   getActive(): boolean;
-  on(fn: TFn): () => void;
-  reset(): void;
 }
 
-export interface LoaderI {
+export interface ILoader {
   /**
    * Loader activity status
    */
-  active: boolean;
+  active: TLoaderState['active'];
 
   /**
    * Activate one (or one more) loader.
    */
-  loaderOn: DataI['activate'];
+  loaderOn: ILoaderData['activate'];
 
   /**
    * Cancel one loader process.
    */
-  loaderOff: DataI['determinate'];
+  loaderOff: ILoaderData['determinate'];
 
   /**
    * Stop all loader processes.
    */
-  loaderStop: DataI['stop'];
+  loaderStop: ILoaderData['stop'];
 
   /**
    * This function listens for the events of activate/determinate.
+   * @deprecated use useEffectOnLoader hook
    */
-  on: DataI['on'];
+  on(fn: (e: boolean) => void): () => void;
 
   /**
    * Resets the state
+   * @deprecated use reset method
    */
-  _reset: DataI['reset'];
+  _reset: ILoaderData['reset'];
+  reset: ILoaderData['reset'];
 }
+
+/**
+ * @deprecated use ILoader interface
+ */
+export interface LoaderI extends ILoader {}
