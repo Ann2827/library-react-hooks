@@ -1,26 +1,28 @@
-import { useCallback, useEffect, useState } from 'react';
-import { LoaderI } from './loader.types';
-import { data } from './data';
+import React from 'react';
+import { ILoader } from './loader.types';
+import { data, useEffectOnLoader } from './data';
 
-const useLoader = (): LoaderI => {
-  const [trigger, setTrigger] = useState(0);
-  const [active, setActive] = useState(data.getActive());
-  const loaderOn = useCallback(() => {
-    data.activate();
-    setTrigger((prev) => prev + 1);
+const useLoader = (): ILoader => {
+  const [active, setActive] = React.useState<ILoader['active']>(data.getActive());
+  useEffectOnLoader((_event, newState) => {
+    setActive(newState.active);
   }, []);
-  const loaderOff = useCallback(() => {
-    data.determinate();
-    setTrigger((prev) => prev + 1);
-  }, []);
-  const on = useCallback((fn) => data.on(fn), []);
-  useEffect(() => {
-    setActive(data.getActive());
-  }, [trigger]);
-  const loaderStop = useCallback(() => data.stop(), []);
-  const _reset = useCallback(() => data.reset(), []);
 
-  return { active, loaderOn, loaderOff, on, loaderStop, _reset };
+  const loaderOn = React.useCallback<ILoader['loaderOn']>(() => data.activate(), []);
+  const loaderOff = React.useCallback<ILoader['loaderOff']>(() => data.determinate(), []);
+  const loaderStop = React.useCallback<ILoader['loaderStop']>(() => data.stop(), []);
+  const on = React.useCallback<ILoader['on']>((fn) => data.on((_e, s) => fn(s.active)), []);
+  const reset = React.useCallback(() => data.reset(), []);
+
+  return {
+    active,
+    loaderOn,
+    loaderOff,
+    on,
+    loaderStop,
+    _reset: reset,
+    reset,
+  };
 };
 
 export default useLoader;

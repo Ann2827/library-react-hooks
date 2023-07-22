@@ -1,10 +1,3 @@
-export declare namespace HttpHook {
-  type Requests = {
-    [K in string]: <P = any>(props?: P) => HttpRequest;
-  };
-  type FunctionKeys = keyof Requests;
-}
-
 export type HttpRequest<T = unknown> = {
   url: string;
   method?: 'GET' | 'POST' | 'DELETE' | 'PUT';
@@ -21,6 +14,13 @@ export type HttpRequest<T = unknown> = {
   toastRules?: (httpData: any) => boolean;
   return?: () => T | HttpAnswer;
 };
+
+export declare namespace HttpHook {
+  type Requests = {
+    [K in string]: <P = any>(props?: P) => HttpRequest;
+  };
+  type FunctionKeys = keyof Requests;
+}
 
 export type HttpAnswer = boolean | number;
 
