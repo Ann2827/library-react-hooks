@@ -7,7 +7,7 @@ const hookGenerator = {
             type: 'input',
             name: 'name',
             message: 'Hook name',
-            default: 'hook',
+            default: 'loader',
         },
         {
           type: 'input',

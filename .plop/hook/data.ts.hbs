@@ -1,15 +1,19 @@
-import type { IData } from './{{ camelCase name }}.types';
+import { T{{ properCase name }}Event, T{{ properCase name }}State, I{{ properCase name }}Data } from './{{ camelCase name }}.types';
+import { hookCreator } from '../create';
 
-export const data: IData = {
-  _listeners: [],
-  _event(e) {
-    this._listeners.forEach((listener) => listener(e));
-  },
-  on(fn) {
-    this._listeners.push(fn);
-    return () => (this._listeners = this._listeners.filter((listener) => listener !== fn));
-  },
-  reset() {
-    this._listeners = [];
-  },
+const dataOptions = {
+  hookName: '{{ camelCase name }}',
+  logger: false,
 };
+export const logs{{ properCase name }}Enable = (): void => {
+  dataOptions.logger = true;
+};
+
+export const [data, useEffectOn{{ properCase name }}] = hookCreator<T{{ properCase name }}State, T{{ properCase name }}Event, I{{ properCase name }}Data>(
+  (d) => ({
+    ...d,
+
+  }),
+  {  },
+  dataOptions,
+);

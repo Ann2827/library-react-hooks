@@ -1,9 +1,9 @@
-import { useCallback } from 'react';
+import React from 'react';
 import type { I{{ properCase name }} } from './{{ camelCase name }}.types';
 import { data } from './data';
 
 const {{ fullName prefix name }} = (): I{{ properCase name }} => {
-  const reset = useCallback(() => data.reset(), []);
+  const reset = React.useCallback(() => data.reset(), []);
 
   return { reset };
 };
