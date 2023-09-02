@@ -21,15 +21,6 @@
       "version": "16"
     }
   },
-  "overrides": [
-    {
-      "files": ["./example/**/*.tsx"],
-      "rules": {
-        "no-unused-vars": 0,
-        "@typescript-eslint/no-unused-vars": 0
-      }
-    }
-  ],
   "rules": {
     "space-before-function-paren": 0,
     "react/prop-types": 0,
