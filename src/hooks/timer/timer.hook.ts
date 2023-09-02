@@ -1,6 +1,8 @@
 import { useCallback } from 'react';
-import type { ITimer } from './timer.types';
+
 import data from './data';
+
+import type { ITimer } from './timer.types';
 
 const useTimer = (): ITimer => {
   return {

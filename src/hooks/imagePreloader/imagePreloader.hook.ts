@@ -1,8 +1,11 @@
 import React from 'react';
-import type { IImagePreloader } from './imagePreloader.types';
+
+import { useOnceEffect } from '../helper';
+
 import { data, useEffectOnImagePreloader } from './data';
 import { IImagePreloaderData, TImagePreloaderType } from './imagePreloader.types';
-import { useOnceEffect } from '../helper';
+
+import type { IImagePreloader } from './imagePreloader.types';
 
 const useImagePreloader = (
   imageList?: { [K in string]: () => Promise<{ default: string }> },

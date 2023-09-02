@@ -1,5 +1,6 @@
-import { toastSettings, useToast, RecursivePartial, ToastSettingsI } from '.';
 import { renderHook } from '@testing-library/react-hooks';
+
+import { toastSettings, useToast, RecursivePartial, ToastSettingsI } from '.';
 
 const settings: RecursivePartial<ToastSettingsI> = {
   sticky: false,

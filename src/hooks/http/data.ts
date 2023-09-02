@@ -63,7 +63,7 @@ const data: DataI = {
   },
   getRequest(name, props) {
     if (this.requests && name in this.requests) return this.requests[name](props);
-    return undefined;
+    return;
   },
   getTokens() {
     return this.tokens;

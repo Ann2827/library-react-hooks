@@ -1,10 +1,6 @@
-build/
 dist/
 node_modules/
-.snapshots/
-*.min.js
-
-src/hooks/helper/updateState.hook.ts
+*.config.js
 
 example/src/api/index.ts
 example/src/api/answer.types.ts

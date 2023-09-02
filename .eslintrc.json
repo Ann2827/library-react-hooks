@@ -1,0 +1,71 @@
+{
+  "env": {
+        "browser": true,
+        "es2021": true
+  },
+  "extends": [
+      "eslint:recommended",
+      "plugin:unicorn/recommended",
+      "plugin:react/recommended",
+      "plugin:jest/recommended",
+      "plugin:@typescript-eslint/recommended",
+      "plugin:import/errors",
+      "plugin:import/warnings",
+      "plugin:import/typescript",
+      "airbnb-typescript",
+      "prettier"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "root": true,
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  },
+  "parserOptions": {
+    "project": "./tsconfig.json",
+    "tsconfigRootDir": ".",
+        "ecmaVersion": "latest",
+        "sourceType": "module"
+  },
+  "plugins": [
+      "unicorn",
+      "import",
+      "jest",
+      "react",
+      "react-hooks",
+      "@typescript-eslint",
+      "prettier"
+  ],
+  "rules": {
+      "import/order": ["error", {
+        "newlines-between": "always",
+        "groups": [
+          ["builtin", "external"],
+          ["internal", "parent"],
+          ["sibling", "index"],
+          "object",
+          "type"
+        ]
+      }],
+    "@typescript-eslint/naming-convention": [
+      "error",
+      {
+        "selector": "variable",
+        "format": ["camelCase", "PascalCase", "UPPER_CASE"],
+        "leadingUnderscore": "allowSingleOrDouble"
+      }
+    ],
+      "unicorn/filename-case": 0,
+      "@typescript-eslint/ban-types": 0,
+      "@typescript-eslint/ban-ts-comment": 0,
+      "@typescript-eslint/no-unused-vars": [ 2, { "args": "none" } ],
+      "unicorn/no-array-for-each": 0,
+      "unicorn/no-array-reduce": 0,
+      "unicorn/no-null": 0,
+      "unicorn/prevent-abbreviations": 0,
+      "jest/no-commented-out-tests": 0,
+    "@typescript-eslint/no-explicit-any": 0,
+    "@typescript-eslint/no-empty-interface": 0
+  }
+}

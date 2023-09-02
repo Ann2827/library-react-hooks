@@ -1,28 +1,28 @@
-const privateProxy = <T extends object>(): ProxyHandler<T> => ({
-  get(target, prop) {
-    if (typeof prop !== 'string' || prop?.startsWith('_')) {
+const privateProxy = <T extends Object>(): ProxyHandler<T> => ({
+  get(target, property) {
+    if (typeof property !== 'string' || property?.startsWith('_')) {
       throw new Error('Отказано в доступе');
     } else {
-      const value = target[prop];
+      const value = target[property as keyof Object];
       return typeof value === 'function' ? value.bind(target) : value;
     }
   },
-  set(target, prop, val) {
-    console.log('privateProxy Proxy set', target, prop, val);
+  set(target, property, value) {
+    console.log('privateProxy Proxy set', target, property, value);
     // перехватываем запись свойства
-    if (typeof prop !== 'string' || prop?.startsWith('_')) {
+    if (typeof property !== 'string' || property?.startsWith('_')) {
       throw new Error('Отказано в доступе');
     } else {
-      target[prop] = val;
+      target[property as keyof Object] = value;
       return true;
     }
   },
-  deleteProperty(target, prop) {
+  deleteProperty(target, property) {
     // перехватываем удаление свойства
-    if (typeof prop !== 'string' || prop?.startsWith('_')) {
+    if (typeof property !== 'string' || property?.startsWith('_')) {
       throw new Error('Отказано в доступе');
     } else {
-      delete target[prop];
+      delete target[property as keyof Object];
       return true;
     }
   },

@@ -1,5 +1,6 @@
-import { useOnceEffect } from '.';
 import { renderHook } from '@testing-library/react-hooks';
+
+import { useOnceEffect } from '.';
 
 // TODO: add more tests
 
