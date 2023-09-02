@@ -11,6 +11,7 @@ export default [
       format: 'es',
       sourcemap: false,
     },
+    external: ['react'],
     plugins: [
       commonjs(),
       typescript({ tsconfig: './tsconfig.json' }),

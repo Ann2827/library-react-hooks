@@ -19,7 +19,7 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "allowSyntheticDefaultImports": true,
-    "target": "es2022",
+    "target": "ES2015",
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -35,6 +35,8 @@
   "exclude": [
     "node_modules",
     "dist",
-    "example"
+    "example",
+    "__mocks__",
+    "src/**/**/*.test.ts"
   ]
 }

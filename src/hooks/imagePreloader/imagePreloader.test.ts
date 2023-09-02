@@ -13,4 +13,25 @@ describe('imagePreloader.hook function:', () => {
     const { result } = renderHook(() => useImagePreloader());
     expect(result.current.images).toEqual({});
   });
+
+  // test('fnName: should upload from external', async () => {
+  //   const { result } = renderHook(() =>
+  //     useImagePreloader(
+  //       {
+  //         'logo.svg': () =>
+  //           new Promise<{ default: string }>((resolve) =>
+  //             resolve({ default: 'https://ann2827.github.io/PushWorldTest/private/img/logoGiftmio.svg' }),
+  //           ),
+  //       },
+  //       'base64',
+  //     ),
+  //   );
+  //   await new Promise<boolean>((resolve) => {
+  //     setTimeout(() => {
+  //       resolve(true);
+  //     }, 3000);
+  //   });
+  //   expect(result.current.images['logo.svg']).toEqual(null);
+  //   expect.assertions(1);
+  // });
 });
