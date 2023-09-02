@@ -15,7 +15,7 @@ if (analyze) plugins.push(bundleAnalyzer());
 
 export default [
   {
-    input: 'src/index.tsx',
+    input: 'src/index.ts',
     output: {
       exports: 'named',
       file: 'dist/index.modern.js',

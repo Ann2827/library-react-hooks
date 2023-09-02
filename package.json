@@ -22,7 +22,7 @@
   ],
   "type": "module",
   "module": "dist/index.modern.js",
-  "source": "src/index.tsx",
+  "source": "src/index.ts",
   "types": "dist/index.d.ts",
   "engines": {
     "node": ">=16",
@@ -32,13 +32,14 @@
     "build": "rimraf dist && rollup -c",
     "start": "rollup -c -w",
     "test": "run-s test:lint test:unit",
-    "test:lint": "eslint './src/**/*.{ts,tsx}'",
+    "test:lint": "eslint './src/**/*.ts'",
     "test:unit": "cross-env CI=1 react-scripts test --env=jsdom",
     "test:watch": "react-scripts test --env=jsdom",
     "predeploy": "cd example && yarn build",
     "deploy": "gh-pages -d example/build",
     "create": "plop --plopfile ./.plop/plop.config.cjs",
-    "release": "semantic-release"
+    "release": "semantic-release",
+    "lint": "eslint './src/**/*.ts' --fix"
   },
   "peerDependencies": {
     "react": ">=16.0.0",
@@ -61,7 +62,7 @@
     "@typescript-eslint/parser": "^6.1.0",
     "babel-eslint": "^10.0.3",
     "cross-env": "^7.0.2",
-    "eslint": "^8.45.0",
+    "eslint": "8.12.0",
     "eslint-config-airbnb-typescript": "16.1.4",
     "eslint-config-prettier": "^8.8.0",
     "eslint-config-standard-react": "^9.2.0",
@@ -85,7 +86,7 @@
     "rollup": "^3.26.3",
     "rollup-plugin-bundle-analyzer": "^1.6.6",
     "semantic-release": "^19.0.5",
-    "typescript": "^5.1.6",
+    "typescript": "^4.9.5",
     "yarn-audit-fix": "^9.3.8",
     "yarn-run-all": "^3.1.1"
   },
