@@ -1,5 +1,6 @@
-import { useHttp } from '.';
 import { renderHook } from '@testing-library/react-hooks';
+
+import { useHttp } from '.';
 
 describe('http.hook function:', () => {
   beforeEach(() => {

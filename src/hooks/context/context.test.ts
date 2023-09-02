@@ -1,5 +1,7 @@
 import { act } from '@testing-library/react-hooks';
 
+// TODO: потестить
+// eslint-disable-next-line jest/no-mocks-import
 import mockConsole from '../../../__mocks__/console';
 
 import createContext, { CreateContext } from './context.functions';

@@ -46,7 +46,7 @@ export const data: DataI = {
   },
   _translationFn: initialTranslationFn,
   _workWithOptions(options) {
-    if (!options) return undefined;
+    if (!options) return;
     return Object.fromEntries(
       Object.entries(options).map(([key, value]) => {
         if (typeof value === 'function') return [key, value(this._translationFn)];
@@ -66,7 +66,7 @@ export const data: DataI = {
           this.data[i].text = this._translationFn(textData.key, this._workWithOptions(textData.options));
         }
         const actions = this.data[i].actions;
-        if (actions && actions.length) {
+        if (actions && actions.length > 0) {
           for (let j = 0; j < actions.length; j++) {
             const actionData = actions[j].actionData;
             if (typeof actionData === 'object') {
@@ -111,7 +111,7 @@ export const data: DataI = {
     }
   },
   activate({ text, type, duration, sticky, title, actions, tag, titleData, textData, group }) {
-    if (!this._settings.duplicate && tag && this.data.find((item) => item.tag === tag)) {
+    if (!this._settings.duplicate && tag && this.data.some((item) => item.tag === tag)) {
       return;
     }
 

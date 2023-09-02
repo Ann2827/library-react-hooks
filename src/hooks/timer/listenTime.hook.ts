@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react';
+
+import { useDebounce } from '../helper';
+
 import { TListenTime } from './timer.types';
 import data from './data';
-import { useDebounce } from '../helper';
 
 const useListenTime = (): TListenTime => {
   const debounce = useDebounce();

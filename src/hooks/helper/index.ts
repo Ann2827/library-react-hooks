@@ -1,7 +1,5 @@
-import useUpdateState from './updateState.hook';
-import useUnmount from './unmount.hook';
-import useDebounce from './debonce.hook';
-import useOnceEffect from './onceEffect.hook';
-import makeEffectOn from './makeEffectOn.hook';
-
-export { useUpdateState, useUnmount, useDebounce, useOnceEffect, makeEffectOn };
+export { default as useUpdateState } from './updateState.hook';
+export { default as useDebounce } from './debonce.hook';
+export { default as useUnmount } from './unmount.hook';
+export { default as makeEffectOn } from './makeEffectOn.hook';
+export { default as useOnceEffect } from './onceEffect.hook';

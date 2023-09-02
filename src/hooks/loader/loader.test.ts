@@ -1,4 +1,5 @@
 import { act, renderHook } from '@testing-library/react-hooks';
+
 import { useLoader, useEffectOnLoader } from '.';
 
 describe('loader.hook function:', () => {

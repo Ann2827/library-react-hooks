@@ -1,6 +1,8 @@
-import type { IData } from './create.types';
-import { IDataOptions, TDataEvent, TDataState } from './create.types';
 import { loggerState, loggerMessage } from '../../utils/logger';
+
+import { IDataOptions, TDataEvent, TDataState } from './create.types';
+
+import type { IData } from './create.types';
 
 export const createData = <S extends TDataState, E extends TDataEvent>(
   initialState: S,

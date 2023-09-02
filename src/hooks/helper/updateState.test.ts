@@ -1,5 +1,6 @@
-import { useUpdateState } from '.';
 import { act, renderHook } from '@testing-library/react-hooks';
+
+import { useUpdateState } from '.';
 
 describe('helper.hook function:', () => {
   test('useUpdateState: should be initialed', () => {
