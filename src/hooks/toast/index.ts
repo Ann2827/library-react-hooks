@@ -1,5 +1,3 @@
-import useToast from './toast.hook';
-
 export { fnToast, toastSettings } from './toast.functions';
 export type {
   ToastI,
@@ -11,4 +9,5 @@ export type {
   TToastTranslationFn,
   TToastEvent,
 } from './toast.types';
-export { useToast };
+
+export { default as useToast } from './toast.hook';

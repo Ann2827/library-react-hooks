@@ -1,7 +1,8 @@
-import { hookCreator } from '.';
 import { act, renderHook } from '@testing-library/react-hooks';
-import { IData } from './create.types';
 import { useState } from 'react';
+
+import { hookCreator } from '.';
+import { IData } from './create.types';
 
 describe('create hook data:', () => {
   type TTestState = { name: string };
@@ -26,29 +27,21 @@ describe('create hook data:', () => {
 
   test('order with on', () => {
     const arr = ['Ann', 'Jack', 'Bob'];
-    let count = 0;
+    let state: TTestState = { name: '' };
     const clear = data.on((_e, s) => {
-      switch (count) {
-        case 0:
-          expect(data.state().name).toEqual(arr[0]);
-          expect(s.name).toEqual(arr[0]);
-          break;
-        case 1:
-          expect(data.state().name).toEqual(arr[1]);
-          expect(s.name).toEqual(arr[1]);
-          break;
-        case 2:
-          expect(data.state().name).toEqual(arr[2]);
-          expect(s.name).toEqual(arr[2]);
-          break;
-        default:
-          break;
-      }
-      count++;
+      state = s;
     });
     data.setState({ name: arr[0] });
+    expect(data.state().name).toEqual(arr[0]);
+    expect(state.name).toEqual(arr[0]);
+
     data.setState({ name: arr[1] });
+    expect(data.state().name).toEqual(arr[1]);
+    expect(state.name).toEqual(arr[1]);
+
     data.setState({ name: arr[2] });
+    expect(data.state().name).toEqual(arr[2]);
+    expect(state.name).toEqual(arr[2]);
 
     clear();
   });

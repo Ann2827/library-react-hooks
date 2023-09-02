@@ -1,6 +1,5 @@
-import useLoader from './loader.hook';
-import fnLoader from './loader.functions';
-import { useEffectOnLoader } from './data';
-
-export { useLoader, fnLoader, useEffectOnLoader };
 export type { LoaderI, ILoader, TLoaderEvent, TLoaderState } from './loader.types';
+
+export { default as useLoader } from './loader.hook';
+export { useEffectOnLoader } from './data';
+export { default as fnLoader } from './loader.functions';

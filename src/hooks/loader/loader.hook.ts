@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { ILoader } from './loader.types';
 import { data, useEffectOnLoader } from './data';
 

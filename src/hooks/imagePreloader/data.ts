@@ -1,5 +1,6 @@
-import { TImagePreloaderEvent, TImagePreloaderState, IImagePreloaderData } from './imagePreloader.types';
 import { hookCreator } from '../create';
+
+import { TImagePreloaderEvent, TImagePreloaderState, IImagePreloaderData } from './imagePreloader.types';
 import { createBase64, createImage, imageLoader } from './imagePreloader.functions';
 
 const dataOptions = {
@@ -29,16 +30,18 @@ export const [data, useEffectOnImagePreloader] = hookCreator<
               .then((src) => {
                 const existsImg = this._state[key];
                 switch (existsImg.state) {
-                  case 'loading':
+                  case 'loading': {
                     reject(src);
                     break;
-                  case 'loaded':
+                  }
+                  case 'loaded': {
                     if (existsImg.image) resolve(existsImg.image);
                     if (existsImg.base64) resolve(existsImg.base64);
                     break;
-                  case 'error':
-                  default:
+                  }
+                  default: {
                     break;
+                  }
                 }
 
                 this._helperUpdateImage({ name: key, image: null, state: 'loading', base64: undefined });

@@ -2,6 +2,12 @@ import { IData, IDataOptions, TDataEvent, TDataState, TUseEffectOn } from './cre
 import { createData } from './data';
 import { makeCreateOn } from './create.hook';
 
+/**
+ * @deprecated use createState or makeStore
+ * @param enrich
+ * @param initialState
+ * @param options
+ */
 export const hookCreator = <S extends TDataState = {}, E extends TDataEvent = {}, D extends IData<S, E> = IData<S, E>>(
   enrich: (d: IData<S, E>) => D,
   initialState: S,

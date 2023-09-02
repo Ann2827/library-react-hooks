@@ -15,6 +15,7 @@ export type HttpRequest<T = unknown> = {
   return?: () => T | HttpAnswer;
 };
 
+// eslint-disable-next-line @typescript-eslint/no-namespace
 export declare namespace HttpHook {
   type Requests = {
     [K in string]: <P = any>(props?: P) => HttpRequest;

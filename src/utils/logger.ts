@@ -1,7 +1,7 @@
 export const loggerState = (hookName: string, oldState: unknown, newState: unknown) => {
   console.group(`Hook ${hookName}`);
-  console.info('Old state: ', oldState);
-  console.info('New state: ', newState);
+  console.info('Old state:', oldState);
+  console.info('New state:', newState);
   console.groupCollapsed('Trace');
   console.trace('Trace');
   console.groupEnd();

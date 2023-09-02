@@ -1,40 +1,29 @@
 {
   "compilerOptions": {
-    "outDir": "dist",
-    "module": "esnext",
+    "target": "es2022",
     "lib": [
       "dom",
+      "dom.iterable",
       "esnext"
     ],
-    "moduleResolution": "node",
-    "jsx": "react",
-    "sourceMap": true,
-    "declaration": true,
-    "esModuleInterop": true,
-    "noImplicitReturns": true,
-    "noImplicitThis": true,
-    "noImplicitAny": true,
-    "strictNullChecks": true,
-    "suppressImplicitAnyIndexErrors": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "allowSyntheticDefaultImports": true,
-    "target": "es2022",
     "allowJs": true,
+    "checkJs": true,
     "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
     "strict": true,
     "forceConsistentCasingInFileNames": true,
+    "module": "es2022",
+    "moduleResolution": "Node",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "noEmit": true,
-    "ignoreDeprecations": "5.0"
+    "baseUrl": ".",
+    "noFallthroughCasesInSwitch": true,
+    "outDir": "./dist",
+    "declaration": true,
+    "declarationDir": "./types"
   },
   "include": [
     "src"
   ],
-  "exclude": [
-    "node_modules",
-    "dist",
-    "example"
-  ]
 }

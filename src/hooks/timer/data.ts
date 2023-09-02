@@ -119,11 +119,7 @@ const data: IData = {
 
 data.time = new Proxy<IData['time']>(data.time, {
   get(target, prop, _receiver) {
-    if (typeof prop === 'string' && prop in target) {
-      return target[prop];
-    } else {
-      return 0;
-    }
+    return typeof prop === 'string' && prop in target ? target[prop] : 0;
   },
   // set(target, prop, newValue, _receiver): boolean {
   //   console.log('data.time Proxy set', target, prop, newValue);

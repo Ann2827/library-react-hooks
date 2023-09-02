@@ -1,5 +1,6 @@
-import { useUnmount } from '.';
 import { renderHook } from '@testing-library/react-hooks';
+
+import { useUnmount } from '.';
 
 describe('helper.hook function:', () => {
   test('useUnmount: should be renderer', () => {
