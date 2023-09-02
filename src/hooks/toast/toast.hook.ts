@@ -1,7 +1,9 @@
-import type { ToastI } from './toast.types';
 import { useMemo } from 'react';
+
 import { data } from './data';
 import toastAlert from './toast.alert';
+
+import type { ToastI } from './toast.types';
 
 // TODO: add onClose
 // TODO: add onError for sentry

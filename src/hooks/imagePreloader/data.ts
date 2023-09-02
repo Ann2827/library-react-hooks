@@ -1,5 +1,6 @@
-import { TImagePreloaderEvent, TImagePreloaderState, IImagePreloaderData } from './imagePreloader.types';
 import { hookCreator } from '../create';
+
+import { TImagePreloaderEvent, TImagePreloaderState, IImagePreloaderData } from './imagePreloader.types';
 import { createBase64, createImage, imageLoader } from './imagePreloader.functions';
 
 const dataOptions = {

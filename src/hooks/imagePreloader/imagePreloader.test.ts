@@ -1,5 +1,6 @@
-import { useImagePreloader } from '.';
 import { renderHook } from '@testing-library/react-hooks';
+
+import { useImagePreloader } from '.';
 
 // TODO: add more tests
 

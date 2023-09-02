@@ -1,9 +1,9 @@
-const privateProxy = <T extends object>(): ProxyHandler<T> => ({
+const privateProxy = <T extends Object>(): ProxyHandler<T> => ({
   get(target, prop) {
     if (typeof prop !== 'string' || prop?.startsWith('_')) {
       throw new Error('Отказано в доступе');
     } else {
-      const value = target[prop];
+      const value = target[prop as keyof Object];
       return typeof value === 'function' ? value.bind(target) : value;
     }
   },
@@ -13,7 +13,7 @@ const privateProxy = <T extends object>(): ProxyHandler<T> => ({
     if (typeof prop !== 'string' || prop?.startsWith('_')) {
       throw new Error('Отказано в доступе');
     } else {
-      target[prop] = val;
+      target[prop as keyof Object] = val;
       return true;
     }
   },
@@ -22,7 +22,7 @@ const privateProxy = <T extends object>(): ProxyHandler<T> => ({
     if (typeof prop !== 'string' || prop?.startsWith('_')) {
       throw new Error('Отказано в доступе');
     } else {
-      delete target[prop];
+      delete target[prop as keyof Object];
       return true;
     }
   },

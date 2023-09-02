@@ -1,5 +1,6 @@
-import { TLoaderEvent, TLoaderState, ILoaderData } from './loader.types';
 import { hookCreator } from '../create';
+
+import { TLoaderEvent, TLoaderState, ILoaderData } from './loader.types';
 
 const dataOptions = {
   hookName: 'loader',

@@ -1,9 +1,11 @@
 import { useCallback, useEffect, useState } from 'react';
+
+import { useLoader } from '../loader';
+import { useToast } from '../toast';
+
 import { DataI, HttpI } from './http.types';
 import data from './data';
 import { convertQuery, successFn } from './http.functions';
-import { useLoader } from '../loader';
-import { useToast } from '../toast';
 
 // TODO: add lazy useLoader and useToast?
 const useHttp = (): HttpI => {

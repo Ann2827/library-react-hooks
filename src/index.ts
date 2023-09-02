@@ -10,3 +10,11 @@ export * from './hooks/loader';
 
 export * from './utils/logger';
 export * from './utils/settings';
+
+// let e: string = '123';
+//
+// const r: number = 23;
+//
+// e = r;
+//
+// export { e };
