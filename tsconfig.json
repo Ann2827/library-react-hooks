@@ -35,6 +35,8 @@
   "exclude": [
     "node_modules",
     "dist",
-    "example"
+    "example",
+    "__mocks__",
+    "src/**/**/*.test.ts"
   ]
 }

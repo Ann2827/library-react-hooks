@@ -8,12 +8,16 @@ import { TDataState, IStore, IStoreStateFn, TStoreEnrich } from './store.types';
 
 // TODO: see reselect lib
 export const makeSubscribe = <S extends TDataState = {}>(Context: IContext<S>): IStore<S>['useSubscribe'] => {
+  // @ts-ignore
   const useEffectOn = makeEffectOn<Parameters<TContextFn<S>>>(Context.on);
   return <T = unknown>(listener: (state: S) => T): T => {
+    // @ts-ignore
     const refListener = React.useRef(listener);
     const [state, setNewState] = React.useState<T>(refListener.current(Context.state));
     useEffectOn((prev, next) => {
+      // @ts-ignore
       const nextState = refListener.current(next);
+      // @ts-ignore
       if (JSON.stringify(refListener.current(prev)) !== JSON.stringify(nextState)) {
         setNewState(nextState);
       }
