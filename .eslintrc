@@ -7,14 +7,14 @@
   ],
   "plugins": ["@typescript-eslint", "react-hooks"],
   "env": {
-    "node": true
+    "browser": true,
+    "es2021": true
   },
   "parserOptions": {
-    "ecmaVersion": 2020,
-    "ecmaFeatures": {
-      "legacyDecorators": true,
-      "jsx": true
-    }
+    "project": "./tsconfig.json",
+    "tsconfigRootDir": ".",
+    "ecmaVersion": "latest",
+    "sourceType": "module"
   },
   "settings": {
     "react": {

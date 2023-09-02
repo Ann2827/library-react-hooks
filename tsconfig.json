@@ -36,7 +36,5 @@
     "node_modules",
     "dist",
     "example",
-    "__mocks__",
-    "src/**/**/*.test.ts"
   ]
 }
