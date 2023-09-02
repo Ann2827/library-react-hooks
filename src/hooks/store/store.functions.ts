@@ -29,6 +29,7 @@ export const makeSubscribe = <S extends TDataState = {}>(Context: IContext<S>): 
 const makeStore = <S extends TDataState = {}>(initialState: S, options: Partial<IContextOptions>): IStore<S> => {
   const BaseContext = createContext<S>(initialState, options);
   const setState = (fn: IStoreStateFn<S>): void => {
+    // @ts-ignore
     BaseContext.state = typeof fn === 'function' ? fn(BaseContext.state) : fn;
   };
 
