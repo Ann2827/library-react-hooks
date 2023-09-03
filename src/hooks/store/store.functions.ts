@@ -26,27 +26,30 @@ export const makeSubscribe = <S extends TDataState = {}>(Context: IContext<S>): 
   };
 };
 
+export const makeSetState = <S extends TDataState = {}>(Context: IContext<S>): ((fn: IStoreStateFn<S>) => void) => {
+  return (fn: IStoreStateFn<S>) => {
+    // @ts-ignore
+    Context.state = typeof fn === 'function' ? fn(Context.state) : fn;
+  };
+};
+
 const makeStore = <S extends TDataState = {}>(initialState: S, options: Partial<IContextOptions>): IStore<S> => {
   const BaseContext = createContext<S>(initialState, options);
-  const setState = (fn: IStoreStateFn<S>): void => {
-    // @ts-ignore
-    BaseContext.state = typeof fn === 'function' ? fn(BaseContext.state) : fn;
-  };
-
+  const setState = makeSetState<S>(BaseContext);
   const useSubscribe = makeSubscribe<S>(BaseContext);
 
   const enrich = <D extends Record<string, unknown> = {}>(
-    enrichFn: (setState: (fn: ((prev: S) => S) | S) => void, state: S) => D,
+    enrichFn: (setState: (fn: ((prev: S) => S) | S) => void, state: S, reset: IContext<S>['reset']) => D,
   ): TStoreEnrich<S, D> => {
-    const enrichData: D = enrichFn((fn) => setState(fn), BaseContext.state);
+    const enrichData: D = enrichFn((fn) => setState(fn), BaseContext.state, BaseContext.reset);
 
     const filterMethods: TOnlyPublic<D> = onlyPublic<D>(enrichData);
 
     return {
-      ...filterMethods,
       useSubscribe,
       setState,
       reset: BaseContext.reset,
+      ...filterMethods,
     };
   };
 

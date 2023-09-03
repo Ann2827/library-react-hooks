@@ -49,6 +49,7 @@ export class CreateContext<S extends Object> implements IContext<S> {
     const cloneThisState: S = Object.assign({}, this.#state);
     const cloneNewState: S = Object.assign({}, newState);
     const cleanNewState: S = cleanKeys ? cleanObjKeys<S, S>(this.#initialState, cloneNewState) : cloneNewState;
+    // TODO: depMerge
     const mergeNewState: S = merge
       ? Object.assign({}, cloneThisState, cleanNewState)
       : Object.assign({}, cleanNewState);

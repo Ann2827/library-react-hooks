@@ -33,3 +33,10 @@ const privateProxy = <T extends Object>(): ProxyHandler<T> => ({
 });
 
 export default privateProxy;
+
+// Example
+// data.time = new Proxy<IData['time']>(data.time, {
+//   get(target, prop, _receiver) {
+//     return typeof prop === 'string' && prop in target ? target[prop] : 0;
+//   },
+// });

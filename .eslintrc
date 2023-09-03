@@ -4,7 +4,7 @@
     "standard-react",
     "eslint:recommended",
     "plugin:unicorn/recommended",
-    "plugin:jest/recommended",
+//    "plugin:jest/recommended",
     "plugin:@typescript-eslint/recommended",
     "plugin:import/errors",
     "plugin:import/warnings",
@@ -15,7 +15,7 @@
   "plugins": [
     "unicorn",
     "import",
-    "jest",
+//    "jest",
     "@typescript-eslint",
     "react-hooks",
     "prettier"
@@ -24,11 +24,11 @@
     "browser": true,
     "es6": true
   },
-  //  "root": true,
+  "root": true,
   "parserOptions": {
-    "project": "./tsconfig.json",
-    //    "tsconfigRootDir": ".",
-        "ecmaVersion": 2021,
+    "project": "tsconfig.json",
+    "tsconfigRootDir": ".",
+    "ecmaVersion": 2021,
     "sourceType": "module"
   },
   "settings": {

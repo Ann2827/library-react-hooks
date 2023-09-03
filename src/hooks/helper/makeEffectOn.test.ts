@@ -32,11 +32,13 @@ describe('helper.hook makeEffectOn:', () => {
     });
     rerender();
     expect(renderCounter).toEqual(0);
+    expect(listeners.length).toEqual(1);
 
     act(() => event('1', { test: '1' }));
     expect(renderCounter).toEqual(1);
     expect(args).toEqual(['1', { test: '1' }]);
 
     unmount();
+    expect(listeners.length).toEqual(0);
   });
 });
