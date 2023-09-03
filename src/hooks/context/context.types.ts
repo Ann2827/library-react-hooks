@@ -9,6 +9,7 @@ export interface IContextOptions {
    */
   hookName: string;
 
+  // TODO: не смержит сложные объекты
   /**
    * state: { started: false, changed: false }
    * Example merge=false (rewrite):

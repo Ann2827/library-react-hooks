@@ -28,28 +28,30 @@ export type TCounterState = {
     updated: boolean;
   };
 };
-interface ICounterData {
-  __new(): this;
+export type TCounterData = {
+  __new(): TCounterData;
   _setStarted(): void;
   setCounter(): void;
-}
+};
 
-const CounterStore = makeStore<TCounterState, ICounterData>({
-  logger: false,
-  hookName: 'counter',
-  flatten: true,
-})({ counter: 0, actions: { started: false, updated: false } }, (state, setState) =>
+const CounterStore = makeStore<TCounterState>(
+  { counter: 0, actions: { started: false, updated: false } },
+  {
+    logger: false,
+    hookName: 'counter',
+  },
+).enrich<TCounterData>((setState, _state) =>
   ({
     __new() {
       this.setCounter = this.setCounter.bind(this);
       return this;
     },
     _setStarted() {
-      setState({ 'actions.started': true });
+      setState((prev) => ({ ...prev, actions: { ...prev.actions, started: true } }));
     },
     setCounter() {
       this._setStarted();
-      setState((prev) => ({ counter: prev.counter + 1 }));
+      setState((prev) => ({ ...prev, counter: prev.counter + 1 }));
     },
   }).__new(),
 );

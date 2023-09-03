@@ -1,7 +1,7 @@
 import { act } from '@testing-library/react-hooks';
 
 // TODO: потестить
-// eslint-disable-next-line jest/no-mocks-import
+// 123 eslint-disable-next-line jest/no-mocks-import
 import mockConsole from '../../../__mocks__/console';
 
 import createContext, { CreateContext } from './context.functions';
@@ -38,6 +38,7 @@ describe('context CreateContext class:', () => {
     expect(KeysContext._test<Array<TContextFn<TState>>>('listeners')).toEqual([]);
     expect(KeysContext.state).toEqual(initialState);
 
+    // @ts-ignore
     let on: [TState, TState] = [];
     act(() => {
       KeysContext.on((prev, next) => {
@@ -93,6 +94,7 @@ describe('context CreateContext class:', () => {
   test('should listen on', () => {
     expect(KeysContext.state).toEqual(initialState);
 
+    // @ts-ignore
     let on: [TState, TState] = [];
     KeysContext.on((prev, next) => {
       on = [prev, next];
@@ -185,6 +187,7 @@ describe('context createContext:', () => {
   test('should listen on', () => {
     expect(KeysContext.state).toEqual(initialState);
 
+    // @ts-ignore
     let on: [TState, TState] = [];
     KeysContext.on((prev, next) => {
       on = [prev, next];
