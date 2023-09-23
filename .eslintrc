@@ -58,6 +58,23 @@
         ["sibling", "index"],
         "object",
         "type"
+      ],
+      "pathGroups": [
+        {
+          "pattern": "@main",
+          "group": "parent",
+          "position": "before"
+        },
+        {
+          "pattern": "@hooks",
+          "group": "parent",
+          "position": "before"
+        },
+        {
+          "pattern": "@utils",
+          "group": "parent",
+          "position": "before"
+        }
       ]
     }],
     "unicorn/no-for-loop": 0,

@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
-
-import { useDebounce } from '../helper';
+import { useDebounce } from '@core';
 
 import { TListenTime } from './timer.types';
 import data from './data';

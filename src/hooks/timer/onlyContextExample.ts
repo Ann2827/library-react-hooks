@@ -1,5 +1,4 @@
-import { makeSetState } from '../store';
-import { createContext } from '../context';
+import { makeSetState, createContext } from '@core';
 
 import { TDataTimer, TTimerOptions } from './timer.types';
 

@@ -1,6 +1,5 @@
 import React from 'react';
-
-import { useOnceEffect } from '../helper';
+import { useOnceEffect } from '@core';
 
 import { data, useEffectOnImagePreloader } from './data';
 import { IImagePreloaderData, TImagePreloaderType } from './imagePreloader.types';

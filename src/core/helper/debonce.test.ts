@@ -9,11 +9,11 @@ import { useDebounce } from '.';
 //   });
 
 describe('helper.hook function:', () => {
-  const utils = {
-    timeout(ms: number): Promise<boolean> {
-      return new Promise<boolean>((resolve) => setTimeout(() => resolve(true), ms));
-    },
-  };
+  // const utils = {
+  //   timeout(ms: number): Promise<boolean> {
+  //     return new Promise<boolean>((resolve) => setTimeout(() => resolve(true), ms));
+  //   },
+  // };
   jest.useFakeTimers();
 
   test('useDebounce: should work right away', () => {

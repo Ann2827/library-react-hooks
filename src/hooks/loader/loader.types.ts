@@ -57,4 +57,4 @@ export interface ILoader {
 /**
  * @deprecated use ILoader interface
  */
-export interface LoaderI extends ILoader {}
+export type LoaderI = ILoader;

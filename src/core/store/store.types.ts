@@ -1,5 +1,6 @@
+import { TOnlyPublic } from '@utils';
+
 import { IContext } from '../context';
-import { TOnlyPublic } from '../../utils/object';
 
 export type TDataState = Object;
 
