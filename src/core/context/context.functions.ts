@@ -1,5 +1,4 @@
-import { loggerState, loggerMessage } from '../../utils/logger';
-import { cleanObjKeys } from '../../utils/object';
+import { loggerState, loggerMessage, cleanObjKeys } from '@utils';
 
 import type { IContext, IContextOptions, TContextFn } from './context.types';
 

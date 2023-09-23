@@ -1,12 +1,11 @@
 import React, { useEffect } from 'react';
 import styles from '../../assests/styles/page.module.scss';
-import { useToast } from 'library-react-hooks';
+import { useToast, TToastTranslationFn } from 'library-react-hooks';
 import classNames from 'classnames';
 import { useNavigate } from 'react-router-dom';
 import { ROUTE_MAIN } from '../../constants/routes';
 import { openLink } from '../../utils/url';
 import { useTranslation } from 'react-i18next';
-import { TToastTranslationFn } from '../../../../src';
 
 const ToastHook: React.FC = () => {
   const navigate = useNavigate();

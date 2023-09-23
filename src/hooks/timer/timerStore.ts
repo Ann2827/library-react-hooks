@@ -1,4 +1,4 @@
-import { makeStore } from '../store';
+import { makeStore } from '@core';
 
 import { TDataTimer, TTimerOptions } from './timer.types';
 

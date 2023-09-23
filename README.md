@@ -78,7 +78,7 @@ Contributions, issues and feature requests are welcome.
 
 ## 📝 License <a name = "license"></a>
 
-Copyright © 2022 [Bystrova Ann](https://github.com/Ann2827).<br />
+Copyright © 2023 [Bystrova Ann](https://github.com/Ann2827).<br />
 This project is [MIT](https://github.com/Ann2827/library-react-hooks/blob/main/LICENSE) licensed.
 
 ## Contact <a name = "contact"></a>

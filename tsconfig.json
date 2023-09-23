@@ -2,6 +2,8 @@
   "compilerOptions": {
     "outDir": "dist",
     "module": "esnext",
+    // TODO:
+//    "target": "ES5",
     "target": "ES2015",
     "lib": [
       "dom",
@@ -31,13 +33,17 @@
 //    "ignoreDeprecations": "5.0"
     "noFallthroughCasesInSwitch": true,
 //    "declarationDir": "./types"
+//    "baseUrl": "./",
+    "paths": {
+      "@core": ["./src/core"],
+      "@hooks": ["./src/hooks"],
+      "@utils": ["./src/utils"]
+    },
   },
   "include": [
     "src"
   ],
-//  "exclude": [
-//    "node_modules",
-//    "dist",
-//    "example",
-//  ]
+  "exclude": [
+    "__mocks__"
+  ]
 }

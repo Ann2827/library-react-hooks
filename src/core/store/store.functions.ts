@@ -1,6 +1,6 @@
 import React from 'react';
+import { onlyPublic, TOnlyPublic } from '@utils';
 
-import { onlyPublic, TOnlyPublic } from '../../utils/object';
 import { createContext, IContextOptions, TContextFn, IContext } from '../context';
 import { makeEffectOn } from '../helper';
 

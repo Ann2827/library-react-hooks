@@ -1,4 +1,4 @@
-import { loggerState, loggerMessage } from '../../utils/logger';
+import { loggerState, loggerMessage } from '@utils';
 
 import { IDataOptions, TDataEvent, TDataState } from './create.types';
 
