@@ -56,4 +56,35 @@ describe('helper.hook Defer:', () => {
     expect(result.current[0]).toEqual({ counter: 2 });
     unmount();
   });
+
+  test('useRef: should be deferrer', () => {
+    let initialState = { counter: 1 };
+    const { rerender, unmount, result } = renderHook((init = false) => Defer.useRef(initialState, init as boolean));
+    rerender(false);
+    expect(result.current.current).toEqual({ counter: 1 });
+    initialState = { counter: 2 };
+    rerender(true);
+    expect(result.current.current).toEqual({ counter: 2 });
+    unmount();
+  });
+
+  test('useCallback: should be deferrer', () => {
+    let callCounter = 0;
+    const { rerender, unmount, result } = renderHook((init = false) =>
+      Defer.useCallback(
+        () => {
+          callCounter = callCounter + 1;
+        },
+        [],
+        init as boolean,
+      ),
+    );
+    rerender(false);
+    result.current();
+    expect(callCounter).toEqual(0);
+    rerender(true);
+    result.current();
+    expect(callCounter).toEqual(1);
+    unmount();
+  });
 });

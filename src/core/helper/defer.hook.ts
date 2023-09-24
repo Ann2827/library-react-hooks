@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {DependencyList} from 'react';
 
 const useState = <S = undefined>(
   initialState: S | (() => S),
@@ -16,7 +16,7 @@ const useState = <S = undefined>(
   return [state, setState];
 };
 
-const useEffect = (effect: React.EffectCallback, deps?: React.DependencyList, init = true) => {
+const useEffect = (effect: React.EffectCallback, deps?: React.DependencyList, init = true): void => {
   const [done, setDone] = React.useState<boolean>(false);
   const dependency = React.useMemo<React.DependencyList | undefined>(
     () => (deps ? [...deps, done] : undefined),
@@ -30,9 +30,34 @@ const useEffect = (effect: React.EffectCallback, deps?: React.DependencyList, in
   }, dependency);
 };
 
+const useRef = <T = undefined>(initialState: T, init = true): React.RefObject<T> => {
+  const [done, setDone] = React.useState<boolean>(false);
+  const ref = React.useRef(initialState);
+  React.useEffect(() => {
+    if (!done && init) {
+      ref.current = initialState;
+      setDone(true);
+    }
+  }, [done, init]);
+  return ref;
+};
+
+const useCallback = <T extends (...args: any[]) => any>(callback: T, deps: DependencyList, init = true): T => {
+  const [done, setDone] = React.useState<boolean>(false);
+  const dependency = React.useMemo<React.DependencyList>(() => [...deps, done], [deps, done]);
+  React.useEffect(() => {
+    if (init) setDone(true);
+  }, [init]);
+  return React.useCallback((...args: Parameters<T>) => {
+    if (done) return callback(...args);
+  }, dependency) as T;
+};
+
 const Defer = {
   useEffect,
   useState,
+  useRef,
+  useCallback,
 };
 
 export default Defer;
