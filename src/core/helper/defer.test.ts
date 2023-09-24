@@ -87,4 +87,19 @@ describe('helper.hook Defer:', () => {
     expect(callCounter).toEqual(1);
     unmount();
   });
+
+  test('useMemo: should be deferrer', () => {
+    let initialState = { counter: 1 };
+    const { rerender, unmount, result } = renderHook((init = false) =>
+      Defer.useMemo(() => initialState, [], init as boolean),
+    );
+    rerender(false);
+    expect(result.current).toEqual({ counter: 1 });
+    initialState = { counter: 2 };
+    rerender(false);
+    expect(result.current).toEqual({ counter: 1 });
+    rerender(true);
+    expect(result.current).toEqual({ counter: 2 });
+    unmount();
+  });
 });

@@ -53,11 +53,24 @@ const useCallback = <T extends (...args: any[]) => any>(callback: T, deps: React
   }, dependency) as T;
 };
 
+const useMemo = <T>(factory: () => T, deps: React.DependencyList | undefined, init = true): T => {
+  const [done, setDone] = React.useState<boolean>(false);
+  const dependency = React.useMemo<React.DependencyList | undefined>(
+    () => (deps ? [...deps, done] : undefined),
+    [deps, done],
+  );
+  React.useEffect(() => {
+    if (init) setDone(true);
+  }, [init]);
+  return React.useMemo(factory, dependency);
+};
+
 const Defer = {
   useEffect,
   useState,
   useRef,
   useCallback,
+  useMemo,
 };
 
 export default Defer;
