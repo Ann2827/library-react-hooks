@@ -1,4 +1,4 @@
-import React, {DependencyList} from 'react';
+import React from 'react';
 
 const useState = <S = undefined>(
   initialState: S | (() => S),
@@ -42,7 +42,7 @@ const useRef = <T = undefined>(initialState: T, init = true): React.RefObject<T>
   return ref;
 };
 
-const useCallback = <T extends (...args: any[]) => any>(callback: T, deps: DependencyList, init = true): T => {
+const useCallback = <T extends (...args: any[]) => any>(callback: T, deps: React.DependencyList, init = true): T => {
   const [done, setDone] = React.useState<boolean>(false);
   const dependency = React.useMemo<React.DependencyList>(() => [...deps, done], [deps, done]);
   React.useEffect(() => {
