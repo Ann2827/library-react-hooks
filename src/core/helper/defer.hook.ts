@@ -2,10 +2,11 @@ import React from 'react';
 
 const useState = <S = undefined>(
   initialState: S | (() => S),
-  init?: boolean,
+  init = true,
 ): [S, React.Dispatch<React.SetStateAction<S>>] => {
   const [done, setDone] = React.useState<boolean>(false);
   const [state, setState] = React.useState<S>(initialState);
+  // TODO: useOnceEffect
   React.useEffect(() => {
     if (!done && init) {
       setState(initialState);

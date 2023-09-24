@@ -31,13 +31,13 @@ describe('helper.hook Defer:', () => {
 
   test('useEffect: should be deferrer rendered', () => {
     let renderCounter = 0;
-    const { rerender, unmount } = renderHook((init: boolean) => {
+    const { rerender, unmount } = renderHook((init = false) => {
       Defer.useEffect(
         () => {
           renderCounter = renderCounter + 1;
         },
         [],
-        init,
+        init as boolean,
       );
     });
     rerender(false);
@@ -48,7 +48,7 @@ describe('helper.hook Defer:', () => {
 
   test('useState: should be deferrer', () => {
     let initialState = { counter: 1 };
-    const { rerender, unmount, result } = renderHook((init: boolean) => Defer.useState(initialState, init));
+    const { rerender, unmount, result } = renderHook((init = false) => Defer.useState(initialState, init as boolean));
     rerender(false);
     expect(result.current[0]).toEqual({ counter: 1 });
     initialState = { counter: 2 };
