@@ -1,11 +1,11 @@
 import { ILoader } from './loader.types';
-import { data } from './data';
+import LoaderStore from './loaderStore';
 
 const fnLoader = (): Pick<ILoader, 'loaderOn' | 'loaderOff' | 'loaderStop'> => {
   return {
-    loaderOn: () => data.activate(),
-    loaderOff: () => data.determinate(),
-    loaderStop: () => data.stop(),
+    loaderOn: () => LoaderStore.activate(),
+    loaderOff: () => LoaderStore.determinate(),
+    loaderStop: () => LoaderStore.stop(),
   };
 };
 

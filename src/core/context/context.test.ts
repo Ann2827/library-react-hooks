@@ -24,7 +24,7 @@ describe('context CreateContext class:', () => {
   });
 
   test('should have methods', () => {
-    expect(Object.keys(KeysContext).sort()).toEqual(['on', 'reset', '_test'].sort());
+    expect(Object.keys(KeysContext).sort()).toEqual(['on', 'reset', '_test', 'getState'].sort());
     expect(typeof KeysContext.state).toEqual('object');
     expect(typeof KeysContext._test).toEqual('function');
   });
@@ -170,7 +170,7 @@ describe('context createContext:', () => {
   });
 
   test('should have methods', () => {
-    expect(Object.keys(KeysContext).sort()).toEqual(['on', 'reset'].sort());
+    expect(Object.keys(KeysContext).sort()).toEqual(['on', 'reset', 'getState'].sort());
     expect(typeof KeysContext.state).toEqual('object');
   });
 

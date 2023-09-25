@@ -19,7 +19,7 @@ const initialState: TTimerState = { timers: {}, time: {} };
 const TimerStore = makeStore<TTimerState>(initialState, {
   hookName: 'timer',
 }).enrich<TTimerData>((setState, state, reset) => {
-  const getTimer = (name: TTimerOptions['name']): TDataTimer | undefined => state.timers[name];
+  const getTimer = (name: TTimerOptions['name']): TDataTimer | undefined => state().timers[name];
   const setStateTime = (name: TTimerOptions['name'], time = 0): void => {
     // TODO: когда починится merge setState((prev) => ({ time: { ...prev.time, [name]: time } }));
     setState((prev) => ({ ...prev, time: { ...prev.time, [name]: time } }));
@@ -128,7 +128,7 @@ const TimerStore = makeStore<TTimerState>(initialState, {
   };
 
   const clear = (): void => {
-    Object.keys(state.timers).forEach((name) => {
+    Object.keys(state().timers).forEach((name) => {
       cancelTimer(name);
     });
   };
@@ -138,7 +138,7 @@ const TimerStore = makeStore<TTimerState>(initialState, {
     cancelTimer,
     clear,
     getTime(name: string): number {
-      return state.time[name] || 0;
+      return state().time[name] || 0;
     },
     reset() {
       clear();

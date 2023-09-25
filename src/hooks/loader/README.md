@@ -49,16 +49,12 @@ Loader component:
 
 ```tsx
 import React from 'react';
-import { useEffectOnLoader } from 'library-react-hooks';
+import { useLoader } from 'library-react-hooks';
 
 const Loader: React.FC = () => {
-  const [loading, setLoading] = useState<boolean>(false);
+  const { active } = useLoader();
 
-  useEffectOnLoader((event, newState) => {
-    setLoading(newState.active);
-  }, []);
-
-  if (!loading) return null;
+  if (!active) return null;
   return <MyLoaderIcon />;
 };
 ```
