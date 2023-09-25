@@ -35,4 +35,8 @@ export interface IContext<S extends Object> {
   get state(): S;
   set state(newState: S);
   reset(): void;
+  /**
+   * @deprecated
+   */
+  getState(): S;
 }

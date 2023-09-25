@@ -39,9 +39,9 @@ const makeStore = <S extends TDataState = {}>(initialState: S, options: Partial<
   const useSubscribe = makeSubscribe<S>(BaseContext);
 
   const enrich = <D extends Record<string, any> = {}>(
-    enrichFn: (setState: (fn: ((prev: S) => S) | S) => void, state: S, reset: IContext<S>['reset']) => D,
+    enrichFn: (setState: (fn: ((prev: S) => S) | S) => void, state: () => S, reset: IContext<S>['reset']) => D,
   ): TStoreEnrich<S, D> => {
-    const enrichData: D = enrichFn((fn) => setState(fn), BaseContext.state, BaseContext.reset);
+    const enrichData: D = enrichFn((fn) => setState(fn), BaseContext.getState, BaseContext.reset);
 
     const filterMethods: TOnlyPublic<D> = onlyPublic<D>(enrichData);
 

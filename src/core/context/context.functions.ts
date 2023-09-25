@@ -25,6 +25,7 @@ export class CreateContext<S extends Object> implements IContext<S> {
     // this.#event = this.#event.bind(this);
     this.on = this.on.bind(this);
     this.reset = this.reset.bind(this);
+    this.getState = this.getState.bind(this);
     if (typeof this._test === 'function') {
       this._test = this._test.bind(this);
     }
@@ -37,6 +38,10 @@ export class CreateContext<S extends Object> implements IContext<S> {
   public on(fn: TContextFn<S>): () => void {
     this.#listeners.push(fn);
     return () => (this.#listeners = this.#listeners.filter((listener) => listener !== fn));
+  }
+
+  getState(): S {
+    return this.#state;
   }
 
   get state(): S {

@@ -16,15 +16,12 @@ const LoaderStore = makeStore<TLoaderState>(initialState, dataOptions).enrich<IL
     setState((prev) => ({ active: true, quantity: prev.quantity + 1 }));
   };
   const stop: ILoaderData['stop'] = (): void => {
-    setState((prev) => ({ active: false, quantity: 0 }));
+    setState({ active: false, quantity: 0 });
   };
   const determinate: ILoaderData['determinate'] = (): void => {
-    if (state.quantity > 1) {
+    if (state().quantity > 1) {
       setState((prev) => ({ active: true, quantity: prev.quantity - 1 }));
-      return;
-    }
-
-    stop();
+    } else stop();
   };
 
   return {

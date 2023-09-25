@@ -9,22 +9,24 @@ describe('loader.hook function:', () => {
   });
 
   test('useLoader: should be active', () => {
-    const { result } = renderHook(() => useLoader());
+    const { result, unmount } = renderHook(() => useLoader());
     act(() => result.current.loaderOn());
     expect(result.current.active).toEqual(true);
+    unmount();
   });
 
   test('useLoader: should be canceled', () => {
-    const { result } = renderHook(() => useLoader());
+    const { result, unmount } = renderHook(() => useLoader());
     act(() => {
       result.current.loaderOn();
       result.current.loaderOff();
     });
     expect(result.current.active).toEqual(false);
+    unmount();
   });
 
   test('useLoader: should be stopped', () => {
-    const { result } = renderHook(() => useLoader());
+    const { result, unmount } = renderHook(() => useLoader());
     act(() => {
       result.current.loaderOn();
       result.current.loaderOn();
@@ -32,10 +34,11 @@ describe('loader.hook function:', () => {
       result.current.loaderStop();
     });
     expect(result.current.active).toEqual(false);
+    unmount();
   });
 
   test('useLoader: should be listen on', () => {
-    const { result } = renderHook(() => useLoader());
+    const { result, unmount } = renderHook(() => useLoader());
     let state = false;
     act(() => {
       result.current.on((is) => {
@@ -44,5 +47,18 @@ describe('loader.hook function:', () => {
       result.current.loaderOn();
     });
     expect(state).toEqual(true);
+    unmount();
+  });
+
+  test('useLoader: should be determinated', () => {
+    const { result, unmount } = renderHook(() => useLoader());
+    act(() => {
+      result.current.loaderOn();
+      result.current.loaderOn();
+      result.current.loaderOn();
+      result.current.loaderOff();
+    });
+    expect(result.current.active).toEqual(true);
+    unmount();
   });
 });
