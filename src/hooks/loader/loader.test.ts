@@ -1,6 +1,6 @@
 import { act, renderHook } from '@testing-library/react-hooks';
 
-import { useLoader, useEffectOnLoader, TLoaderEvent, TLoaderState } from '.';
+import { useLoader } from '.';
 
 describe('loader.hook function:', () => {
   beforeEach(() => {
@@ -44,30 +44,5 @@ describe('loader.hook function:', () => {
       result.current.loaderOn();
     });
     expect(state).toEqual(true);
-  });
-
-  test('useLoader: should be listen useEffectOnLoader', () => {
-    const { result } = renderHook(() => useLoader());
-    // @ts-ignore
-    let e: TLoaderEvent = {};
-    // @ts-ignore
-    let s: TLoaderState = {};
-    const { rerender } = renderHook(() =>
-      useEffectOnLoader((event, newState) => {
-        e = event;
-        s = newState;
-      }, []),
-    );
-    act(() => {
-      result.current.loaderOn();
-    });
-    expect(e).toEqual({ type: 'updated' });
-    expect(s).toEqual({ active: true, quantity: 1 });
-
-    rerender();
-    act(() => {
-      result.current.loaderOff();
-    });
-    expect(s).toEqual({ active: false, quantity: 0 });
   });
 });

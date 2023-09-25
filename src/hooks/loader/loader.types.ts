@@ -1,4 +1,4 @@
-import { IData } from '../create';
+import { IStore } from '@core';
 
 export type TLoaderState = {
   active: boolean;
@@ -12,11 +12,10 @@ export type TLoaderEvent = {
  * @private
  * @ignore
  */
-export interface ILoaderData extends IData<TLoaderState, TLoaderEvent> {
+export interface ILoaderData {
   activate(): void;
   determinate(): void;
   stop(): void;
-  getActive(): boolean;
 }
 
 export interface ILoader {
@@ -41,8 +40,13 @@ export interface ILoader {
   loaderStop: ILoaderData['stop'];
 
   /**
+   * Subscribe to the state
+   */
+  useSubscribe: IStore<TLoaderState>['useSubscribe'];
+
+  /**
    * This function listens for the events of activate/determinate.
-   * @deprecated use useEffectOnLoader hook
+   * @deprecated use useSubscribe hook
    */
   on(fn: (e: boolean) => void): () => void;
 
@@ -50,8 +54,8 @@ export interface ILoader {
    * Resets the state
    * @deprecated use reset method
    */
-  _reset: ILoaderData['reset'];
-  reset: ILoaderData['reset'];
+  _reset: IStore<TLoaderState>['reset'];
+  reset: IStore<TLoaderState>['reset'];
 }
 
 /**

@@ -1,4 +1,4 @@
-import { logsLoaderEnable } from './loader/data';
+import { logsLoaderEnable } from './loader/loaderStore';
 import { logsImagePreloaderEnable } from './imagePreloader/data';
 
 export const logsEnable = (): void => {

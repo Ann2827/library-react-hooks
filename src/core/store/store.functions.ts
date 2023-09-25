@@ -38,7 +38,7 @@ const makeStore = <S extends TDataState = {}>(initialState: S, options: Partial<
   const setState = makeSetState<S>(BaseContext);
   const useSubscribe = makeSubscribe<S>(BaseContext);
 
-  const enrich = <D extends Record<string, unknown> = {}>(
+  const enrich = <D extends Record<string, any> = {}>(
     enrichFn: (setState: (fn: ((prev: S) => S) | S) => void, state: S, reset: IContext<S>['reset']) => D,
   ): TStoreEnrich<S, D> => {
     const enrichData: D = enrichFn((fn) => setState(fn), BaseContext.state, BaseContext.reset);
@@ -49,6 +49,7 @@ const makeStore = <S extends TDataState = {}>(initialState: S, options: Partial<
       useSubscribe,
       setState,
       reset: BaseContext.reset,
+      on: BaseContext.on,
       ...filterMethods,
     };
   };
@@ -58,6 +59,7 @@ const makeStore = <S extends TDataState = {}>(initialState: S, options: Partial<
     setState,
     reset: BaseContext.reset,
     enrich,
+    on: BaseContext.on,
   };
 };
 
