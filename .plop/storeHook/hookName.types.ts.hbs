@@ -1,0 +1,35 @@
+import { IStore } from '@core';
+
+export type T{{ properCase name }}State = {
+  counter: number;
+};
+
+/**
+ * @private
+ * @ignore
+ */
+export interface I{{ properCase name }}Data {
+  action(): void;
+}
+
+export interface I{{ properCase name }} {
+  /**
+   * {{ properCase name }} counter
+   */
+  counter: T{{ properCase name }}State['counter'];
+
+  /**
+   * Action
+   */
+  action: I{{ properCase name }}Data['action'];
+
+  /**
+   * Subscribe to the state
+   */
+  useSubscribe: IStore<T{{ properCase name }}State>['useSubscribe'];
+
+  /**
+   * Resets the state
+   */
+  reset: IStore<T{{ properCase name }}State>['reset'];
+}
