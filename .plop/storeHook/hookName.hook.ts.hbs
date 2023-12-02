@@ -1,0 +1,15 @@
+import { I{{ properCase name }} } from './{{ camelCase name }}.types';
+import {{ properCase name }}Store from './{{ camelCase name }}Store';
+
+const {{ fullName prefix name }} = (): I{{ properCase name }} => {
+  const counter = {{ properCase name }}Store.useSubscribe<number>((state) => state.counter);
+
+  return {
+    counter,
+    action: () => {{ properCase name }}Store.action(),
+    useSubscribe: {{ properCase name }}Store.useSubscribe,
+    reset: () => {{ properCase name }}Store.reset(),
+  };
+};
+
+export default {{ fullName prefix name }};
